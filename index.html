@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+ <link rel="stylesheet" type="text/css" href="styles.css"></link>
+<head lang="en">
+  <meta http-equiv="Content-Type" content="text/html-8">
+  <title>Norm and Criterion Referencing</title> 
+</head>
+
+<body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+
+<div id="content">
+
+  <center><h2>Norm-referenced and Criterion-referenced <br>Interpretation of Test Results</h2></center>
+
+<p>Assessment results allow educators to make important decisions about students' knowledge, abilities and future educational potential. There are multiple ways to summarize and interpret assessment results. The conclusions we can reach based on the results from an assessment will depend on how we interpret these results.</p>
+
+<p>Sometimes we want to compare students with their peers or to rank-order them. When we use tests to make these types of decision we say we are making a <b>norm-referenced</b> or <b>normative</b> interpretation of test results. </p>
+<p>Some tests are used to evaluate a person’s mastery of a subject, usually by using cut scores to define proficiency or pass/fail decisions. When tests are used to decide if a student meets a certain pre-defined standard or criteria, we say we are making a <b>criterion-referenced</b> interpretation of test results.</p>
+
+<p><u>Our example:</u></p>
+
+<p>In this interactive module we will explore the concepts, appropriate uses, and limitations of both norm-referenced and criterion-referenced interpretation of test results. Throughout this lesson you will be able to change score values and see how the changes you make impact the interpretation of tests results. </p>
+
+<p>Mary is a 9th grade student at ABC High School and she just took the final Math I exam.</p> 
+The exam:
+	<ul>
+		<li>contains 50 questions</li>
+		<li>each question is worth 1 point</li>
+	</ul>
+
+<p>In order to score the exam, Mr. Smith, her teacher, computes the grade by counting the <b>number of correct</b> answers, with no penalty for incorrect answers and then calculates the <b>percentage correct</b>. For example, if Mary got 25 questions right, she would score 50% on the exam.</p>
+
+<p>Some details about our example:</p>
+<ul>
+	<li>Each 9th grade class has a total of 20 students.</li>
+	<li>The high school, ABC High, has 4 other 9th grade classes.</li>
+	<li>The results from this exam will determine if students can move on to Math II in the following academic year.</li>		
+	<li>Results will also be used to give prizes to students <u>at or above the 95th percentile</u> in Math I at ABC High.</li>
+</ul>
+
+
+<p><font color=red>Activity 1:</font> To begin, suppose Mary got 40 correct questions. Select the number of percentage correct Mary scored in the exam.</p>
+<p>[<font color=blue>Graphic 1:</font> Selecting Mary’s Raw Score]</p>
+<p>{<u>Reactive text:</u> Mary scored XX points or YY% on the exam. This is Mary’s raw score as it is based solely on the number of correctly answered items on the test.}</p>
+
+<p>You know Mary’s raw score, but does this score tell you how well she did in comparison to her classmates or to all other 9th grade students in her high school? Does it tell you if she got any of the 9th grade Math prizes?</p>
+
+<p><b>No!</b></p>
+<p> In order to rank students and know how one student’s score compares to other students who took the same test we must have a norm-referenced score. A norm-referenced score typically indicates the examinee’s relative position in the norm group. Once we have information about the group of test takers that we want to compare our scores with, which we call a norm group, we are able to answer the questions above.</p>
+
+<p><u>What is a <b>norm group</b>?</u></p>
+
+<p>A <b>norm group</b> can be any group we wish to make comparisons against. In high-stakes national or state standardized tests, the norm group must be <u>representative</u> of the national or state population of students taking the same test. To be valid, group comparisons should be made between similar students (e.g., the percent of children learning English should be the same in the norming and comparison groups). </p>
+
+<p><b>Quiz:</b> We know that the results of the Math I exam will be used to give prizes to students in the 95th percentile of ninth grade Math students at ABC High. What is the most appropriate norm group for this kind of decision?</p>
+
+ <ol type="a">
+  <li>Mary’s 9th grade class</li>
+  <li>All ABC High’s 9th grade students in the current school year</li>
+  <li>All ABC High’s students</li>
+  <li>All current and past ABC High’s 9th grade students who have taken this test</li>
+</ol> 
+
+<p>In Mary’s case, since we want to compare her score to her 9th grade schoolmates in order to find out if she was among the top ranked students, the norm group is <b>(b)</b> - all ABC High’s 9th grade students in the current school year.</p>
+
+<p>There are different types of norm-referenced scores. The most common are:</p>
+
+<ul>
+	<li><b>Percentile ranks:</b> this is a simple way of ranking a raw score to the performance of a particular norm group. Percentiles always run from 1 to 99 and define the percent of the norm group which achieved lower scores. Each percentile table only refers to one specific norm group at the specific time it was tested. If a raw score of 15 correspond to a percentile of 30, it means that 30% of the norm group had raw scores lower than 15. Since percentile ranks indicate various percentages of individuals above and below scores that are normally distributed, they do not represent equal units. Percentile ranks are much more compactly arranged in the middle of the normal distribution since that is where the majority of individuals fall.</li>
+	<br>
+	<li><b>Standard score:</b> a transformation of the raw score, whose score distribution in a specified population has convenient, known values for the mean and standard deviation. Often this term is used to specifically denote scores transformed to have a mean of zero and a standard deviation of 1 (also known as z-scores). Standard scores permit the direct comparison of examinees by placement of the scores on a common scale and, for this reason, are useful for comparisons over time.</li>
+</ul>
+
+ <center><img src="normal_dist.png" alt="Comparison of Various Types of Standard Scores and their Relation to the Standard Distribution" width="600"></center> 
+
+
+<p><font color=red>Activity 2:</font> Now let’s define Mary’s norm group. To what group do you want to compare Mary’s score to?</p>
+<p>[<font color=blue>Graphic 2:</font> Selecting Norm Group (class or school)] Show Mary’s placement in comparison to the class/school.</p>
+
+<p><font color=red>Activity 3:</font> Now try changing Mary’s raw score and see how her standard score and percentile rank change in comparison to the norm group you selected.</p>
+
+<p>{<u>Reactive text:</u> Mary scored XX points or YY% on the exam. This corresponds to a standard score of … based on the distribution of scores for her [norm group] and she scored at the [ZZ] percentile. This means that based on her raw score Mary scored higher than [ZZ]% of the other students in her [class/school] (norm group) who took the test. In other words, [ZZ]% of the students who made up the norm group answered fewer than XX items correctly.}</p>
+
+<p>You know Mary’s raw score and how well she did compared to her classmates and schoolmates, but do you know if she passed the exam?</p>
+
+<p><b>No!</b></p>
+<p> Pass/fail decisions are usually based off a minimum score that the student must obtain to demonstrate proficiency in the subject matter. In order to make pass/fail decisions we usually make a <b>criterion-referenced interpretation of test scores</b>.</p>
+
+<p>Most criterion-referenced assessments use a <b>cut score</b> which determines success or failure based on a pre-established percentage correct. Criterion-referenced scores tell us how well the examinee performed against an objective or standard, as opposed to against other examinees. For example, a driver’s test intends to determine whether a person is knowledgeable and capable enough to be allowed on the road, not whether one driver is more accomplished than another.</p>
+
+<p>A <b>cut score</b> is a point on the test score scale used for classifying the test takers into groups on the basis of their scores. In general, criterion-referenced tests involve a cut score, where the examinee passes if their score exceeds the cut score and fails if it does not (often called a mastery test). However, <u>the criterion is not the cut score</u>; the criterion is the domain of subject matter that the test is designed to assess. In some cases, tests may have multiple cut scores representing tiered levels of proficiency, such as <i>basic</i>, <i>proficient</i>, or <i>advanced</i>. Cut scores may also be applied in certification and licensing exams that are used to determine whether examinees are professionally “<i>qualified</i>.”</p>
+
+<p>The process used to determine cut scores is formally known as <b>standard setting</b>. For tests like classroom assessments cut scores might be defined by the teacher, for final exams it might be defined by the school. For commercial and high-stakes tests, the test developer will form a standard-setting panel by recruiting a group of experts, such as psychometricians (specialists in the science of educational measurement) or teachers from a relevant content area. The panel will then use one or more research-based methods, developed by psychometricians and academics, for setting testing standards and determining cut scores.</p>
+
+<p><font color=red>Activity 4:</font> Defining a cut score. Choose a cut score and see if Mary passed or failed the exam. You may also go back and change Mary’s raw score. Note that defining a cut score does not change Mary’s norm-referenced scores.</p>
+<p>[<font color=blue>Graphic 3:</font> Selecting cut score] - Add Mary’s pass/fail information in addition to her placement in comparison to the norm group.</p>
+<p>{<u>Reactive text:</u> Mary scored XX points or YY% on the exam. Since Mary scored above the cut score of [KK], she has demonstrated [sufficient/insufficient] knowledge of 9th grade math curriculum and [passed/failed] the exam.}</p>
+
+<p><font color=red>Activity 5:</font> Defining additional cut scores. Suppose you want to further categorize students into basic, proficient and advanced based on their scores on the math final exam. Select a cut score for the advanced level and see how Mary’s classification changes.</p>
+<p>[<font color=blue>Graphic 4:</font> Tiered classification graph]</p>
+<p>{<u>Reactive text:</u> Mary scored XX points or YY% on the exam. Since Mary scored [above/below] the cut score of [KK], she has demonstrated [basic/proficient/advanced] knowledge of 9th grade math curriculum and [passed/failed] the exam.}</p>
+
+<p>We can, and often do, interpret a single test score both in terms of norm- and criterion-referencing. However, these interpretations are distinct and should not be confused.</p>
+
+<p><font color=red>Activity 6:</font> Now we will combine both types of interpretation of Mary’s test score. Try changing Mary’s raw score and see how it affects both her percentile rank in the norm group you selected and her proficiency levels based on the cut scores you defined.</p>
+<p>[<font color=blue>Graphic 5:</font> Norm and Criterion-referenced interpretations]</p>
+<p>{<u>Reactive text:</u> Mary scored XX points or YY% on the exam. This corresponds to a standard score of … based on the distribution of scores for her [norm group] and she scored at the [ZZ] percentile. This means that based on her raw score Mary scored higher than [ZZ]% of the other students in her [class/school] (norm group) who took the test. In other words, [ZZ]% of the students who made up the norm group answered fewer than XX items correctly. 
+<br><br>
+Since Mary [did/did not] score in 95th percentile of students in her school, she [did/did not] win the Math prize. 
+<br><br>
+Additionally, since Mary scored [above/below] the cut score of [KK], she has demonstrated [basic/proficient/advanced] knowledge of 9th grade math curriculum and [passed/failed] the exam.
+}</p>
+
+
+<h3>Summary</h3>
+
+<p>The distinction between norm-referenced and criterion-referenced score interpretation can be summarized as follows.</p>
+<ul>
+	<li><b>Norm referencing:</b> when we interpret a score of an individual by comparing his score to those of other individuals called a norm group.</li>
+	<li><b>Criterion referencing:</b> when we interpret a person's performance by comparing it to some pre-specified standard or criterion of proficiency.</li>
+</ul>
+
+<p>In our example, we could say that the focus of a normative score is on how well Mary performed on the Math final exam compared to her peers and the focus of a criterion-referenced score is on what it is that Mary can do and if she met the criteria of mastery of content included in the Math exam.</p>
+
+<p>Uses and limitations of <b>norm-referenced</b> scores:</p>
+<ul>
+	<li>In order to make norm-referenced interpretations, the norm group must be representative of the population of examinees we want to compare to.</li>
+	<li>Norm-referenced scores are usually used to identify specific learning disabilities, such as autism, dyslexia, or nonverbal learning disability, or to determine eligibility for special-education services.</li>
+	<li>Reporting results in terms of percentiles or standard scores does not provide information on whether or not the students were proficient.</li>
+	<li>It is possible that all students performed poorly and that none are proficient or that all are proficient.</li>
+	<li>Rank ordering the student scores does not necessarily reflect an amount of knowledge and skills measured by the test.</li>
+</ul>
+
+<p>Uses and limitations of <b>criterion-referenced</b> scores:</p>
+<ul>
+	<li>Every student taking the exam could theoretically fail if they don’t meet the expected standard; alternatively, every student could earn the highest possible score.</li>
+	<li>It is not only possible, but desirable, for every student to pass the test or earn a perfect score.</li>
+	<li>These scores are used to report how well students are doing relative to a pre-determined performance level on a specified set of educational goals or outcomes included in the school, district, or state curriculum.</li>
+	<li>Scores may be used as one piece of information to determine how well the student is learning the desired curriculum and how well the school is teaching that curriculum.</li>
+</ul>
+
+<p>“Although loads of educators refer to “criterion-referenced tests” and “norm-referenced tests,” there are, technically, no such creatures. Rather, there are criterion- and norm-referenced interpretations of students’ test performances. For example, educators in a school district might have built a test to yield criterion-referenced interpretations, used the test for several years and, in the process, gathered substantial data regarding the performances of district students. As a consequence, the district’s educators could build normative tables permitting norm-referenced interpretations of the test which, although born to provide criterion-referenced inferences, can still permit meaningful norm-referenced interpretations.” Popham, W. James. 2011. <i>Classroom Assessment: What Teachers Need to Know (Sixth Edition)</i>. Boston: Pearson Education, Inc. pp. 46-8.</p>
+
+</div> <!--closing content div tag-->
+</body>
+</html>

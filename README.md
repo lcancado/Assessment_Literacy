@@ -1,8 +1,8 @@
 ##Understanding Normative and Criterion-referenced Interpretation of Assessment Results
 
-This interactive explorable explanation was designed to help clarify some of the concepts related to educational assessment. This module is part of a larger effort sponsored by the Center for Assessment to use high-fidelity and interactive web-technologies to help improve assessment literacy. 
+This interactive module was designed to help clarify some of the concepts related to educational assessment. This module is part of a larger effort sponsored by the Center for Assessment to use high-fidelity and interactive web-technologies to help improve assessment literacy. 
 
-The use of explorable explanations was inspired by [Bret Victor] (http://worrydream.com/ExplorableExplanations/). For the visualizations, we use the [D3.js] (http://d3js.org/) library created by Mike Bostock (http://bost.ocks.org/mike/).
+The use of explorable explanations was inspired by [Bret Victor](http://worrydream.com/ExplorableExplanations/). For the visualizations, we use the [D3.js](http://d3js.org/) library created by Mike Bostock (http://bost.ocks.org/mike/).
 
 
 

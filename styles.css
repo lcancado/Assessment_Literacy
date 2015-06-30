@@ -1,40 +1,43 @@
-    html, body {
-      margin: auto;
-      color: #333;
-      font-family: Verdana, Geneva, sans-serif;      
-     }
+html, body {
+  margin: auto;
+  color: #333;
+  font-family: Verdana, Geneva, sans-serif;
+  font: 18px;      
+}
      
-    #content {
-      width: 70%; 
-      margin:0 auto;
-    }
+#CritNormModule {
+  width: 70%; 
+  margin:0 auto;
+}
 
-    path {
-      fill: maroon;
-      fill-opacity: 0.7;
-    }
+.bar {
+    fill: steelblue;
+  }
+.bar:hover {
+    fill: brown;
+  }
 
-    #chart {
-      width: 400px;
-      height: 200px;
-      border: 1px solid black;
-      margin-top: 10px;
-    }
+.axis text {
+    font: 12px sans-serif;
+  }
 
-    .state rect {
-       fill: #dedede;
-     }
 
-    .state text {
-      font: 12px sans-serif;
-      text-anchor: middle;
-    }
+.bar rect {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
 
-    .state--selected rect {
-      fill: #9f4a6c;
-    } 
+.bar text {
+  fill: #fff;
+  font: 10px sans-serif;
+}
 
-    .state--selected text {
-      fill: white;
-    }
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+    display: none;
 

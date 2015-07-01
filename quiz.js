@@ -27,23 +27,18 @@ function checkAnswer(form) {
       if (currSelection.checked) {
         if (currSelection.value == answers[i]) {
           score++;
- 	  document.getElementById("quizResults").innerHTML = "<font color=blue><b>Correct! :-)</b></font> <br>Since we want to compare Mary's score to her 9th grade schoolmates in order to find out if she was among the top ranked students, the norm group is all ABC High's 9th grade students in the current school year.";		
+ 	        document.getElementById("quizResults").innerHTML = "<font color=blue><b>Correct! :-)</b></font> <br>Since we want to compare Mary's score to her 9th grade schoolmates in order to find out if she was among the top ranked students, the norm group is all ABC High's 9th grade students in the current school year.";		
           break;
         } 
-	else {
-	  document.getElementById("quizResults").innerHTML = "<font color=red><b>Incorrect :-( </b></font><br><b>Try again!</b> Remember that prizes will be given to 9th grade students at the 95th percentile in Math I at ABC High.";		
+	      else {
+	        document.getElementById("quizResults").innerHTML = "<font color=red><b>Incorrect :-( </b></font><br><b>Try again!</b> Remember that prizes will be given to 9th grade students at the 95th percentile in Math I at ABC High.";		
           break;	
-	}
-	
-      }
+	      }
+	    }
     }
   }
-  score = Math.round(score/numQues*100);
-  form.percentage.value = score + "%";
-  var correctAnswers = "";
-  for (i=1; i<=numQues; i++) {
-    correctAnswers += i + ". " + answers[i-1] + "\r\n";
-  }
-  form.solutions.value = correctAnswers;
+  
 };
 //  End -->
+
+

@@ -10,6 +10,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
 
     <!-- Tangle -->
@@ -41,7 +42,7 @@
 
 <p>Assessment results allow educators to make important decisions about students' knowledge, abilities and future educational potential. There are multiple ways to summarize and interpret assessment results. The conclusions we can reach based on the results from an assessment will depend on how we interpret these results.</p>
 
-<p>Sometimes we want to compare students with their peers or to rank-order them. When we use tests to make these types of decision we say we are making a <b>norm-referenced</b> or <b>normative</b> interpretation of test results. </p>
+<p>Sometimes we want to compare students with their peers or rank-order them. When we use tests to make these types of decision we say we are making a <b>norm-referenced</b> or <b>normative</b> interpretation of test results. </p>
 <p>Some tests are used to evaluate a person's mastery of a subject, usually by using cut scores to define proficiency or pass/fail decisions. When tests are used to decide if a student meets a certain pre-defined standard or criteria, we say we are making a <b>criterion-referenced</b> interpretation of test results.</p>
 
 <p>In this interactive module we will explore the <u>concepts</u>, <u>appropriate uses</u>, and <u>limitations</u> of both norm-referenced and criterion-referenced interpretation of test results. Throughout this lesson you will be able to change score values and see how the changes you make impact the interpretation of tests results. </p>
@@ -50,36 +51,55 @@
 <h3>Mary Masters Math</h3>
 
 <p>Mary is a 9th grade student at ABC High School and she just took the final Math I exam.</p> 
-The exam:
-	<ul>
-		<li>contains 50 questions</li>
-		<li>each question is worth 1 point</li>
-	</ul>
 
-<p id="scoring">In order to score the exam, Mr. Smith, her teacher, computes the grade by counting the <b>number of correct</b> answers, with no penalty for incorrect answers and then calculates the <b>percentage correct</b>. For example, if Mary got <span data-var="numCorrect" class="TKAdjustableNumber" data-min="0" data-max="50"> questions</span> right, she would score <b><span data-var="pctCorrect" data-format="%.0f"></span>%</b> on the exam.</p>
+<p>The results from this exam will be used to:</p>
+
+<ul>
+	<li>Determine if 9th grade students mastered Math I concepts and can move on to Math II.</li>		
+	<li>Give prizes to 9th grade students who scored <u>at the 95th percentile</u> in Math I at ABC High.</li>
+</ul>
+
+<br>
+
+<p><i>How can we use Mary's test score to decide if she can move on to Math II and if she will receive a prize for being a top performer in comparison to her schoolmates? <b>Let's find out! </b></i></p>
+
+<br>
 
 <p>Some details about our example:</p>
 <ul>
+	<li>The exam contains 50 questions and each question is worth 1 point.</li>
 	<li>Each 9th grade class has a total of 20 students.</li>
 	<li>The high school, ABC High, has 5 ninth grade classes for a total of <u>100</u> ninth grade students.</li>
-	<li>The results from this exam will determine if students can move on to Math II in the following academic year.</li>		
-	<li>Results will also be used to give prizes to 9th grade students <u>at the 95th percentile</u> in Math I at ABC High.</li>
+	<li>ABC High has records from students who took this exam in the past 10 years.</li>	
 </ul>
 
 <br>
 <h3>Raw Score</h3>
 
-<p><font color=red>Activity 1:</font> To begin, suppose Mary got  <span data-var="numCorrectMary" class="TKAdjustableNumber" data-min="0" data-max="50">  </span> correct questions. Select the number of percentage correct Mary scored in the exam.</p>
+<p id="scoring">In order to score the exam, Mr. Smith, the math teacher, computes the grade by counting the <b>number of correct</b> answers, with no penalty for incorrect answers and then calculates the <b>percentage correct</b>. For example, if Mary got <span data-var="numCorrect" class="TKAdjustableNumber" data-min="0" data-max="50"> questions</span> right out of the total 50 questions on the test, she would score <b><span data-var="pctCorrect" data-format="%.0f"></span>%</b> on the exam. We call the <u>number correct</u> and <u>percent correct</u> scores a <b>raw score</b> because they are based solely on the number of correctly answered items on the test without any manipulation.</p> 
 
-<p>[<font color=blue>Graphic 1:</font> Selecting Mary's Raw Score]</p>
+<p><font color=red>Activity 1:</font> Let's assume Mary got <span data-var="numCorrectMary"> </span> correct questions on the test. What was her percent correct score? Use the slider to answer and hit submit. </p>
 
-
+<form name="pctCorrectForm">
 <label for=pctCorrect>Mary's percentage correct: </label>
-<input type=range min=0 max=100 value=50 id=pctCorrect step=1 oninput="outputUpdate(value)">
+<input class="slider-width" type=range min=0 max=100 value=50 id=pctCorrect step=1 oninput="outputUpdate(value)">
 <output for=pctCorrect id="pctCorrectMaryInput">50</output>%
+<input type="button" value="Submit" onClick="checkPct(this.form)">
+<p id="pctCorrectResult"> </p>
+</form>
 
+<br>
 
-<p>{<u>Reactive text:</u> Mary scored <span data-var="numCorrectMary">  </span> points or <span data-var="pctCorrectMary" data-format="%.0f"></span>% on the exam. This is Mary's <b>raw score</b> as it is based solely on the <u>number of correctly answered items</u> on the test.}</p>
+<p>[<font color=blue>Graphic 1:</font> Change scales from number correct to percent correct]</p>
+
+<select id="rawscore" type='select' onchange='updateData();'>
+   <option value='50' id='score' selected='true'>Number Correct</option>
+   <option value='100' id='pctCorrect'>Percent Correct</option>   
+</select>
+
+<div class="rawScoreChart"></div>
+<script type="text/javascript" src="raw_score_chart.js"></script>
+
 
 <br>
 <h3>Norm-referenced Scores and Interpretations</h3>
@@ -136,14 +156,12 @@ The exam:
   <option value="historical">historical</option>
 </select>
 
-<!--<input type=checkbox value="sort">Sort</input> -->
+<!--<input type=checkbox value="sort">Sort</input> 
 
 <div class="normGroupGraph"></div>
 
 <script type="text/javascript" src="chart.js"></script>
-
-
-
+-->
 
 <p>[<font color=blue>Graphic 2:</font> Selecting Norm Group (class or school)] Show Mary's placement in comparison to the class/school.</p>
 

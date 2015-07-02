@@ -10,25 +10,39 @@ html, body {
   margin:0 auto;
 }
 
-/* .bar {
+ .barRaw {
     fill: steelblue;
-  } */
+} 
+
 
 .bar:hover {
     fill: brown;
-  }
+}
+
+.barRaw:hover {
+    fill: brown;
+}
 
 .axis text {
     font: 12px sans-serif;
   }
-
 
 .bar rect {
   fill: steelblue;
   shape-rendering: crispEdges;
 }
 
+.barRaw rect {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
 .bar text {
+  fill: #fff;
+  font: 10px sans-serif;
+}
+
+.barRaw text {
   fill: #fff;
   font: 10px sans-serif;
 }

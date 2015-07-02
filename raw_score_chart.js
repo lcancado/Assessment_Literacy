@@ -24,14 +24,14 @@ var tip = d3.tip()
     return "<span style='color:white; font-size:12px'>" + d.variable + "</span>";
   });
 
-var svg1 = d3.select(".rawScoreChart").append("svg")
+var svgRaw = d3.select(".rawScoreGraph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-svg1.call(tip);
+svgRaw.call(tip);
 
 //create line of values
 var valueline = d3.svg.line()
@@ -57,7 +57,7 @@ d3.tsv("classroom.tsv", function(error, data){
   y.domain ([0,50]);
   //y.domain([d3.min(data, function(d) { return d.variable; }), d3.max(data, function(d) { return d.variable; })]);
 
-  svg1.append("g")
+  svgRaw.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
@@ -68,7 +68,7 @@ d3.tsv("classroom.tsv", function(error, data){
       .style("text-anchor", "middle")
       .text("Student Name");
 
-  svg1.append("g")
+  svgRaw.append("g")
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
@@ -80,7 +80,7 @@ d3.tsv("classroom.tsv", function(error, data){
       .style("text-anchor", "middle")
       .text("Number Correct");
   
-  var bar = svg1.selectAll(".bar")
+  var barRaw = svgRaw.selectAll(".bar")
       .data(data)      
     .enter().append("rect")
       .attr("class", "bar")
@@ -139,10 +139,10 @@ function updateData() {
   var trans = d3.select(".rawScoreChart").transition();
     
     // Make the changes
-  var transition = svg1.transition().duration(1000),
+  var transition = svgRaw.transition().duration(1000),
       delay = function(d, i) { return i * 100; };
     
-  svg1.selectAll(".bar")
+  svgRaw.selectAll(".bar")
      .data(data)
      .transition().duration(1000)
      .attr("x", function(d) { return x(d.name); })

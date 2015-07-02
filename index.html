@@ -12,6 +12,10 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
+	<!-- Nvd3 libraries -->
+	<link href="nv.d3.min.css" rel="stylesheet">
+    <script src="nv.d3.min.js"></script>
+
 
     <!-- Tangle -->
     <script type="text/javascript" src="Tangle.js"></script>
@@ -26,6 +30,7 @@
 	<!-- Application specific JavaScript -->
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="quiz.js"></script>
+    <script src="bullet_chart.js"></script>
 
 
 	
@@ -76,29 +81,23 @@
 <br>
 <h3>Raw Score</h3>
 
-<p id="scoring">In order to score the exam, Mr. Smith, the math teacher, computes the grade by counting the <b>number of correct</b> answers, with no penalty for incorrect answers and then calculates the <b>percentage correct</b>. For example, if Mary got <span data-var="numCorrect" class="TKAdjustableNumber" data-min="0" data-max="50"> questions</span> right out of the total 50 questions on the test, she would score <b><span data-var="pctCorrect" data-format="%.0f"></span>%</b> on the exam. We call the <u>number correct</u> and <u>percent correct</u> scores a <b>raw score</b> because they are based solely on the number of correctly answered items on the test without any manipulation.</p> 
+<p id="scoring">In order to score the exam, Mr. Smith, the math teacher, computes the grade by counting the <b>number of correct</b> answers, with no penalty for incorrect answers and then calculates the <b>percent correct</b>. For example, if Mary got <span data-var="numCorrect" class="TKAdjustableNumber" data-min="0" data-max="50"> questions</span> right out of the total 50 questions on the test, she would score <b><span data-var="pctCorrectExample" data-format="%.0f"></span>%</b> on the exam. We call the <u>number correct</u> and <u>percent correct</u> scores a <b>raw score</b> because they are based solely on the number of correctly answered items on the test without any manipulation.</p> 
 
 <p><font color=red>Activity 1:</font> Let's assume Mary got <span data-var="numCorrectMary"> </span> correct questions on the test. What was her percent correct score? Use the slider to answer and hit submit. </p>
 
 <form name="pctCorrectForm">
-<label for=pctCorrect>Mary's percentage correct: </label>
-<input class="slider-width" type=range min=0 max=100 value=50 id=pctCorrect step=1 oninput="outputUpdate(value)">
-<output for=pctCorrect id="pctCorrectMaryInput">50</output>%
+<input class="slider-width" type=range min=0 max=100 value=50 id="pctCorrectMary" step=1 oninput="outputUpdate(value)">
+<output for="pctCorrectMary" id="pctCorrectMaryInput">50</output>%
 <input type="button" value="Submit" onClick="checkPct(this.form)">
 <p id="pctCorrectResult"> </p>
 </form>
 
 <br>
 
-<p>[<font color=blue>Graphic 1:</font> Change scales from number correct to percent correct]</p>
+<p>[<font color=blue>Graphic 1:</font> Mary's raw score in terms of Number Correct (Points) and Percent Correct (%) - will show once the correct 'percent correct' has been selected above]</p>
 
-<select id="rawscore" type='select' onchange='updateData();'>
-   <option value='50' id='score' selected='true'>Number Correct</option>
-   <option value='100' id='pctCorrect'>Percent Correct</option>   
-</select>
-
-<div class="rawScoreChart"></div>
-<script type="text/javascript" src="raw_score_chart.js"></script>
+<div class="gallery with-transitions" id="chartNumCorrect"></div>
+<div class="gallery with-transitions" id="chartPctCorrect"></div>
 
 
 <br>
@@ -107,14 +106,23 @@
 <p>You know Mary's raw score, but does this score tell you how well she did in comparison to her classmates or to all other 9th grade students in her high school? Does it tell you if she got any of the 9th grade Math prizes?</p>
 
 <p><b>No!</b></p>
-<p> In order to rank students and know how one student's score compares to other students who took the same test we must have a norm-referenced score. A norm-referenced score typically indicates the examinee's relative position in the norm group. Once we have information about the group of test takers that we want to compare our scores with, which we call a norm group, we are able to answer the questions above.</p>
+<p> In order to rank students and know how one student's score compares to other students who took the same test we must have a norm-referenced score. A norm-referenced score typically indicates the examinee's relative position in a group of test takers that we want to compare the examinee's score with. Once we have information about this group, which we call a <u>norm group</u>, we are able to answer the questions above.</p>
 
-<br>
+<p>[<font color=blue>Graphic 2:</font> Mary's score compared to her classmates ]</p>
+
+<select id="rawscore" type='select' onchange='updateData();'>
+   <option value='50' id='score' selected='true'>Number Correct</option>
+   <option value='100' id='pctCorrect'>Percent Correct</option>   
+</select>
+
+<div class="rawScoreGraph"></div>
+<script type="text/javascript" src="raw_score_chart.js"></script>
+
 <h3>Norm Groups</h3>
 
 <p><u>What is a <b>norm group</b>?</u></p>
 
-<p>A <b>norm group</b> can be any group we wish to make comparisons against. In high-stakes national or state standardized tests, the norm group must be <u>representative</u> of the national or state population of students taking the same test. To be valid, group comparisons should be made between similar students (e.g., the percent of children learning English should be the same in the norming and comparison groups). </p>
+<p>A <b>norm group</b> can be any group we wish to make comparisons against. In high-stakes national or state standardized tests, the norm group must be <u>representative</u> of the national or state population of students taking the same test. To be valid, group comparisons should be made between similar students (e.g., the percent of children learning English should be the same in the norm and comparison groups). </p>
 
 <br>
 <p><b>Quiz:</b> We know that the results of the Math I exam will be used to give prizes to students in the 95th percentile of ninth grade Math students at ABC High. What is the most appropriate norm group for this kind of decision?</p>
@@ -148,7 +156,9 @@
 </ul>
 
  </section>
-<p><font color=red>Activity 2:</font> Now let's define Mary's norm group. To what group do you want to compare Mary's score to?</p>
+<p><font color=red>Activity 3:</font> Now let's define Mary's norm group. To what group do you want to compare Mary's score to?</p>
+
+<p>[<font color=blue>Graphic 3:</font> Selecting Norm Group (class or school)] Show Mary's placement in comparison to the class/school.</p>
 
 <select id="normgrp" onchange="loadData()">
   <option value="classroom">classroom</option>
@@ -156,21 +166,11 @@
   <option value="historical">historical</option>
 </select>
 
-<!--<input type=checkbox value="sort">Sort</input> 
+<!--<input type=checkbox value="sort">Sort</input> -->
 
 <div class="normGroupGraph"></div>
-
 <script type="text/javascript" src="chart.js"></script>
--->
 
-<p>[<font color=blue>Graphic 2:</font> Selecting Norm Group (class or school)] Show Mary's placement in comparison to the class/school.</p>
-
- <center><img src="normal_dist.png" alt="Comparison of Various Types of Standard Scores and their Relation to the Standard Distribution" width="600"></center> 
-
-
-
-
-<p><font color=red>Activity 3:</font> Now try changing Mary's raw score and see how her standard score and percentile rank change in comparison to the norm group you selected.</p>
 
 <p>{<u>Reactive text:</u> Mary scored XX points or YY% on the exam. This corresponds to a standard score of ZZ based on the distribution of scores for her [norm group] and she scored at the [ZZ] percentile. This means that based on her raw score Mary scored higher than [ZZ]% of the other students in her [class/school] (norm group) who took the test. In other words, [ZZ]% of the students who made up the norm group answered fewer than XX items correctly.}</p>
 
@@ -189,7 +189,7 @@
 
 <p>A <b>cut score</b> is a point on the test score scale used for classifying the test takers into groups on the basis of their scores. In general, criterion-referenced tests involve a cut score, where the examinee passes if their score exceeds the cut score and fails if it does not (often called a mastery test). However, <u>the criterion is not the cut score</u>; the criterion is the domain of subject matter that the test is designed to assess. In some cases, tests may have multiple cut scores representing tiered levels of proficiency, such as <i>basic</i>, <i>proficient</i>, or <i>advanced</i>. Cut scores may also be applied in certification and licensing exams that are used to determine whether examinees are professionally "<i>qualified</i>."</p>
 
-<p>Most criterion-referenced assessments use a <b>cut score</b> which determines success or failure based on a pre-established percentage correct. Criterion-referenced scores tell us how well the examinee performed against an objective or standard, as opposed to against other examinees. For example, a driver's test intends to determine whether a person is knowledgeable and capable enough to be allowed on the road, not whether one driver is more accomplished than another.</p>
+<p>Most criterion-referenced assessments use a <b>cut score</b> which determines success or failure based on a pre-established percent correct. Criterion-referenced scores tell us how well the examinee performed against an objective or standard, as opposed to against other examinees. For example, a driver's test intends to determine whether a person is knowledgeable and capable enough to be allowed on the road, not whether one driver is more accomplished than another.</p>
 
 
 <br>

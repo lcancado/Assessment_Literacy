@@ -1,22 +1,22 @@
 
-  var margin = {top: 10, right: 30, bottom: 30, left: 30},
-    width = 800 - margin.left - margin.right,
+var margin = {top: 20, right: 20, bottom: 60, left: 60},
+    width = 860 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 
-  var svg = d3.select(".normGroupGraph").append("svg")
+var svgRawBar = d3.select(".normGroupGraph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
 
-  var g = svg.append("g")
+var gRawBar = svgRawBar.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  g.append('g')
-     .attr('class', 'x axis')
-     .attr('transform', 'translate(0, '+ height +')');
+gRawBar.append('g')
+    .attr('class', 'x axis norm')
+    .attr('transform', 'translate(0, '+ height +')');
   
-  g.append('g')
-     .attr('class', 'y axis');
+gRawBar.append('g')
+    .attr('class', 'y axis norm');
 
 
   function parseRow (d) {
@@ -33,7 +33,6 @@
 var loadData = function() {
   
   var group = document.getElementById('normgrp').selectedOptions[0].value;
-
   var dataFile = group + '.tsv';
 
   d3.tsv(dataFile, parseRow, function(data) {
@@ -48,45 +47,43 @@ var loadData = function() {
 
     //window.alert(data.length);
 
-    var x = d3.scale.linear()
-            .domain([0, d3.max(pctRank)])
+    var  x = d3.scale.linear()
+            .domain([0, 100])
             .range([0, width]);
     
     
-    var y = d3.scale.linear()
+    var  y = d3.scale.linear()
             .domain([0, 50])
             .range([height, 0]);
 
-     
-    var rect = g.selectAll('.bar')
+    var xNormAxis = d3.svg.axis()
+      .scale(x)
+      .orient('bottom');
+    
+    var yNormAxis = d3.svg.axis()
+      .scale(y)
+      .orient('left')
+      .tickFormat(d3.format('.0'));
+    
+    var rect = gRawBar.selectAll('.barRaw')
       .data(data);
     
     rect.enter().append('rect');
 
     rect.exit().remove();
     
-    rect.attr('class', 'bar')
+    rect.attr('class', 'barRaw')
       .attr("x", function(d) { return x(d.pctRank); })
       .attr("width", barWidth - 1)
       .attr("y", function(d) { return y(d.score); })
       .attr("height", function(d) { return height - y(d.score); });
 
-
     
-    var xAxis = d3.svg.axis()
-                  .scale(x)
-                  .orient('bottom');
+    d3.select('.x.axis.norm').call(xNormAxis);
     
-    var yAxis = d3.svg.axis()
-                  .scale(y)
-                  .orient('left')
-                  .tickFormat(d3.format('.0'));
+    d3.select('.y.axis.norm').call(yNormAxis);
     
-    d3.select('.x.axis').call(xAxis);
-    
-    d3.select('.y.axis').call(yAxis);
-    
-    d3.select('input').on('change', function() {
+    /* d3.select('input').on('change', function() {
       var sortByScore = function(a, b) { return b.score - a.score; };
       
       var sortByRank = function(a, b) { return d3.ascending(a.pctRank, b.pctRank); };
@@ -96,11 +93,11 @@ var loadData = function() {
 
       x.domain(sortedRanks)
       
-      var transition = svg.transition().duration(750);
+      var transition = svgRawBar.transition().duration(750);
       
       var delay = function(d, i) { return i * 50; };
       
-      transition.selectAll(".bar")
+      transition.selectAll(".barRaw")
           .delay(delay)
           .attr("x", function(d) { return x(d.pctRank); });
       
@@ -109,6 +106,7 @@ var loadData = function() {
           .selectAll("g")
           .delay(delay);
     })
+    */
   })
 };
 

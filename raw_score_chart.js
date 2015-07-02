@@ -88,13 +88,14 @@ d3.tsv("classroom.tsv", function(error, data){
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.variable); })
       .attr("height", function(d) { return height - y(d.variable); })     
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
       .attr("fill",function(d,i){
         if (d.name == 'Mary') { return 'purple'; }
         else {return colors(0);}  
       }) 
       //.attr("fill",function(d,i){return colors(i)} ) 
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide);
+      ;
 
 
   // The following code doesn't work :-( )

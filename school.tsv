@@ -1,101 +1,101 @@
-ID	name	class	score	pctRank	rank
-1	Emma	1	27	50	46
-2	Olivia	1	11	3	94
-3	Sophia	1	17	17	78
-4	Isabella	1	34	76	23
-5	Mary	1	22	37	60
-6	Mia	1	19	25	72
-7	Emily	1	22	37	60
-8	Abigail	1	28	55	39
-9	Madison	1	39	84	12
-10	Charlotte	1	32	71	27
-11	Noah	1	37	82	18
-12	Liam	1	27	50	46
-13	Mason	1	23	41	59
-14	Jacob	1	16	15	84
-15	William	1	49	98	2
-16	Ethan	1	28	55	39
-17	Michael	1	38	83	17
-18	Alexander	1	27	50	46
-19	James	1	45	94	6
-20	Daniel	1	13	9	91
-21	Harper	2	12	7	92
-22	Sofia	2	11	3	94
-23	Avery	2	39	84	12
-24	Elizabeth	2	43	92	8
-25	Amelia	2	25	44	54
-26	Evelyn	2	28	55	39
-27	Ella	2	39	84	12
-28	Chloe	2	15	12	86
-29	Victoria	2	22	37	60
-30	Aubrey	2	27	50	46
-31	Elijah	2	26	47	51
-32	Benjamin	2	19	25	72
-33	Logan	2	36	79	19
-34	Aiden	2	30	65	33
-35	Jayden	2	31	68	30
-36	Matt	2	21	35	64
-37	Jackson	2	48	96	3
-38	David	2	12	7	92
-39	Lucas	2	25	44	54
-40	Joseph	2	41	89	10
-41	Grace	3	20	29	66
-42	Zoey	3	30	65	33
-43	Natalie	3	28	55	39
-44	Addison	3	50	99	1
-45	Lillian	3	20	29	66
-46	Brooklyn	3	14	10	89
-47	Lily	3	34	76	23
-48	Hannah	3	20	29	66
-49	Layla	3	32	71	27
-50	Scarlett	3	39	84	12
-51	Anthony	3	18	23	76
-52	Andrew	3	36	79	19
-53	Samuel	3	15	12	86
-54	Gabriel	3	46	95	5
-55	Joshua	3	24	42	57
-56	John	3	11	3	94
-57	Carter	3	29	62	36
-58	Luke	3	22	37	60
-59	Dylan	3	20	29	66
-60	Christopher	3	19	25	72
-61	Aria	4	25	44	54
-62	Zoe	4	17	17	78
-63	Samantha	4	9	0	99
-64	Anna	4	20	29	66
-65	Leah	4	28	55	39
-66	Audrey	4	29	62	36
-67	Ariana	4	31	68	30
-68	Allison	4	32	71	27
-69	Ava	4	31	68	30
-70	Lucy	4	35	78	22
-71	Isaac	4	24	42	57
-72	Oliver	4	36	79	19
-73	Henry	4	28	55	39
-74	Sebastian	4	28	55	39
-75	Caleb	4	41	89	10
-76	Owen	4	21	35	64
-77	Ryan	4	19	25	72
-78	Nathan	4	27	50	46
-79	Wyatt	4	10	2	98
-80	Hunter	4	17	17	78
-81	Camila	5	29	62	36
-82	Penelope	5	17	17	78
-83	Gabriella	5	42	91	9
-84	Claire	5	44	93	7
-85	Aaliyah	5	33	74	25
-86	Sadie	5	39	84	12
-87	Riley	5	20	29	66
-88	Skylar	5	17	17	78
-89	Nora	5	16	15	84
-90	Sarah	5	11	3	94
-91	Jack	5	9	0	99
-92	Christian	5	26	47	51
-93	Landon	5	14	10	89
-94	Jonathan	5	26	47	51
-95	Levi	5	18	23	76
-96	Jaxon	5	30	65	33
-97	Julian	5	33	74	25
-98	Isaiah	5	17	17	78
-99	Eli	5	15	12	86
-100	Aaron	5	48	96	3
+ID	name	classID	score	pctRank	rank	pctCorrect
+1	Emma	1	27	50	48	54
+2	Olivia	1	11	3	94	22
+3	Sophia	1	17	17	78	34
+4	Bella	1	34	74	25	68
+5	Mary	1	45	94	6	90
+6	Mia	1	19	25	72	38
+7	Emily	1	24	40	58	48
+8	Abby	1	26	46	51	52
+9	Pam	1	39	83	13	78
+10	Bob	1	32	69	29	64
+11	Noah	1	37	81	19	74
+12	Liam	1	36	77	20	72
+13	Mason	1	23	39	61	46
+14	Jacob	1	16	15	84	32
+15	Will	1	49	98	2	98
+16	Ethan	1	28	53	42	56
+17	Mike	1	38	82	18	76
+18	Alex	1	29	59	38	58
+19	Jim	1	40	88	12	80
+20	Dan	1	13	9	91	26
+21	Harper	2	12	7	92	24
+22	Sofia	2	11	3	94	22
+23	Avery	2	39	83	13	78
+24	Elizabeth	2	43	92	8	86
+25	Amelia	2	25	43	55	50
+26	Evelyn	2	28	53	42	56
+27	Ella	2	39	83	13	78
+28	Chloe	2	15	12	86	30
+29	Victoria	2	22	37	62	44
+30	Aubrey	2	27	50	48	54
+31	Elijah	2	26	46	51	52
+32	Benjamin	2	19	25	72	38
+33	Logan	2	36	77	20	72
+34	Aiden	2	30	63	35	60
+35	Jayden	2	31	66	32	62
+36	Matt	2	21	35	64	42
+37	Jackson	2	48	96	3	96
+38	David	2	12	7	92	24
+39	Lucas	2	25	43	55	50
+40	Joseph	2	41	89	10	82
+41	Grace	3	20	29	66	40
+42	Zoey	3	30	63	35	60
+43	Natalie	3	28	53	42	56
+44	Addison	3	50	99	1	100
+45	Lillian	3	20	29	66	40
+46	Brooklyn	3	14	10	89	28
+47	Lily	3	34	74	25	68
+48	Hannah	3	20	29	66	40
+49	Layla	3	32	69	29	64
+50	Scarlett	3	39	83	13	78
+51	Anthony	3	18	23	76	36
+52	Andrew	3	36	77	20	72
+53	Samuel	3	15	12	86	30
+54	Gabriel	3	46	95	5	92
+55	Joshua	3	24	40	58	48
+56	John	3	11	3	94	22
+57	Carter	3	29	59	38	58
+58	Luke	3	22	37	62	44
+59	Dylan	3	20	29	66	40
+60	Christopher	3	19	25	72	38
+61	Aria	4	25	43	55	50
+62	Zoe	4	17	17	78	34
+63	Samantha	4	9	0	99	18
+64	Anna	4	20	29	66	40
+65	Leah	4	28	53	42	56
+66	Audrey	4	29	59	38	58
+67	Ariana	4	31	66	32	62
+68	Allison	4	32	69	29	64
+69	Ava	4	31	66	32	62
+70	Lucy	4	35	76	24	70
+71	Isaac	4	24	40	58	48
+72	Oliver	4	36	77	20	72
+73	Henry	4	28	53	42	56
+74	Sebastian	4	28	53	42	56
+75	Caleb	4	41	89	10	82
+76	Owen	4	21	35	64	42
+77	Ryan	4	19	25	72	38
+78	Nathan	4	27	50	48	54
+79	Wyatt	4	10	2	98	20
+80	Hunter	4	17	17	78	34
+81	Camila	5	29	59	38	58
+82	Penelope	5	17	17	78	34
+83	Gabriella	5	42	91	9	84
+84	Claire	5	44	93	7	88
+85	Aaliyah	5	33	72	27	66
+86	Sadie	5	39	83	13	78
+87	Riley	5	20	29	66	40
+88	Skylar	5	17	17	78	34
+89	Nora	5	16	15	84	32
+90	Sarah	5	11	3	94	22
+91	Jack	5	9	0	99	18
+92	Christian	5	26	46	51	52
+93	Landon	5	14	10	89	28
+94	Jonathan	5	26	46	51	52
+95	Levi	5	18	23	76	36
+96	Jaxon	5	30	63	35	60
+97	Julian	5	33	72	27	66
+98	Isaiah	5	17	17	78	34
+99	Eli	5	15	12	86	30
+100	Aaron	5	48	96	3	96

@@ -108,7 +108,7 @@
 <p><b>No!</b></p>
 <p> In order to rank students and know how one student's score compares to other students who took the same test we must have a norm-referenced score. A norm-referenced score typically indicates the examinee's relative position in a group of test takers that we want to compare the examinee's score with. Once we have information about this group, which we call a <u>norm group</u>, we are able to answer the questions above.</p>
 
-<p>[<font color=blue>Graphic 2:</font> Mary's score compared to her classmates ]</p>
+<p>[<font color=blue>Graphic 2:</font> Mary's raw score compared to her classmates ]</p>
 
 <select id="rawscore" type='select' onchange='updateData();'>
    <option value='50' id='score' selected='true'>Number Correct</option>
@@ -172,7 +172,7 @@
 <script type="text/javascript" src="chart.js"></script>
 
 
-<p>{<u>Reactive text:</u> Mary scored XX points or YY% on the exam. This corresponds to a standard score of ZZ based on the distribution of scores for her [norm group] and she scored at the [ZZ] percentile. This means that based on her raw score Mary scored higher than [ZZ]% of the other students in her [class/school] (norm group) who took the test. In other words, [ZZ]% of the students who made up the norm group answered fewer than XX items correctly.}</p>
+<p>{<u>Reactive text:</u> Mary scored <span data-var="numCorrectMary" data-format="%.0f"></span> points or <span data-var="pctCorrectMary" data-format="%.0f"></span>% on the exam. Based on the selected norm group [norm_group], she scored at the [ZZ] percentile. This means that based on her raw score Mary scored higher than [ZZ]% of the other students in her [class/school] (norm group) who took the test. In other words, [ZZ]% of the students who made up the norm group answered fewer than XX items correctly.}</p>
 
 
 <br>

@@ -10,11 +10,6 @@ html, body {
   margin:0 auto;
 }
 
- .barRaw {
-    fill: steelblue;
-} 
-
-
 .bar:hover {
     fill: brown;
 }
@@ -33,7 +28,6 @@ html, body {
 }
 
 .barRaw rect {
-  fill: steelblue;
   shape-rendering: crispEdges;
 }
 

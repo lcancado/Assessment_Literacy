@@ -4,12 +4,23 @@ var margin = {top: 20, right: 20, bottom: 60, left: 60},
     height = 500 - margin.top - margin.bottom;
 
 
+var tipn = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<span style='color:white; font-size:10px'>" + d.name + "</span>";
+  });
+
 var svgRawBar = d3.select(".normGroupGraph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
 
 var gRawBar = svgRawBar.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+gRawBar.call(tipn);
+
+var colors = d3.scale.category10();
 
 gRawBar.append('g')
     .attr('class', 'x axis norm')
@@ -29,10 +40,15 @@ gRawBar.append('g')
 
     return d;
   };
-  
+
+
 var loadData = function() {
   
   var group = document.getElementById('normgrp').selectedOptions[0].value;
+  var index = document.getElementById('normgrp').selectedIndex;
+
+  //window.alert("index:"+index)
+
   var dataFile = group + '.tsv';
 
   d3.tsv(dataFile, parseRow, function(data) {
@@ -65,9 +81,10 @@ var loadData = function() {
       .orient('left')
       .tickFormat(d3.format('.0'));
     
+
     var rect = gRawBar.selectAll('.barRaw')
       .data(data);
-    
+
     rect.enter().append('rect');
 
     rect.exit().remove();
@@ -76,9 +93,16 @@ var loadData = function() {
       .attr("x", function(d) { return x(d.pctRank); })
       .attr("width", barWidth - 1)
       .attr("y", function(d) { return y(d.score); })
-      .attr("height", function(d) { return height - y(d.score); });
-
+      .attr("height", function(d) { return height - y(d.score); })
+      .on('mouseover', tipn.show)
+      .on('mouseout', tipn.hide)
+      .attr("fill",function(d){
+        if (d.name == 'Mary') { return 'purple'; }
+        else {return colors(index);}  
+      }) 
+      ;
     
+
     d3.select('.x.axis.norm').call(xNormAxis);
     
     d3.select('.y.axis.norm').call(yNormAxis);

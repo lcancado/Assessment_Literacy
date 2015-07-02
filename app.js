@@ -7,6 +7,7 @@ var pctCorrectMary;
 function setUpCritNormTangle () { 
   
   var element = document.getElementById("CritNormModule");
+  
   var tangle = new Tangle(element, {
     initialize: function () {
       this.numCorrect = 25;

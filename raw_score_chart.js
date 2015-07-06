@@ -108,6 +108,30 @@ d3.tsv("classroom.tsv", function(error, data){
   //    .attr("font-size", "10px")
   //    .attr("fill", "white")   ;
 
+  /* Sort funtion
+  d3.select('input').on('change', function() {
+    
+    var sortByScore = function(a, b) { return b.score - a.score; };
+    var sortByID = function(a, b) { return d3.ascending(a.pctRank, b.pctRank); };
+    var sortedRanks = data.sort(this.checked ? sortByRank : sortByScore)
+                          .map(function(d) { return d.pctRank; })
+
+    x.domain(sortedRanks)
+      
+    var transition = svgRawBar.transition().duration(750);
+    var delay = function(d, i) { return i * 50; };
+      
+    transition.selectAll(".barRaw")
+      .delay(delay)
+      .attr("x", function(d) { return x(d.pctRank); });
+      
+    transition.select(".x.axis")
+      .call(xAxis)
+      .selectAll("g")
+      .delay(delay);
+    });
+    */
+
 });
 
 

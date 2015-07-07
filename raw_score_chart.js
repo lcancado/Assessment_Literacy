@@ -40,8 +40,6 @@ var valueline = d3.svg.line()
 
 var tsv;
 
-var colors = d3.scale.category10();
-
 d3.tsv("classroom.tsv", function(error, data){
 
   if (error) throw error;
@@ -92,9 +90,9 @@ d3.tsv("classroom.tsv", function(error, data){
       .on('mouseout', tip.hide)
       .attr("fill",function(d,i){
         if (d.name == 'Mary') { return 'purple'; }
-        else {return colors(0);}  
+        else {return colors10(0);}  
       }) 
-      //.attr("fill",function(d,i){return colors(i)} ) 
+      //.attr("fill",function(d,i){return colors10(i)} ) 
       ;
 
 
@@ -172,10 +170,10 @@ function updateData() {
      .attr("x", function(d) { return x(d.name); })
      .attr("y", function(d) { return y(d.variable); })
      .attr("height", function(d) { return height - y(d.variable); })
-     //.attr("fill",function(d){return colors(index)} ) 
+     //.attr("fill",function(d){return colors10(index)} ) 
      .attr("fill",function(d,i){
         if (d.name == 'Mary') { return 'purple'; }
-        else {return colors(index);}  
+        else {return colors10(index);}  
       })
   ;
     

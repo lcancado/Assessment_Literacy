@@ -1,13 +1,23 @@
-window.addEvent('domready', setUpCritNormTangle);
+/* GLOBAL VARIABLES */
+
+//Colors 
+
+var colors10 = d3.scale.category10().domain(d3.range(0,10));
+var colors20 = d3.scale.category20().domain(d3.range(0,20));
 
 var totScore = 50;
 var numCorrectMary = 45;
 var pctCorrectMary;
 
+//End Global Variables
+
+
+window.addEvent('domready', setUpCritNormTangle);
+
 function setUpCritNormTangle () { 
   
   var element = document.getElementById("CritNormModule");
-  
+
   var tangle = new Tangle(element, {
     initialize: function () {
       this.numCorrect = 25;

@@ -1,6 +1,7 @@
+
 var diameter = 600,
-    format = d3.format(",d"),
-    color = d3.scale.category20c();
+    dheight = 300,
+    format = d3.format(",d");
 
 var bubble = d3.layout.pack()
     .sort(null)
@@ -9,7 +10,7 @@ var bubble = d3.layout.pack()
 
 var svg = d3.select(".bubbleGraph").append("svg")
     .attr("width", diameter)
-    .attr("height", 400)
+    .attr("height", dheight)
     .attr("class", "bubble");
 
 d3.json("classroom.json", function(error, root) {
@@ -20,7 +21,7 @@ d3.json("classroom.json", function(error, root) {
       .filter(function(d) { return !d.children; }))
     .enter().append("g")
       .attr("class", "node")
-      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+      .attr("transform", function(d) { return "translate(" + d.x + "," + (d.y-50) + ")"; });
 
   node.append("title")
       .text(function(d) { return d.className + ": " + format(d.value); });
@@ -28,8 +29,8 @@ d3.json("classroom.json", function(error, root) {
   node.append("circle")
       .attr("r", function(d) { return d.r; })
       .style("fill", function(d,i) {
-        if (format(d.value) < 30) { return 'red'; }
-        else {return 'blue';}
+        if (format(d.value) < 30) { return colors10(3); } //red
+        else {return colors10(0);} //blue
       });
 
   node.append("text")
@@ -52,4 +53,4 @@ function classes(root) {
   return {children: classes};
 }
 
-d3.select(self.frameElement).style("height", diameter + "px");
+d3.select(self.frameElement).style("height", dheight + "px");

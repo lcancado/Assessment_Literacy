@@ -40,8 +40,6 @@ var valueline = d3.svg.line()
 
 var tsvCrit;
 
-var colors = d3.scale.category10();
-
 d3.tsv("classroom.tsv", function(error, data){
 
   if (error) throw error;
@@ -91,9 +89,9 @@ d3.tsv("classroom.tsv", function(error, data){
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
       .attr("fill",function(d,i){
-        if (format(d.variable) < 30) { return 'red'; }
-        else if (format(d.variable) < 40) {return 'blue';}
-        else {return 'green';}
+        if (format(d.variable) < 30) { return colors10(3); } //red
+        else if (format(d.variable) < 40) {return colors10(0);} //blue
+        else {return colors10(2);} //green
       }) 
       //.attr("fill",function(d,i){return colors(i)} ) 
       ;

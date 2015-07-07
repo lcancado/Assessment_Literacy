@@ -36,7 +36,6 @@ function drawBulletCharts() {
         }     
     ];
     
-    //TODO: to be consistent with other models, should be appending a g to an already made svg, not creating the svg element
     var visNumCorrect = d3.select("#chartNumCorrect").selectAll("svg")
         .data(dataNumCorrect)
         .enter().append("svg")

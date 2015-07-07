@@ -20,8 +20,6 @@ var gRawBar = svgRawBar.append("g")
 
 gRawBar.call(tipn);
 
-var colors = d3.scale.category10();
-
 gRawBar.append('g')
     .attr('class', 'x axis norm')
     .attr('transform', 'translate(0, '+ height +')');
@@ -98,7 +96,7 @@ var loadData = function() {
       .on('mouseout', tipn.hide)
       .attr("fill",function(d){
         if (d.name == 'Mary') { return 'purple'; }
-        else {return colors(index);}  
+        else {return colors10(index);}  
       }) 
       ;
     

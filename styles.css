@@ -100,3 +100,21 @@ button {
 {
     width: 300px;
 }
+
+.input {
+    width: 50px;
+}
+
+#decisionTbl {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#decisionTbl th{
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+

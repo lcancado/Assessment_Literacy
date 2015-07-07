@@ -31,6 +31,7 @@
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="quiz.js"></script>
     <script src="bullet_chart.js"></script>
+    
 
 
 	
@@ -110,7 +111,8 @@
 
 <p>A basic ranking in terms of raw scores can start to give us a better picture of how Mary's performance compares to that of her classmates. The chart below shows Mary's score compared to the rest of her classmates. It allows us to make decisions based on who had the top or lowest scores, but once the group gets large, such as when comparing Mary's performance to her schoolmates, it is difficult to quickly understand how a particular score compares to the other scores in a distribution of scores.</p>
 
-<p>[<font color=blue>Graphic 2:</font> Mary's raw score compared to her classmates ]</p>
+<p>[<font color=blue>Graphic 2:</font> Mary's raw score compared to her classmates]</p>
+
 
 <select id="rawscore" type='select' onchange='updateData();'>
    <option value='50' id='score' selected='true'>Number Correct</option>
@@ -199,12 +201,34 @@
 
 <p>The process used to determine cut scores is formally known as <b>standard setting</b>. For tests like classroom assessments cut scores might be defined by the teacher, for final exams it might be defined by the school. For commercial and high-stakes tests, the test developer will form a standard-setting panel by recruiting a group of experts, such as psychometricians (specialists in the science of educational measurement) or teachers from a relevant content area. The panel will then use one or more research-based methods, developed by psychometricians and academics, for setting testing standards and determining cut scores.</p>
 
-<p><font color=red>Activity 4:</font> Defining a cut score. Choose a cut score for the Math I final exam. Did Mary pass or fail the exam based on this cut score? Note that defining a cut score does not change Mary's norm-referenced scores.</p>
-<p>[<font color=blue>Graphic 3:</font> Selecting cut score] - Add Mary's pass/fail information in addition to her placement in comparison to the norm group.</p>
+<p><font color=red>Activity 4:</font> Defining a cut score. Choose a cut score for the Math I final exam. Did Mary pass or fail the exam based on this cut score? </p>
+<p>[<font color=blue>Graphic 3:</font> Selecting a cut score] </p>
+
+
+<form id="cutScoreSelector">
+<input type="radio" name="cutScore" value="5">5
+<input type="radio" name="cutScore" value="10">10
+<input type="radio" name="cutScore" value="15">15
+<input type="radio" name="cutScore" value="20">20
+<input type="radio" name="cutScore" value="25">25
+<input type="radio" name="cutScore" value="30" checked>30
+<input type="radio" name="cutScore" value="35">35
+<input type="radio" name="cutScore" value="40">40
+<input type="radio" name="cutScore" value="45">45
+<input type="radio" name="cutScore" value="50">50
+</form>
+
+<div class="bubbleGraph"></div>
+<script src="bubble_chart.js"></script>
+
 <p>{<u>Reactive text:</u> Mary scored XX points or YY% on the exam. Since Mary scored above the cut score of [KK], she has demonstrated [sufficient/insufficient] knowledge of 9th grade math curriculum and [passed/failed] the exam.}</p>
 
 <p><font color=red>Activity 5:</font> Defining additional cut scores. Suppose you want to further categorize students into basic, proficient and advanced based on their scores on the math final exam. Select a cut score for the advanced level. Did Mary's classification change?</p>
 <p>[<font color=blue>Graphic 4:</font> Tiered classification graph]</p>
+
+<div class="criterionGraph"></div>
+<script type="text/javascript" src="criterion_chart.js"></script>
+
 <p>{<u>Reactive text:</u> Mary scored XX points or YY% on the exam. Since Mary scored [above/below] the cut score of [KK], she has demonstrated [basic/proficient/advanced] knowledge of 9th grade math curriculum and [passed/failed] the exam.}</p>
 
 <br>
@@ -212,10 +236,11 @@
 
 <p>We can, and often do, interpret a single test score both in terms of norm- and criterion-referencing. However, these interpretations are distinct and should not be confused.</p>
 
-<p><font color=red>Activity 6:</font> Now we will combine both types of interpretations of Mary's test score. 
-Suppose now that the decision about advancing students to Math II depents on their percentile rank. Only students who scored at the top 70th percentile will advance to Math II. How many students in Mary's class and in the school were able to advance based on this criterion?
-	The 70th percentile was chosen arbitrarily. Select another cut percentile and see how it impacts who advances to the next Math level.
+<p><font color=red>Activity 6:</font> Now we will combine both types of interpretations of Mary's test score. </p>
 
+<!--
+<p>Suppose now that the decision about advancing students to Math II depents on their percentile rank. Only students who scored at the top 70th percentile will advance to Math II. How many students in Mary's class and in the school were able to advance based on this criterion?
+	The 70th percentile was chosen arbitrarily. Select another cut percentile and see how it impacts who advances to the next Math level.
 </p>
 <p>Now suppose that the prizes will be given to all students who had a score of 95% or better in the Math I exam. How many students got the prize based on this criteria? Did Mary win a prize? </p>
 
@@ -223,12 +248,45 @@ Suppose now that the decision about advancing students to Math II depents on the
 
 <p>Now suppose that there are only 2 Math II classes with 20 spots each, so only 40 students will be able to avance to Math II. Students must still meet the defined cut score for proficiency but we will have to select the top 40 students who met this criteria. We now must use both the norm-referenced and the criterion-referenced scores to decide who will advance.</p>
 
-<p></p>
+-->
 
-<p>[<font color=blue>Graphic 5:</font> Norm and Criterion-referenced interpretations]</p>
+<p>To apply your knowledge of criterion- and norm-referenced interpretations, select a decision from the list below and the score type(s) that would be most appropriate for that decision and see how it impacts Mary and her classmates. You may also change the predefined score and see how it impacts the results.</p>
 
 
-<p>Now apply your knowledge of criterion- and norm-referenced interpretations. Select a decision from the list below and the score type(s) that would be most appropriate for that decision and see how it impacts Mary and her classmated. </p>
+<form name="norm_crit_decision">
+
+<table>
+<tr>
+<th>Decision Type</th>
+<th>Score Type</th>
+</tr>
+<tr>
+<td style="width:800px">
+ <input type="radio" name="decision">Suppose now that the decision about advancing students to Math II depents on their percentile rank. Only students who scored at the top 70th percentile will advance to Math II.
+  <br><br>
+ <input type="radio" name="decision">Suppose that the prizes will be given to all students who had a score of 95% or better in the Math I exam.
+  <br><br>
+  <input type="radio" name="decision">Suppose that there are only 2 Math II classes with 20 spots each, so only 40 students will be able to avance to Math II. Students must still meet the defined cut score for proficiency but we will have to select the top 40 students who meet this criteria.
+</td>
+
+<td style="width:300px">
+	&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="scoreType">Percent correct: <br>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pctCorrText" value="80%">
+  	<br><br>
+  	&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="scoreType">Number correct: <br>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="numCorrText" value="40">
+  	<br><br>
+  	&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="scoreType">Percentile rank: <br>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pctRankText" value="70%">
+  	<br><br>
+  	&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="scoreType">Student rank: <br>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pctRankText" value="Top 40">
+</td>
+</tr>
+
+</table>
+</form>
+
+<br>
+<p>[<font color=blue>Graphic 5:</font> Norm and Criterion-referenced interpretations - Graphic and reactive text will change based on the input from the form above]</p>
+<br>
+<center><img src="norm_crit.png" width="860"></center> 
 
 <p>{<u>Reactive text:</u> Mary scored XX points or YY% on the exam. This corresponds to a standard score of ZZ based on the distribution of scores for her [norm group] and she scored at the [ZZ] percentile. This means that based on her raw score Mary scored higher than [ZZ]% of the other students in her [class/school] (norm group) who took the test. In other words, [ZZ]% of the students who made up the norm group answered fewer than XX items correctly. 
 <br><br>
@@ -269,7 +327,8 @@ Additionally, since Mary scored [above/below] the cut score of [KK], she has dem
 	<li>Scores may be used as one piece of information to determine how well the student is learning the desired curriculum and how well the school is teaching that curriculum.</li>
 </ul>
 
-<p>"Although loads of educators refer to "criterion-referenced tests" and "norm-referenced tests," there are, technically, no such creatures. Rather, there are criterion- and norm-referenced interpretations of students' test performances. For example, educators in a school district might have built a test to yield criterion-referenced interpretations, used the test for several years and, in the process, gathered substantial data regarding the performances of district students. As a consequence, the district's educators could build normative tables permitting norm-referenced interpretations of the test which, although born to provide criterion-referenced inferences, can still permit meaningful norm-referenced interpretations." Popham, W. James. 2011. <i>Classroom Assessment: What Teachers Need to Know (Sixth Edition)</i>. Boston: Pearson Education, Inc. pp. 46-8.</p>
+<!--<p>"Although loads of educators refer to "criterion-referenced tests" and "norm-referenced tests," there are, technically, no such creatures. Rather, there are criterion- and norm-referenced interpretations of students' test performances. For example, educators in a school district might have built a test to yield criterion-referenced interpretations, used the test for several years and, in the process, gathered substantial data regarding the performances of district students. As a consequence, the district's educators could build normative tables permitting norm-referenced interpretations of the test which, although born to provide criterion-referenced inferences, can still permit meaningful norm-referenced interpretations." Popham, W. James. 2011. <i>Classroom Assessment: What Teachers Need to Know (Sixth Edition)</i>. Boston: Pearson Education, Inc. pp. 46-8.</p>
+-->
 
 </div> <!--closing CritNormModule div tag-->
 </body>

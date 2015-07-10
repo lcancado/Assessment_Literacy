@@ -47,12 +47,14 @@
   <center><h2>Norm-referenced and Criterion-referenced <br>Interpretation of Test Results</h2></center>
 
 <br>
-<p>Assessment results allow educators to make important decisions about students' knowledge, abilities and future educational potential. There is more than one way to summarize and interpret assessment results. The decisions we can make based on the results from an assessment will depend on how we interpret these results.</p>
+
+<p>Results from tests or assessments can be used to make different types of decisions. The specific decision we want to make based on a test result will determine how we interpret these results.</p>
 
 <p>Sometimes we want to compare students with their peers or rank-order them. When we use tests to make these types of decision we say we are making a <b>norm-referenced</b> or <b>normative</b> interpretation of test results. </p>
+
 <p>Some tests are used to evaluate a person's mastery of a subject, usually by using cut scores to define proficiency or pass/fail decisions. When tests are used to decide if a student meets a certain pre-defined standard or criteria, we say we are making a <b>criterion-referenced</b> interpretation of test results.</p>
 
-<p>In this interactive module we will explore the <u>concepts</u>, <u>appropriate uses</u>, and <u>limitations</u> of both norm-referenced and criterion-referenced interpretations of test results. Throughout this lesson you will be able to play with score types and decisions you want to make based on those scores and see how the interpretation of tests results change as a consequence. </p>
+<p>In this interactive module we will explore the <u>concepts</u>, <u>appropriate uses</u>, and <u>limitations</u> of both norm-referenced and criterion-referenced interpretations of test results.  </p>
 
 <br>
 <center><h3>Mary Masters Math</h3></center>
@@ -60,7 +62,7 @@
 <br>
 <p>Mary is a 9th grade student at ABC High School and she just took the final Math I exam.</p> 
 
-<p>The results from this exam will be used to:</p>
+<p>The results from this test will be used to:</p>
 
 <ul>
 	<li>Determine if 9th grade students mastered Math I concepts and can move on to Math II.</li>		
@@ -82,11 +84,20 @@
 </ul>
 
 <br>
-<h3>Raw Score</h3>
+<h3>Raw Score and Scaled Score</h3>
 
-<p id="scoring">In order to score the exam, Mr. Smith, the math teacher, computes the grade by counting the <b>number of correct</b> answers, with no penalty for incorrect answers and then calculates the <b>percent correct</b>. For example, if Mary got <span data-var="numCorrect" class="TKAdjustableNumber" data-min="0" data-max="50"> questions</span> right out of the total 50 questions on the test, she would score <b><span data-var="pctCorrectExample" data-format="%.0f"></span>%</b> on the exam. We call the <u>number correct</u> and <u>percent correct</u> scores a <b>raw score</b> because they are based solely on the number of correctly answered items on the test without any manipulation.</p> 
+<p id="scoring">Mr. Smith, the math teacher, computes the Math I test score by counting the <b>number of correct</b> answers, with no penalty for incorrect answers. We call the <u>number correct</u> a <b>raw score</b> because it is based solely on the number of correctly answered items on the test without any transformation.</p>
+
+<p>A raw score might be difficult to interpret and compare since tests can have different number of questions and total number of points. A simple way to make sense of a raw score is to put it on a percent scale. When we transform the raw score into <u>percent correct</u> we produce a <b>scaled score</b>.</p>
+
+
+<p>For example, if Mary got <span data-var="numCorrect" class="TKAdjustableNumber" data-min="0" data-max="50"> questions</span> right out of the total 50 questions on the test, she would score <b><span data-var="pctCorrectExample" data-format="%.0f"></span>%</b> correct on the exam. </p> 
+
 
 <p><font color=red>Activity 1:</font> Let's assume Mary got <span data-var="numCorrectMary"> </span> correct questions on the test. What was her percent correct score? Use the slider to answer and hit submit. </p>
+
+<p><font color=red>Activity 1:</font> Suppose Mary took two tests and her final score will be highest of the two. If she got 53 out of 60 total points on the first test and 45 out of 50 on the second, which test will be used to compute her final score?</p>
+<p>Use the calculator below to check your answer.</p>
 
 <form name="pctCorrectForm">
 <input class="slider-width" type=range min=0 max=100 value=50 id="pctCorrectMary" step=1 oninput="outputUpdate(value)">
@@ -95,9 +106,8 @@
 <p id="pctCorrectResult"> </p>
 </form>
 
-<br>
 
-<p>[<font color=blue>Graphic 1:</font> Mary's raw score in terms of Number Correct (Points) and Percent Correct (%) - will show once the correct 'percent correct' has been selected above]</p>
+<p>[<font color=blue>Graphic 1:</font> Mary's score in terms of Number Correct (Points) and Percent Correct (%) - will show once the correct 'percent correct' has been selected above]</p>
 
 <div class="gallery with-transitions" id="chartNumCorrect"></div>
 <div class="gallery with-transitions" id="chartPctCorrect"></div>
@@ -140,7 +150,7 @@
 <p>To be valid, group comparisons should be made between similar students (e.g., the percent of children learning English should be the same in the norm and comparison groups). </p>
 
 <br>
-<p><b>Quiz:</b> We know that the results of the Math I exam will be used to give prizes to students in the 95th percentile of ninth grade Math students at ABC High. What is the most appropriate norm group for this kind of decision?</p>
+<p><b>Quiz:</b> We know that the results of the Math I exam will be used to give prizes to students at the 95th percentile of ninth grade Math students at ABC High. What is the most appropriate norm group for this kind of decision?</p>
 
 <form name="norm_group_quiz">
  <ol type="a">
@@ -212,7 +222,8 @@
 <p>You know Mary's raw score and how well she did compared to her classmates and schoolmates, but do you know if she will be able to move on to Math II? Can you tell if she has mastered the content of her Math I class?</p>
 
 <p><b>No!</b></p>
-<p> Placement, mastery or pass/fail decisions are usually made by comparing the student's performance on a test against a fixed set of pre-determined criteria or learning standards. Test performance is summarized as the student's test score, and the pre-determined criteria is usually defined as a minimum cut score that the student must obtain to demonstrate proficiency in the subject matter.</p>
+
+<p>Placement, mastery or pass/fail decisions are usually made by comparing the student's performance on a test against a fixed set of pre-determined criteria or learning standards. Test performance is summarized as the student's test score, and the pre-determined criteria is usually defined as a minimum cut score that the student must obtain to demonstrate proficiency in the subject matter.</p>
 
 <p>When we compare test scores against a cut score to make placement, mastery or pass/fail decisions we are making a <b>criterion-referenced</b> interpretation of test scores.</p>
 
@@ -393,7 +404,7 @@ Additionally, since Mary scored [above/below] the cut score of [KK], she has dem
 <p>We made a <u>combined</u> norm- and criterion-referenced interpretation of Mary's test results when:</p>
 
 <ul>
- 	<li>we used her percentile rank and the pre-defined cut score to decide if she would move on to Math II when there were only a limited number of spots available.</li>
+ 	<li>we used her percentile rank (norm) and the pre-defined cut score (criterion) to decide if she would move on to Math II when there were only a limited number of spots available.</li>
 </ul>
 
 <br>	

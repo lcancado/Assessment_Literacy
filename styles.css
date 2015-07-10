@@ -2,7 +2,12 @@ html, body {
   margin: auto;
   color: #333;
   font-family: Verdana, Geneva, sans-serif;
-  font: 18px;      
+  font: 16px;  
+  line-height: 150%;     
+}
+
+p { 
+  line-height: 150%; 
 }
      
 #CritNormModule {

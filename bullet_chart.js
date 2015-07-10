@@ -43,7 +43,7 @@ function drawBulletCharts() {
         .attr("width", width)
         .attr("height", height);
 
-    visNumCorrect.transition().duration(1000).call(chartNumCorrect);
+    visNumCorrect.transition().duration(2000).call(chartNumCorrect);
 
     var visPctCorrect = d3.select("#chartPctCorrect").selectAll("svg")
         .data(dataPctCorrect)
@@ -52,7 +52,7 @@ function drawBulletCharts() {
         .attr("width", width)
         .attr("height", height);
 
-    visPctCorrect.transition().duration(1000).call(chartPctCorrect);
+    visPctCorrect.transition().duration(2000).call(chartPctCorrect);
    
 };
 

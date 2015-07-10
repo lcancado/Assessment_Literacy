@@ -40,7 +40,7 @@ function outputUpdate(val) {
 function checkPct(form) {
   pctAnswer= +form.pctCorrectMary.value;    
   if (pctAnswer == pctCorrectMary) {
-      document.getElementById("pctCorrectResult").innerHTML = "<font color=blue><b>Correct!</b></font><p>Mary scored " +numCorrectMary +" points or " +pctCorrectMary+ "% on the exam. This is Mary's <b>raw score</b> as it is based exclusively on the <u>number of correctly answered items</u> on the test.</p>"; 
+      document.getElementById("pctCorrectResult").innerHTML = "<font color=blue><b>Correct!</b></font><p>Mary scored " +numCorrectMary +" points (raw score) or " +pctCorrectMary+ "% correct (scaled score) on the test.</p>"; 
       drawBulletCharts();
   } 
   else {

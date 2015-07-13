@@ -94,8 +94,7 @@ d3.tsv("classroom.tsv", function(error, data){
       .on('mouseout', tip.hide)
       .attr("fill",function(d,i){
         if (+d.variable < 30) { return colors10(3); } //red
-        else if (+d.variable < 40) {return colors10(0);} //blue
-        else {return colors10(2);} //green
+        else {return colors10(0);} //blue        
       }) 
       //.attr("fill",function(d,i){return colors(i)} ) 
       ;
@@ -103,12 +102,21 @@ d3.tsv("classroom.tsv", function(error, data){
 
   cutScore=30;
 
-  svgCrit.append("svg:line")
+  var critLine = svgCrit.append("line")
       .attr("x1", 0)
       .attr("x2", width)
       .attr("y1", function(d) { return y(cutScore); })
       .attr("y2", function(d) { return y(cutScore); })
-      .style("stroke", "rgb(189, 189, 189)");
+      .style("stroke", "rgb(0, 0, 0)")
+      .style("stroke-width","1")
+      .style("shape-rendering","crispEdges")
+      .style("stroke-dasharray","10,10")      
+      ;
+
+  critLine.append("text")      
+      .attr("dy", y(cutScore))
+      .style("text-anchor", "middle")
+      .text(cutScore);
 
   });
 

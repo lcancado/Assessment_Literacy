@@ -3,6 +3,10 @@ var margin = {top: 20, right: 20, bottom: 60, left: 60},
     width = 860 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
+
+var colors10 = d3.scale.category10().domain(d3.range(0,10));
+var colors20 = d3.scale.category20().domain(d3.range(0,20));
+
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], 0.1);
 
@@ -89,15 +93,24 @@ d3.tsv("classroom.tsv", function(error, data){
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
       .attr("fill",function(d,i){
-        if (format(d.variable) < 30) { return colors10(3); } //red
-        else if (format(d.variable) < 40) {return colors10(0);} //blue
+        if (+d.variable < 30) { return colors10(3); } //red
+        else if (+d.variable < 40) {return colors10(0);} //blue
         else {return colors10(2);} //green
       }) 
       //.attr("fill",function(d,i){return colors(i)} ) 
       ;
 
 
-});
+  cutScore=30;
+
+  svgCrit.append("svg:line")
+      .attr("x1", 0)
+      .attr("x2", width)
+      .attr("y1", function(d) { return y(cutScore); })
+      .attr("y2", function(d) { return y(cutScore); })
+      .style("stroke", "rgb(189, 189, 189)");
+
+  });
 
 
 

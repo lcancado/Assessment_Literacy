@@ -6,7 +6,7 @@ var colors10 = d3.scale.category10().domain(d3.range(0,10));
 var colors20 = d3.scale.category20().domain(d3.range(0,20));
 
 var totScore = 50;
-var numCorrectMary = 45;
+var numCorrectMary = 35;
 var pctCorrectMary;
 
 //End Global Variables

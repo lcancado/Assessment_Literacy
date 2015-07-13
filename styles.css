@@ -9,6 +9,13 @@ html, body {
 p { 
   line-height: 150%; 
 }
+
+p.question {
+  font-style: italic;
+  width: 80%; 
+  margin:0 auto;
+  text-align: center;
+}
      
 #CritNormModule {
   width: 70%; 

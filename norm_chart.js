@@ -4,6 +4,10 @@ var margin = {top: 20, right: 20, bottom: 60, left: 60},
     height = 500 - margin.top - margin.bottom;
 
 
+var colors10 = d3.scale.category10().domain(d3.range(0,10));
+var colors20 = d3.scale.category20().domain(d3.range(0,20));
+
+
 var tipn = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
@@ -11,20 +15,20 @@ var tipn = d3.tip()
     return "<span style='color:white; font-size:10px'>" + d.name + "</span>";
   });
 
-var svgRawBar = d3.select(".normGroupGraph").append("svg")
+var svgNormChart = d3.select(".normGroupGraph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
 
-var gRawBar = svgRawBar.append("g")
+var gNormChart = svgNormChart.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-gRawBar.call(tipn);
+gNormChart.call(tipn);
 
-gRawBar.append('g')
+gNormChart.append('g')
     .attr('class', 'x axis norm')
     .attr('transform', 'translate(0, '+ height +')');
   
-gRawBar.append('g')
+gNormChart.append('g')
     .attr('class', 'y axis norm');
 
 
@@ -80,14 +84,14 @@ var loadData = function() {
       .tickFormat(d3.format('.0'));
     
 
-    var rect = gRawBar.selectAll('.barRaw')
+    var rect = gNormChart.selectAll('.barNorm')
       .data(data);
 
     rect.enter().append('rect');
 
     rect.exit().remove();
     
-    rect.attr('class', 'barRaw')
+    rect.attr('class', 'barNorm')
       .attr("x", function(d) { return x(d.pctRank); })
       .attr("width", barWidth - 1)
       .attr("y", function(d) { return y(d.score); })
@@ -115,7 +119,7 @@ var loadData = function() {
 
       x.domain(sortedRanks)
       
-      var transition = svgRawBar.transition().duration(750);
+      var transition = svgNormChart.transition().duration(750);
       
       var delay = function(d, i) { return i * 50; };
       

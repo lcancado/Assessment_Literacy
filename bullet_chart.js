@@ -18,8 +18,8 @@ function drawBulletCharts() {
         {   "title":"Number Correct",
             "subtitle":"Points",
             "ranges":[0,50],
-            "measures":[45],
-            "markers":[45],
+            "measures":[40],
+            "markers":[40],
             "markerLabels":['Mary'],
             "rangeLabels":['Total Points','Minimum Points'],
             "measureLabels":['Points'] 
@@ -28,8 +28,8 @@ function drawBulletCharts() {
         {   "title":"Percent Correct",
             "subtitle":"%",
             "ranges":[0,100],
-            "measures":[90],
-            "markers":[90],
+            "measures":[80],
+            "markers":[80],
             "markerLabels":['Mary'],
             "rangeLabels":['Total %','Minimum %'],
             "measureLabels":['%'] 

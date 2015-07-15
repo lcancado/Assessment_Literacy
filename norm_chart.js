@@ -69,7 +69,7 @@ var loadData = function() {
     //window.alert(data.length);
 
     var  x = d3.scale.linear()
-           .domain([0, 100])
+           .domain([0, 99])
            .range([0, width]);
 
        
@@ -79,7 +79,8 @@ var loadData = function() {
 
     var xNormAxis = d3.svg.axis()
       .scale(x)
-      .orient('bottom');
+      .orient('bottom')
+      .tickValues([1,10, 20, 30, 40, 50, 60, 70, 80, 90, 99]);;
     
     var yNormAxis = d3.svg.axis()
       .scale(y)
@@ -108,6 +109,8 @@ var loadData = function() {
     
     d3.select('.x.axis.norm')
         .call(xNormAxis)
+      .selectAll("text")
+        .style("text-anchor", "middle")
       .append("text")
         .attr("class", "xaxis_label")
         .attr("y", 45)
@@ -116,6 +119,7 @@ var loadData = function() {
         .text("Percentile Rank")     
     ;
     
+
     d3.select('.y.axis.norm')
         .call(yNormAxis)
       .append("text")

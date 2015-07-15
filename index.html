@@ -65,8 +65,13 @@
 <p>The results from this test will be used to:</p>
 
 <ul>
-	<li>Determine if 9th grade students mastered Math I concepts or need remediation before moving on to Math II.</li>		
-	<li>Give prizes to <u>the top 10 percent</u> of 9th grade students in Math I at ABC High.</li>
+	<li>Determine if 9th grade students mastered Math I concepts or need remediation before moving on to Math II.</li>	
+		<ul> <li>The <b>minimum score</b> needed to move on to Math II without remediation is <b>35</b>.</li>
+		</ul>	
+	<br>
+	<li>Give prizes to the top performing 9th grade students in Math I at ABC High.</li>
+		<ul> <li> To get a prize a student must rank in the <b>top 10 percent</b> of <b>all 9th grade students</b> in Math I at ABC High.</li>
+		</ul>
 </ul>
 
 <br>
@@ -96,7 +101,7 @@
 <p>For example, if a student got <span data-var="numCorrect" class="TKAdjustableNumber" data-min="0" data-max="50"> questions</span> right out of the total 50 questions on the test, he or she would score <b><span data-var="pctCorrectExample" data-format="%.0f"></span>%</b> correct on the test. </p> 
 
 
-<p>In our example, let's assume Mary scored <b><span data-var="numCorrectMary"> </span></b> correct questions (raw score) or <b><span data-var="pctCorrectMary"></span>%</b> correct (scaled score) on the test. </p>
+<p>In our example, let's assume Mary got <b><span data-var="numCorrectMary"> </span></b> correct questions (raw score) or <b><span data-var="pctCorrectMary"></span>%</b> correct (scaled score) on the test. </p>
 
 <!--
 <p><font color=red>Activity 1:</font> Suppose Mary took two tests and her final score will be highest of the two. If she got 53 out of 60 total points on the first test and 45 out of 50 on the second, which test will be used to compute her final score?</p>
@@ -151,21 +156,23 @@
 <p>[<font color=blue>Graphic 2:</font> Mary's raw score compared to her classmates]</p>
 -->
 
-<p><font color=red>Activity 1:</font> You may sort the values in the graph below to see how Mary ranked in her class in terms of both raw and percent correct scores. <i>Was Mary in the top 10% of her class?</i></p>
+<p><font color=red>Activity 1:</font> You may sort the values in the graph below to see how Mary ranked in her class in terms of both raw and percent correct scores. <i>Is Mary in the top 10% of her class?</i></p>
 
-<select id="rawscore" type='select' onchange='updateData();'>
+Score type: <select id="rawscore" type='select' onchange='updateData();'>
    <option value='50' id='score' selected='true'>Number Correct</option>
    <option value='100' id='pctCorrect'>Percent Correct</option>   
 </select>
 
-<input class="sortRaw" id="sortRaw" type="checkbox" value="sort">Sort</input> 
+<center>
+	<input class="sortRaw" id="sortRaw" type="checkbox" value="sort">Sort</input> 
+</center>
 
 <div class="rawScoreGraph"></div>
 <script src="raw_score_chart.js"></script>
 
 
 
-<p class="question">Mary did not place in the top 10% of her class. Could she still win a Math prize?</p>
+<p class="question">There are 20 students in Mary's class, so to place in the top 10% she would need to be one of the 2 top students in her class. Looking at the sorted chart above we can see that Mary did not place in the top 10% of her class. <b>Can Mary still win a Math prize?</b></p>
 
 
 
@@ -175,7 +182,7 @@
 
 <p>In order to quickly understand how a particular score compares to other scores in a norm group we usually use a type of norm-referenced score called <b>percentile rank</b>. If a raw score of 15 correspond to a percentile of 30, it means that 30% of the norm group had raw scores lower than 15.</p>
 
-<p>Percentile ranks are different from percent correct scores! The percentile rank shows a student's relative standing or rank in a group. The percent-correct score indicates what percent of the total possible points a student got on a test. </p>
+<p><u>Percentile ranks are different from percent correct scores!</u>The percentile rank shows a student's relative standing or rank in a group. The percent correct score indicates what percent of the total possible points a student got on a test. </p>
 
 
 
@@ -263,9 +270,16 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 <p> If norm group selected is school, say if she won a math prize or not</p>
 
 -->
+
+
+<center><p><i>Did Mary win a Math I prize?</i></p>
+
+
+<p><b>Yes!</b></p>
+</center>
 <br>
 
-<p class="question">We now know how well Mary did compared to her classmates and schoolmates, but do you know if she will be able to move on to Math II or if she will need remediation?</p>
+<p class="question">We now know that Mary won a Math I prize since she placed in the top 10% of all 9th graders at ABC High even though she was not in the top 10% of her class. But can you tell if she will be able to move on to Math II or if she will need remediation?</p>
 
 <center>
 <p><b>No!</b></p>
@@ -336,7 +350,7 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 
 -->
 
-<p><font color=red>Activity 3:</font> Choose a cut score for the Math I final test. Did Mary meet the criteria based on this cut score? </p>
+<p><font color=red>Activity 3:</font> In our example, the minimum criteria for moving on to Math II without remediation is a cut score of 35. Use the chart below to define the cut score and find out if Mary met the criteria. You can also select different cut scores and see how it impacts Mary and her classmates.</p>
 
 
 <!--
@@ -345,12 +359,12 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 
 
 <form id="cutScoreSelector">
-<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="5">5
+Cut Score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="5">5
 <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="10">10
 <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="15">15
 <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="20">20
 <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="25">25
-<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="30" checked>30
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="30">30
 <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="35">35
 <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="40">40
 <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="45">45
@@ -366,10 +380,19 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 <div class="criterionGraph"></div>
 <script type="text/javascript" src="criterion_chart.js"></script>
 
-<!--
-<p>{<u>Reactive text:</u> Mary scored XX points or YY% on the test. Since Mary scored [above/below] the cut score of [KK], she has demonstrated [basic/proficient/advanced] knowledge of 9th grade math curriculum and [passed/failed] the test.}</p>
 
--->
+<center>
+
+<p><i>Will Mary move on to Math II without remediation?</i></p>
+<p><b>Yes!</b></p>
+
+</center>
+<br>
+
+<p class="question">Mary scored 40 points or 80% on the Math I test. Since she scored above the cut score of 35, she has demonstrated sufficient mastery of Math I and can move on to Math II without the need for remediation.</p>
+
+
+<br>
 <br>
 <h3>Combining Norm- and Criterion-referenced Interpretations</h3>
 
@@ -409,20 +432,21 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 <td style="width:70%; padding-left: 5px;">
  <input type="radio" name="decision">Suppose that the decision about advancing students to Math II depents on their class percentile rank. Only students who scored at the top 70th percentile in their class will advance to Math II. 
   <br><br>
-  <p>Suppose the cut score for determining who would need remediation before moving on to Math II was set at 30 points or 60%. Any students scoring lower than this cut score will need remediation.</p>
+  <input type="radio" name="decision">Suppose the cut score for determining who would need remediation before moving on to Math II was set at 30 points or 60%. Any students scoring lower than this cut score will need remediation.</input>
+  <br><br>
  <input type="radio" name="decision">Suppose that the prizes will be given to all students who had a score of 95% correct or better in the Math I test.
   <br><br>
   <input type="radio" name="decision">Suppose that there are only 2 Math II classes with 20 spots each, so only the top 40 students will be able to avance to Math II. Students must still meet the defined cut score for proficiency.
 </td>
 
 <td style="width:30%; padding-left: 30px; ">
-	<input type="checkbox" name="scoreType">Percent correct: <input type="text" name="pctCorrText" class="input" value="80%">
+	<input type="checkbox" name="scoreType">Percent correct</input>
   	<br><br>
-  	<input type="checkbox" name="scoreType">Number correct: <input type="text" name="numCorrText" class="input" value="40">
+  	<input type="checkbox" name="scoreType">Number correct</input>
   	<br><br>
-  	<input type="checkbox" name="scoreType">Percentile rank: <input type="text" name="pctRankText" class="input" value="70%">
+  	<input type="checkbox" name="scoreType">Percentile rank</input>
   	<br><br>
-  	<input type="checkbox" name="scoreType">Student rank (Top): <input type="text" name="pctRankText" class="input" value="40">
+  	<input type="checkbox" name="scoreType">Student rank (Top)</input>
 </td>
 </tr>
 <tr>

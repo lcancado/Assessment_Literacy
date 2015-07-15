@@ -9,6 +9,8 @@ var colors20 = d3.scale.category20().domain(d3.range(0,20));
 
 var cutScore=getCutScore();
 
+var critLine;
+
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], 0.1);
 
@@ -106,8 +108,8 @@ d3.tsv("classroom.tsv", function(error, data){
       //.attr("fill",function(d,i){return colors(i)} ) 
       ;
 
-
-  var critLine = svgCrit.append("line")
+/*
+  critLine = svgCrit.append("line")
       .attr("class", "critLine")
       .attr("x1", 0)
       .attr("x2", width)
@@ -128,8 +130,8 @@ d3.tsv("classroom.tsv", function(error, data){
       .style("text-anchor", "start")   
       .style("font", "12px sans-serif")         
       .text("Cut Score");
-
-
+  */
+    
     d3.select(".sortCrit").on("change", function() {
     
       var sortByScore = function(a, b) { return a.variable - b.variable; };
@@ -168,6 +170,32 @@ function getCutScore() {
 
 function updateCriterion(myRadio) {
     cutScore = myRadio.value;
+
+
+    if (typeof critLine == "undefined") {
+
+      critLine = svgCrit.append("line")
+          .attr("class", "critLine")
+          .attr("x1", 0)
+          .attr("x2", width)
+          .attr("y1", function(d) { return y(cutScore); })
+          .attr("y2", function(d) { return y(cutScore); })
+          .style("stroke", "rgb(0, 0, 0)")
+          .style("stroke-width","1")
+          .style("shape-rendering","crispEdges")
+          .style("stroke-dasharray","10,10") ;
+
+      svgCrit.append("g")
+        .append("text")  
+          .attr("class", "critLineText")    
+          .attr("y", y(cutScore) - 10)
+          .attr("x", 5)
+          .attr("dy", ".35em")
+          .style("text-anchor", "start")   
+          .style("font", "12px sans-serif")         
+          .text("Cut Score") ;
+
+    }
 
     var transition = svgCrit.transition().duration(750);
     var delay = function(d, i) { return i * 50; };

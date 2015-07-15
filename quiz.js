@@ -31,7 +31,7 @@ function checkAnswer(form) {
           break;
         } 
 	      else {
-	        document.getElementById("quizResults").innerHTML = "<font color=red><b>Incorrect :-( </b></font><br><b>Try again!</b> Remember that prizes will be given to 9th grade students at the 95th percentile in Math I at ABC High.";		
+	        document.getElementById("quizResults").innerHTML = "<font color=red><b>Incorrect :-( </b></font><br><b>Try again!</b> Remember that prizes will be given to 9th grade students who scored at the top 10 percent in Math I at ABC High.";		
           break;	
 	      }
 	    }

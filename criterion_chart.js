@@ -7,6 +7,8 @@ var margin = {top: 20, right: 20, bottom: 60, left: 60},
 var colors10 = d3.scale.category10().domain(d3.range(0,10));
 var colors20 = d3.scale.category20().domain(d3.range(0,20));
 
+var cutScore=getCutScore();
+
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], 0.1);
 
@@ -49,6 +51,8 @@ d3.tsv("classroom.tsv", function(error, data){
   if (error) throw error;
 
   tsvCrit = data;
+
+  tsvCrit.sort(function (a,b) {return d3.ascending(a.name, b.name);});
 
   data.forEach(function(d){ 
       d.variable = +d.score;
@@ -93,16 +97,18 @@ d3.tsv("classroom.tsv", function(error, data){
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
       .attr("fill",function(d,i){
-        if (+d.variable < 30) { return colors10(3); } //red
-        else {return colors10(0);} //blue        
+        if (d.name == 'Mary') { return 'purple'; } 
+        else { 
+          if (+d.variable < cutScore) { return colors10(3); } //red
+          else {return colors10(0);} ;//blue  
+        }        
       }) 
       //.attr("fill",function(d,i){return colors(i)} ) 
       ;
 
 
-  cutScore=30;
-
   var critLine = svgCrit.append("line")
+      .attr("class", "critLine")
       .attr("x1", 0)
       .attr("x2", width)
       .attr("y1", function(d) { return y(cutScore); })
@@ -113,12 +119,76 @@ d3.tsv("classroom.tsv", function(error, data){
       .style("stroke-dasharray","10,10")      
       ;
 
-  critLine.append("text")      
-      .attr("dy", y(cutScore))
-      .style("text-anchor", "middle")
-      .text(cutScore);
+  svgCrit.append("g")
+    .append("text")  
+      .attr("class", "critLineText")    
+      .attr("y", y(cutScore) - 10)
+      .attr("x", 5)
+      .attr("dy", ".35em")
+      .style("text-anchor", "start")   
+      .style("font", "12px sans-serif")         
+      .text("Cut Score");
 
-  });
+
+    d3.select(".sortCrit").on("change", function() {
+    
+      var sortByScore = function(a, b) { return a.variable - b.variable; };
+      var sortByName = function(a, b) { return d3.ascending(a.name, b.name); };
+
+      var sortedNames = data.sort(this.checked ? sortByScore : sortByName)
+                          .map(function(d) { return d.name; });
+      x.domain(sortedNames);
+      
+      var transition = svgCrit.transition().duration(750);
+      var delay = function(d, i) { return i * 50; };
+      
+      transition.selectAll(".bar")
+        .delay(delay)
+        .attr("x", function(d) { return x(d.name); });
+      
+      transition.select(".x.axis")
+        .call(xAxis)
+        .selectAll("g")
+        .delay(delay);
+    });
+
+});
 
 
+function getCutScore() { 
+
+  var cutScores = document.getElementsByName('cutScore');
+    
+  for(var i = 0; i < cutScores.length; i++){
+        if(cutScores[i].checked){
+            return +cutScores[i].value;
+        }
+    }
+};
+
+function updateCriterion(myRadio) {
+    cutScore = myRadio.value;
+
+    var transition = svgCrit.transition().duration(750);
+    var delay = function(d, i) { return i * 50; };
+      
+    transition.selectAll(".bar")
+      .delay(delay)
+      .attr("fill",function(d,i){        
+        if (d.name == 'Mary') { return 'purple'; } 
+        else { 
+          if (+d.variable < cutScore) { return colors10(3); } //red
+          else {return colors10(0);} ;//blue  
+        }
+      });
+
+    transition.selectAll(".critLine")
+      .delay(delay)
+      .attr("y1", function(d) { return y(cutScore); })
+      .attr("y2", function(d) { return y(cutScore); }) ;
+
+    transition.selectAll(".critLineText")
+      .delay(delay)
+      .attr("y", y(cutScore) - 10) ;
+};
 

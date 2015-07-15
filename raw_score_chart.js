@@ -37,10 +37,6 @@ var svgRawChart = d3.select(".rawScoreGraph").append("svg")
 
 svgRawChart.call(tip);
 
-//create line of values
-var valueline = d3.svg.line()
-  .x(function(d) { return x(d.name); })
-  .y(function(d) { return y(d.variable); });
 
 var tsv;
 
@@ -134,6 +130,40 @@ d3.tsv("classroom.tsv", function(error, data){
       .call(xAxis)
       .selectAll("g")
       .delay(delay);
+
+  /*    
+    if (this.checked ) {
+
+      var cutPercent = 90;
+
+      var critLine = svgRawChart.append("line")
+        .attr("class", "normLine")
+        .attr("x1", function(d) { return x(cutPercent); })
+        .attr("x2", function(d) { return x(cutPercent); })
+        .attr("y1", 0)
+        .attr("y2", height)
+        .style("stroke", "rgb(0, 0, 0)")
+        .style("stroke-width","1")
+        .style("shape-rendering","crispEdges")
+        .style("stroke-dasharray","10,10")      
+        ;
+
+      svgRawChart.append("g")
+        .append("text")  
+          .attr("class", "normLineText")    
+          .attr("y", -10)
+          .attr("x", x(cutPercent) + 5)
+          .attr("dy", ".35em")
+          .style("text-anchor", "middle")   
+          .style("font", "12px sans-serif")         
+          .text("Top 10%");
+    } 
+     else {
+      if (typeof yourvar != 'undefined') { }
+     }; 
+
+    */
+
   });
     
 

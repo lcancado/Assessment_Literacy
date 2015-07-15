@@ -147,7 +147,11 @@
 
 <p>A basic ranking in terms of raw or scaled scores can start to give us a better picture of how Mary's performance compares to that of her classmates.</p>
 
+<!--
 <p>[<font color=blue>Graphic 2:</font> Mary's raw score compared to her classmates]</p>
+-->
+
+<p><font color=red>Activity 1:</font> You may sort the values in the graph below to see how Mary ranked in her class in terms of both raw and percent correct scores. <i>Was Mary in the top 10% of her class?</i></p>
 
 <select id="rawscore" type='select' onchange='updateData();'>
    <option value='50' id='score' selected='true'>Number Correct</option>
@@ -170,6 +174,8 @@
 <p>To answer this question we first need to define Mary's <u>norm group</u>. A <b>norm group</b> is any group we wish to make comparisons against.</p>
 
 <p>In order to quickly understand how a particular score compares to other scores in a norm group we usually use a type of norm-referenced score called <b>percentile rank</b>. If a raw score of 15 correspond to a percentile of 30, it means that 30% of the norm group had raw scores lower than 15.</p>
+
+<p>Percentile ranks are different from percent correct scores! The percentile rank shows a student's relative standing or rank in a group. The percent-correct score indicates what percent of the total possible points a student got on a test. </p>
 
 
 
@@ -231,23 +237,24 @@
 
 -->
 
-<p>Show after correctly answering the quiz:</p>
+<br>
+<p><font color=red>Activity 2:</font> See how Mary's percentile rank changes when you change the norm group and find out if she won a Math I prize.</p>
 
- <br>
-<p><font color=red>Activity 3:</font> See how Mary's percentile rank changes when you change the norm group and find out if she won a Math I prize.</p>
-
+<!--
 <p>[<font color=blue>Graphic 3:</font> Select Norm Group (class or school) and show Mary's placement in comparison to the class and school norm groups.]</p>
-
+-->
+Norm group:
 <select id="normgrp" onchange="loadData()">
-  <option value="classroom">classroom</option>
-  <option value="school">school</option>  
+  <option value="classroom" selected>classroom</option>
+  <option value="school" >school</option>  
 </select>
 
 <div class="normGroupGraph"></div>
 <script type="text/javascript" src="norm_chart.js"></script>
 
 
-<p>{<u>Reactive text:</u> Mary scored <span data-var="numCorrectMary" data-format="%.0f"></span> points or <span data-var="pctCorrectMary" data-format="%.0f"></span>% on the test. </p>
+<!--
+<p>Mary scored <span data-var="numCorrectMary" data-format="%.0f"></span> points or <span data-var="pctCorrectMary" data-format="%.0f"></span>% on the test. </p>
 
 <p>Based on the selected norm group [norm_group], she scored at the top KK percent or at the [ZZ] percentile. 
 
@@ -255,10 +262,10 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 
 <p> If norm group selected is school, say if she won a math prize or not</p>
 
-<br>
+-->
 <br>
 
-<p class="question">We now know how well Mary did compared to her classmates and schoolmates, but do you know if she will be able to move on to Math II?</p>
+<p class="question">We now know how well Mary did compared to her classmates and schoolmates, but do you know if she will be able to move on to Math II or if she will need remediation?</p>
 
 <center>
 <p><b>No!</b></p>
@@ -328,39 +335,47 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 <script src="bubble_chart.js"></script>
 
 -->
-<br>
-<br>
-<p>Suppose the cut score for determining who would need remediation before moving on to Math II was set at 30 points or 60%. Any students scoring lower than this cut score will need remediation.</p>
 
+<p><font color=red>Activity 3:</font> Choose a cut score for the Math I final test. Did Mary meet the criteria based on this cut score? </p>
+
+
+<!--
 <p>[<font color=blue>Graphic 5:</font> </p>
+-->
+
 
 <form id="cutScoreSelector">
-<input type="radio" name="cutScore" value="5">5
-<input type="radio" name="cutScore" value="10">10
-<input type="radio" name="cutScore" value="15">15
-<input type="radio" name="cutScore" value="20">20
-<input type="radio" name="cutScore" value="25">25
-<input type="radio" name="cutScore" value="30" checked>30
-<input type="radio" name="cutScore" value="35">35
-<input type="radio" name="cutScore" value="40">40
-<input type="radio" name="cutScore" value="45">45
-<input type="radio" name="cutScore" value="50">50
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="5">5
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="10">10
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="15">15
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="20">20
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="25">25
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="30" checked>30
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="35">35
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="40">40
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="45">45
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="50">50
 </form>
 
 
-<div style="text-align: center;"><input type="checkbox" value="sort_tier">Sort</input> </div>
+<center>
+	<input class="sortCrit" id="sortCrit" type="checkbox" value="sort">Sort</input> 	
+</center>
+
 
 <div class="criterionGraph"></div>
 <script type="text/javascript" src="criterion_chart.js"></script>
 
+<!--
 <p>{<u>Reactive text:</u> Mary scored XX points or YY% on the test. Since Mary scored [above/below] the cut score of [KK], she has demonstrated [basic/proficient/advanced] knowledge of 9th grade math curriculum and [passed/failed] the test.}</p>
 
+-->
 <br>
 <h3>Combining Norm- and Criterion-referenced Interpretations</h3>
 
 <p>We can, and often do, interpret a single test score both in terms of norm- and criterion-referencing. However, these interpretations are distinct and should not be confused.</p>
 
-<p><font color=red>Activity 6:</font> Now we will combine both types of interpretations of Mary's test score to apply your knowledge of criterion- and norm-referenced interpretations.</p>
+<p><font color=red>Activity 4:</font> Now we will combine both types of interpretations of Mary's test score to apply your knowledge of criterion- and norm-referenced interpretations.</p>
 
 <!--
 <p>Suppose now that the decision about advancing students to Math II depents on their percentile rank. Only students who scored at the top 70th percentile will advance to Math II. How many students in Mary's class and in the school were able to advance based on this criterion?
@@ -394,6 +409,7 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 <td style="width:70%; padding-left: 5px;">
  <input type="radio" name="decision">Suppose that the decision about advancing students to Math II depents on their class percentile rank. Only students who scored at the top 70th percentile in their class will advance to Math II. 
   <br><br>
+  <p>Suppose the cut score for determining who would need remediation before moving on to Math II was set at 30 points or 60%. Any students scoring lower than this cut score will need remediation.</p>
  <input type="radio" name="decision">Suppose that the prizes will be given to all students who had a score of 95% correct or better in the Math I test.
   <br><br>
   <input type="radio" name="decision">Suppose that there are only 2 Math II classes with 20 spots each, so only the top 40 students will be able to avance to Math II. Students must still meet the defined cut score for proficiency.
@@ -422,10 +438,11 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 </form>
 
 <br>
-<p>[<font color=blue>Graphic 6:</font> Norm and Criterion-referenced interpretations - Graphic and reactive text will change based on the input from the form above]</p>
+<p>Norm and Criterion-referenced interpretations - Graphic and reactive text will change based on the input from the form above</p>
 <br>
 <center><img src="norm_crit.png" width="860"></center> 
 
+<!--
 <p>{<u>Reactive text:</u> Mary scored XX points or YY% on the test. She scored at the [ZZ] percentile in her [norm group]. This means that based on her raw score Mary scored higher than [ZZ]% of the other students in her [class/school/historical] (norm group) who took the test. In other words, [ZZ]% of the students who made up the norm group answered fewer than XX items correctly. 
 <br><br>
 Mary [did/did not] achieve [Math prize criteria], therefore she [did/did not] win the Math prize. 
@@ -433,6 +450,7 @@ Mary [did/did not] achieve [Math prize criteria], therefore she [did/did not] wi
 Additionally, since Mary scored [above/below] the cut score of [KK], she has demonstrated [basic/proficient/advanced] knowledge of 9th grade math curriculum and [passed/failed] the test.
 }</p>
 
+-->
 
 
 

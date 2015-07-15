@@ -31,17 +31,18 @@ gNormChart.append('g')
 gNormChart.append('g')
     .attr('class', 'y axis norm');
 
+function parseRow (d) {
 
-  function parseRow (d) {
-    d.ID= d.ID;
-    d.name= d.name;
-    d.classID= d.classID;
-    d.score= +d.score;
-    d.pctRank= +d.pctRank;
-    d.rank= +d.rank;
+  d.ID= d.ID;
+  d.name= d.name;
+  d.classID= d.classID;
+  d.score= +d.score;
+  d.pctRank= +d.pctRank;
+  d.rank= +d.rank;
+  d.pctCorrect = +d.pctCorrect;
 
-    return d;
-  };
+  return d;
+};
 
 
 var loadData = function() {
@@ -60,18 +61,20 @@ var loadData = function() {
     var pctRank = data.map(function(d) { return d.pctRank });
     var rank = data.map(function(d) { return d.rank });
     var name = data.map(function(d) { return d.name });
+    var pctCorrect = data.map(function(d) { return d.pctCorrect });
 
-    var barWidth = Math.max(width / data.length,5);
+    var barWidth = Math.max( (width / data.length)- 7, 7) ;
+    
 
     //window.alert(data.length);
 
     var  x = d3.scale.linear()
-            .domain([0, 100])
-            .range([0, width]);
-    
-    
+           .domain([0, 100])
+           .range([0, width]);
+
+       
     var  y = d3.scale.linear()
-            .domain([0, 50])
+            .domain([0, 100])
             .range([height, 0]);
 
     var xNormAxis = d3.svg.axis()
@@ -81,8 +84,7 @@ var loadData = function() {
     var yNormAxis = d3.svg.axis()
       .scale(y)
       .orient('left')
-      .tickFormat(d3.format('.0'));
-    
+      .tickFormat(d3.format('.0'));  
 
     var rect = gNormChart.selectAll('.barNorm')
       .data(data);
@@ -93,46 +95,64 @@ var loadData = function() {
     
     rect.attr('class', 'barNorm')
       .attr("x", function(d) { return x(d.pctRank); })
-      .attr("width", barWidth - 1)
-      .attr("y", function(d) { return y(d.score); })
-      .attr("height", function(d) { return height - y(d.score); })
+      .attr("width", barWidth - 2)
+      .attr("y", function(d) { return y(d.pctCorrect); })
+      .attr("height", function(d) { return height - y(d.pctCorrect); })
       .on('mouseover', tipn.show)
       .on('mouseout', tipn.hide)
       .attr("fill",function(d){
         if (d.name == 'Mary') { return 'purple'; }
-        else {return colors10(index);}  
+        else {return colors10(0);}  
       }) 
       ;
     
-
-    d3.select('.x.axis.norm').call(xNormAxis);
+    d3.select('.x.axis.norm')
+        .call(xNormAxis)
+      .append("text")
+        .attr("class", "xaxis_label")
+        .attr("y", 45)
+        .attr("dx", "30.71em")
+        .style("text-anchor", "middle")
+        .text("Percentile Rank")     
+    ;
     
-    d3.select('.y.axis.norm').call(yNormAxis);
+    d3.select('.y.axis.norm')
+        .call(yNormAxis)
+      .append("text")
+        .attr("class", "yaxis_label")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x", 0 - (height / 2))
+        .attr("dy", "2em")
+        .style("text-anchor", "middle")
+        .text("Percent Correct")
+    ;
+   
+    var cutPercentile = 90;
+
+     var critLine = gNormChart.append("line")
+      .attr("class", "normLine")
+      .attr("x1", function(d) { return x(cutPercentile); })
+      .attr("x2", function(d) { return x(cutPercentile); })
+      .attr("y1", 0)
+      .attr("y2", height)
+      .style("stroke", "rgb(0, 0, 0)")
+      .style("stroke-width","1")
+      .style("shape-rendering","crispEdges")
+      .style("stroke-dasharray","10,10")      
+      ;
+
+    gNormChart.append("g")
+    .append("text")  
+      .attr("class", "normLineText")    
+      .attr("y", -10)
+      .attr("x", x(cutPercentile) + 5)
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")   
+      .style("font", "12px sans-serif")         
+      .text("90th Percentile");
+
     
-    /* d3.select('input').on('change', function() {
-      var sortByScore = function(a, b) { return b.score - a.score; };
-      
-      var sortByRank = function(a, b) { return d3.ascending(a.pctRank, b.pctRank); };
-
-      var sortedRanks = data.sort(this.checked ? sortByRank : sortByScore)
-                         .map(function(d) { return d.pctRank; })
-
-      x.domain(sortedRanks)
-      
-      var transition = svgNormChart.transition().duration(750);
-      
-      var delay = function(d, i) { return i * 50; };
-      
-      transition.selectAll(".barRaw")
-          .delay(delay)
-          .attr("x", function(d) { return x(d.pctRank); });
-      
-      transition.select(".x.axis")
-          .call(xAxis)
-          .selectAll("g")
-          .delay(delay);
-    })
-    */
   })
 };
 

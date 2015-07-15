@@ -30,10 +30,6 @@ p.question {
     fill: brown;
 }
 
-.axis text {
-    font: 12px sans-serif;
-  }
-
 .bar rect {
   fill: steelblue;
   shape-rendering: crispEdges;
@@ -66,6 +62,12 @@ stroke: steelblue;
 stroke-width: 2;
 fill: none;
 }
+
+.axis text {
+    font: 12px sans-serif;
+  }
+
+
 
 label {
   position: absolute;

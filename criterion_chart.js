@@ -11,18 +11,18 @@ var cutScore=getCutScore();
 
 var critLine;
 
-var x = d3.scale.ordinal()
+var xCrit = d3.scale.ordinal()
     .rangeRoundBands([0, width], 0.1);
 
-var y = d3.scale.linear()
+var yCrit = d3.scale.linear()
     .range([height, 0]);   
 
-var xAxis = d3.svg.axis()
-    .scale(x)
+var xAxisCrit = d3.svg.axis()
+    .scale(xCrit)
     .orient("bottom");
 
-var yAxis = d3.svg.axis()
-    .scale(y)
+var yAxisCrit = d3.svg.axis()
+    .scale(yCrit)
     .orient("left");
 
 var tip = d3.tip()
@@ -41,10 +41,6 @@ var svgCrit = d3.select(".criterionGraph").append("svg")
 
 svgCrit.call(tip);
 
-//create line of values
-var valueline = d3.svg.line()
-  .x(function(d) { return x(d.name); })
-  .y(function(d) { return y(d.variable); });
 
 var tsvCrit;
 
@@ -61,24 +57,24 @@ d3.tsv("classroom.tsv", function(error, data){
       d.name= d.name;
   });
 
-  x.domain(data.map(function(d) { return d.name; }));
-  y.domain ([0,50]);
-  //y.domain([d3.min(data, function(d) { return d.variable; }), d3.max(data, function(d) { return d.variable; })]);
+  xCrit.domain(data.map(function(d) { return d.name; }));
+  yCrit.domain ([0,50]);
+  //yCrit.domain([d3.min(data, function(d) { return d.variable; }), d3.max(data, function(d) { return d.variable; })]);
 
   svgCrit.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
+      .call(xAxisCrit)
     .append("text")
       .attr("class", "xaxis_label")
       .attr("y", 45)
-      .attr("dx", "30.71em")
+      .attr("x", width/2)
       .style("text-anchor", "middle")
       .text("Student Name");
 
   svgCrit.append("g")
       .attr("class", "y axis")
-      .call(yAxis)
+      .call(yAxisCrit)
     .append("text")
       .attr("class", "yaxis_label")
       .attr("transform", "rotate(-90)")
@@ -88,14 +84,14 @@ d3.tsv("classroom.tsv", function(error, data){
       .style("text-anchor", "middle")
       .text("Number Correct");
   
-  var barCrit = svgCrit.selectAll(".bar")
+  var barCrit = svgCrit.selectAll(".barCrit")
       .data(data)      
     .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x(d.name); })
-      .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.variable); })
-      .attr("height", function(d) { return height - y(d.variable); })     
+      .attr("class", "barCrit")
+      .attr("x", function(d) { return xCrit(d.name); })
+      .attr("width", xCrit.rangeBand())
+      .attr("y", function(d) { return yCrit(d.variable); })
+      .attr("height", function(d) { return height - yCrit(d.variable); })     
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
       .attr("fill",function(d,i){
@@ -108,29 +104,6 @@ d3.tsv("classroom.tsv", function(error, data){
       //.attr("fill",function(d,i){return colors(i)} ) 
       ;
 
-/*
-  critLine = svgCrit.append("line")
-      .attr("class", "critLine")
-      .attr("x1", 0)
-      .attr("x2", width)
-      .attr("y1", function(d) { return y(cutScore); })
-      .attr("y2", function(d) { return y(cutScore); })
-      .style("stroke", "rgb(0, 0, 0)")
-      .style("stroke-width","1")
-      .style("shape-rendering","crispEdges")
-      .style("stroke-dasharray","10,10")      
-      ;
-
-  svgCrit.append("g")
-    .append("text")  
-      .attr("class", "critLineText")    
-      .attr("y", y(cutScore) - 10)
-      .attr("x", 5)
-      .attr("dy", ".35em")
-      .style("text-anchor", "start")   
-      .style("font", "12px sans-serif")         
-      .text("Cut Score");
-  */
     
     d3.select(".sortCrit").on("change", function() {
     
@@ -139,17 +112,19 @@ d3.tsv("classroom.tsv", function(error, data){
 
       var sortedNames = data.sort(this.checked ? sortByScore : sortByName)
                           .map(function(d) { return d.name; });
-      x.domain(sortedNames);
       
-      var transition = svgCrit.transition().duration(750);
+      xCrit.domain(sortedNames);
+
+          
+      var transitionCrit = svgCrit.transition().duration(750);
       var delay = function(d, i) { return i * 50; };
       
-      transition.selectAll(".bar")
+      transitionCrit.selectAll(".barCrit")
         .delay(delay)
-        .attr("x", function(d) { return x(d.name); });
+        .attr("x", function(d) { return xCrit(d.name); });
       
-      transition.select(".x.axis")
-        .call(xAxis)
+      transitionCrit.select(".xCrit.axis")
+        .call(xAxisCrit)
         .selectAll("g")
         .delay(delay);
     });
@@ -169,6 +144,7 @@ function getCutScore() {
 };
 
 function updateCriterion(myRadio) {
+
     cutScore = myRadio.value;
 
 
@@ -178,8 +154,8 @@ function updateCriterion(myRadio) {
           .attr("class", "critLine")
           .attr("x1", 0)
           .attr("x2", width)
-          .attr("y1", function(d) { return y(cutScore); })
-          .attr("y2", function(d) { return y(cutScore); })
+          .attr("y1", function(d) { return yCrit(cutScore); })
+          .attr("y2", function(d) { return yCrit(cutScore); })
           .style("stroke", "rgb(0, 0, 0)")
           .style("stroke-width","1")
           .style("shape-rendering","crispEdges")
@@ -188,7 +164,7 @@ function updateCriterion(myRadio) {
       svgCrit.append("g")
         .append("text")  
           .attr("class", "critLineText")    
-          .attr("y", y(cutScore) - 10)
+          .attr("y", yCrit(cutScore) - 10)
           .attr("x", 5)
           .attr("dy", ".35em")
           .style("text-anchor", "start")   
@@ -197,10 +173,10 @@ function updateCriterion(myRadio) {
 
     }
 
-    var transition = svgCrit.transition().duration(750);
+    var transitionCrit = svgCrit.transition().duration(750);
     var delay = function(d, i) { return i * 50; };
       
-    transition.selectAll(".bar")
+    transitionCrit.selectAll(".barCrit")
       .delay(delay)
       .attr("fill",function(d,i){        
         if (d.name == 'Mary') { return 'purple'; } 
@@ -210,13 +186,13 @@ function updateCriterion(myRadio) {
         }
       });
 
-    transition.selectAll(".critLine")
+    transitionCrit.selectAll(".critLine")
       .delay(delay)
-      .attr("y1", function(d) { return y(cutScore); })
-      .attr("y2", function(d) { return y(cutScore); }) ;
+      .attr("y1", function(d) { return yCrit(cutScore); })
+      .attr("y2", function(d) { return yCrit(cutScore); }) ;
 
-    transition.selectAll(".critLineText")
+    transitionCrit.selectAll(".critLineText")
       .delay(delay)
-      .attr("y", y(cutScore) - 10) ;
+      .attr("y", yCrit(cutScore) - 10) ;
 };
 

@@ -1,7 +1,7 @@
-<!-- This script and many more are available free online at -->
+/*<!-- This script and many more are available free online at -->
 <!-- The JavaScript Source!! http://www.javascriptsource.com -->
 
-<!-- Begin
+<!-- Begin */
 // Insert number of questions
 var numQues = 1;
 

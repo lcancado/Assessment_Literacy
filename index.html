@@ -29,8 +29,9 @@
 
 	<!-- Application specific JavaScript -->
     <script src="app.js"></script>
-    <script src="quiz.js"></script>
+    <script src="norm_quiz.js"></script>
     <script src="bullet_chart.js"></script>
+    <script src="combo_quiz.js"></script>
     
 
 
@@ -359,21 +360,21 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 
 
 <form id="cutScoreSelector">
-Cut Score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="5">5
-<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="10">10
-<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="15">15
-<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="20">20
-<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="25">25
-<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="30">30
-<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="35">35
-<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="40">40
-<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="45">45
-<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="50">50
+Cut Score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="5">5</input> 
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="10">10</input> 
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="15">15</input> 
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="20">20</input> 
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="25">25</input> 
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="30">30</input> 
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="35">35</input> 
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="40">40</input> 
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="45">45</input> 
+<input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="50">50</input> 
 </form>
 
 
 <center>
-	<input class="sortCrit" id="sortCrit" type="checkbox" value="sort">Sort</input> 	
+	<input class="sortCrit" type="checkbox" value="sort">Sort</input> 	
 </center>
 
 
@@ -416,13 +417,12 @@ Cut Score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 	<li>Select a decision from the list under "Decision Type"</li>
 	<li>Select the score type(s) that would be most appropriate for this decision from the list of score types</li>
 	<li>Select the norm group (if needed) that would be most appropriate for this decision</li>
-	<li>Change the score values if needed</li>
 	<li>Check the chart below to see how the score type, score value and norm group impacted Mary and her classmates in terms of the decision type you selected. 
 </ol>
 
 <br>
 
-<form name="norm_crit_decision">
+<form name="comboForm">
 <table id="decisionTbl">
 <tr>
 <th>Decision Type</th>
@@ -430,32 +430,37 @@ Cut Score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 </tr>
 <tr>
 <td style="width:70%; padding-left: 5px;">
- <input type="radio" name="decision">Suppose that the decision about advancing students to Math II depents on their class percentile rank. Only students who scored at the top 70th percentile in their class will advance to Math II. 
+ <input type="radio" name="decision" value="D1">Suppose that students who have scores at or above 80% of the Math I scores from other students in their class are eligible to enroll in Calculus. Would Mary be eligible for this advanced Math class? How many students in her class would be eligible? What would be the minimum number correct score needed to enroll in Calculus?
   <br><br>
-  <input type="radio" name="decision">Suppose the cut score for determining who would need remediation before moving on to Math II was set at 30 points or 60%. Any students scoring lower than this cut score will need remediation.</input>
+  <input type="radio" name="decision" value="D2">Suppose that the Math prizes will be given to all 9th grade students who scored 45 or more points in the Math I test. How many students at ABC High will get a prize? </input>
   <br><br>
- <input type="radio" name="decision">Suppose that the prizes will be given to all students who had a score of 95% correct or better in the Math I test.
+ <input type="radio" name="decision" value="D3">Suppose that there is only one Math II classes with 20 spots, so only the top 20 students in Math I will be able to enroll in Math II. Students must still meet the cut score criteria of 35 points to enroll. How many students at ABC High would be able to enroll in Math II without remediation?
   <br><br>
-  <input type="radio" name="decision">Suppose that there are only 2 Math II classes with 20 spots each, so only the top 40 students will be able to avance to Math II. Students must still meet the defined cut score for proficiency.
+  
 </td>
 
-<td style="width:30%; padding-left: 30px; ">
-	<input type="checkbox" name="scoreType">Percent correct</input>
+<td style="width:30%; padding-left: 40px; ">
+	<input type="checkbox" name="scoreType" value="pctCorrect">Percent correct</input>
   	<br><br>
-  	<input type="checkbox" name="scoreType">Number correct</input>
+  	<input type="checkbox" name="scoreType" value="numCorrect">Number correct</input>
   	<br><br>
-  	<input type="checkbox" name="scoreType">Percentile rank</input>
+  	<input type="checkbox" name="scoreType" value="percentile">Percentile rank</input>
   	<br><br>
-  	<input type="checkbox" name="scoreType">Student rank (Top)</input>
+  	<input type="checkbox" name="scoreType" value="rank">Student rank (Top)</input>
 </td>
 </tr>
 <tr>
-	<td colspan=2 style="padding-left: 5px; padding-top: 20px; text-align: center;"><b>Norm Group:</b> <input type="radio" name="ngroup">Class</input> <input type="radio" name="ngroup">School</input> <input type="radio" name="ngroup">Historical</input>
+	<td colspan=2 style="padding-top: 20px; text-align: center;"><b>Norm Group:</b> <input type="radio" name="normGroup" value="classroom">Class</input> <input type="radio" name="normGroup" value="school">School</input> 
 	</td>
 </tr>
 
 <tr>
-	<td colspan=2 style="padding-left: 5px; padding-top: 20px; text-align: center;"> <input type="button" value="Submit"></td>
+	<td colspan=2 style="padding-left: 5px; padding-top: 20px; text-align: center;"> <input type="button" value="Submit" onClick="checkCombo(this.form);">
+		<br>
+		<p id="comboResults"> </p>
+
+
+	</td>
 </tr>
 
 </table>
@@ -464,17 +469,19 @@ Cut Score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 <br>
 <p>Norm and Criterion-referenced interpretations - Graphic and reactive text will change based on the input from the form above</p>
 <br>
-<center><img src="norm_crit.png" width="860"></center> 
 
-<!--
-<p>{<u>Reactive text:</u> Mary scored XX points or YY% on the test. She scored at the [ZZ] percentile in her [norm group]. This means that based on her raw score Mary scored higher than [ZZ]% of the other students in her [class/school/historical] (norm group) who took the test. In other words, [ZZ]% of the students who made up the norm group answered fewer than XX items correctly. 
+<div class="comboGraph"></div>
+
+<script src="combo_chart.js"></script>
+
+<p id="comboReactiveText">
+
+Reactive text:</u> Mary scored XX points or YY% on the test. She scored at the [ZZ] percentile in her [norm group]. This means that based on her raw score Mary scored higher than [ZZ]% of the other students in her [class/school/historical] (norm group) who took the test. In other words, [ZZ]% of the students who made up the norm group answered fewer than XX items correctly. 
 <br><br>
 Mary [did/did not] achieve [Math prize criteria], therefore she [did/did not] win the Math prize. 
 <br><br>
 Additionally, since Mary scored [above/below] the cut score of [KK], she has demonstrated [basic/proficient/advanced] knowledge of 9th grade math curriculum and [passed/failed] the test.
-}</p>
-
--->
+</p>
 
 
 

@@ -22,14 +22,73 @@ var svgNormChart = d3.select(".normGroupGraph").append("svg")
 var gNormChart = svgNormChart.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+
+var xNorm = d3.scale.linear()
+      .domain([0, 99])
+      .range([0, width]);
+
+       
+var yNorm = d3.scale.linear()
+      .domain([0, 100])
+      .range([height, 0]);
+
+var xNormAxis = d3.svg.axis()
+      .scale(xNorm)
+      .orient('bottom')
+      .tickValues([1,10, 20, 30, 40, 50, 60, 70, 80, 90, 99]);
+    
+var yNormAxis = d3.svg.axis()
+      .scale(yNorm)
+      .orient('left')
+      .tickFormat(d3.format('.0'));  
+
 gNormChart.call(tipn);
 
 gNormChart.append('g')
     .attr('class', 'x axis norm')
-    .attr('transform', 'translate(0, '+ height +')');
+    .attr('transform', 'translate(0, '+ height +')')
+  .append("text")
+    .attr("class", "xaxisnorm_label")
+    .attr("y", 45)
+    .attr("x", width/2)
+    .style("text-anchor", "middle")
+    .text("Percentile Rank")   ;
   
 gNormChart.append('g')
-    .attr('class', 'y axis norm');
+    .attr('class', 'y axis norm')
+  .append("text")
+    .attr("class", "yaxisnormal_label")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x", 0 - (height / 2))
+    .attr("dy", "2em")
+    .style("text-anchor", "middle")
+    .text("Percent Correct");
+
+
+var cutPercentile = 90;
+
+var critLine = gNormChart.append("line")
+      .attr("class", "normLine")
+      .attr("x1", function(d) { return xNorm(cutPercentile); })
+      .attr("x2", function(d) { return xNorm(cutPercentile); })
+      .attr("y1", 0)
+      .attr("y2", height)
+      .style("stroke", "rgb(0, 0, 0)")
+      .style("stroke-width","1")
+      .style("shape-rendering","crispEdges")
+      .style("stroke-dasharray","10,10")      
+      ;
+
+gNormChart.append("g")
+    .append("text")  
+      .attr("class", "normLineText")    
+      .attr("y", -10)
+      .attr("x", xNorm(cutPercentile) + 5)
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")   
+      .style("font", "12px sans-serif")         
+      .text("90th Percentile");
 
 function parseRow (d) {
 
@@ -68,24 +127,6 @@ var loadData = function() {
 
     //window.alert(data.length);
 
-    var  x = d3.scale.linear()
-           .domain([0, 99])
-           .range([0, width]);
-
-       
-    var  y = d3.scale.linear()
-            .domain([0, 100])
-            .range([height, 0]);
-
-    var xNormAxis = d3.svg.axis()
-      .scale(x)
-      .orient('bottom')
-      .tickValues([1,10, 20, 30, 40, 50, 60, 70, 80, 90, 99]);;
-    
-    var yNormAxis = d3.svg.axis()
-      .scale(y)
-      .orient('left')
-      .tickFormat(d3.format('.0'));  
 
     var rect = gNormChart.selectAll('.barNorm')
       .data(data);
@@ -95,10 +136,10 @@ var loadData = function() {
     rect.exit().remove();
     
     rect.attr('class', 'barNorm')
-      .attr("x", function(d) { return x(d.pctRank); })
+      .attr("x", function(d) { return xNorm(d.pctRank); })
       .attr("width", barWidth - 2)
-      .attr("y", function(d) { return y(d.pctCorrect); })
-      .attr("height", function(d) { return height - y(d.pctCorrect); })
+      .attr("y", function(d) { return yNorm(d.pctCorrect); })
+      .attr("height", function(d) { return height - yNorm(d.pctCorrect); })
       .on('mouseover', tipn.show)
       .on('mouseout', tipn.hide)
       .attr("fill",function(d){
@@ -111,50 +152,14 @@ var loadData = function() {
         .call(xNormAxis)
       .selectAll("text")
         .style("text-anchor", "middle")
-      .append("text")
-        .attr("class", "xaxis_label")
-        .attr("y", 45)
-        .attr("dx", "30.71em")
-        .style("text-anchor", "middle")
-        .text("Percentile Rank")     
     ;
     
 
     d3.select('.y.axis.norm')
         .call(yNormAxis)
-      .append("text")
-        .attr("class", "yaxis_label")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left)
-        .attr("x", 0 - (height / 2))
-        .attr("dy", "2em")
-        .style("text-anchor", "middle")
-        .text("Percent Correct")
     ;
    
-    var cutPercentile = 90;
 
-     var critLine = gNormChart.append("line")
-      .attr("class", "normLine")
-      .attr("x1", function(d) { return x(cutPercentile); })
-      .attr("x2", function(d) { return x(cutPercentile); })
-      .attr("y1", 0)
-      .attr("y2", height)
-      .style("stroke", "rgb(0, 0, 0)")
-      .style("stroke-width","1")
-      .style("shape-rendering","crispEdges")
-      .style("stroke-dasharray","10,10")      
-      ;
-
-    gNormChart.append("g")
-    .append("text")  
-      .attr("class", "normLineText")    
-      .attr("y", -10)
-      .attr("x", x(cutPercentile) + 5)
-      .attr("dy", ".35em")
-      .style("text-anchor", "middle")   
-      .style("font", "12px sans-serif")         
-      .text("90th Percentile");
 
     
   })

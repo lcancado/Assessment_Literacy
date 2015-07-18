@@ -13,11 +13,11 @@ var x = d3.scale.ordinal()
 var y = d3.scale.linear()
     .range([height, 0]);   
 
-var xAxis = d3.svg.axis()
+var xAxisRaw = d3.svg.axis()
     .scale(x)
     .orient("bottom");
 
-var yAxis = d3.svg.axis()
+var yAxisRaw = d3.svg.axis()
     .scale(y)
     .orient("left");
 
@@ -60,17 +60,17 @@ d3.tsv("classroom.tsv", function(error, data){
   svgRawChart.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
+      .call(xAxisRaw)
     .append("text")
       .attr("class", "xaxis_label")
       .attr("y", 45)
-      .attr("dx", "30.71em")
+      .attr("x", width/2)
       .style("text-anchor", "middle")
       .text("Student Name");
 
   svgRawChart.append("g")
       .attr("class", "y axis")
-      .call(yAxis)
+      .call(yAxisRaw)
     .append("text")
       .attr("class", "yaxis_label")
       .attr("transform", "rotate(-90)")
@@ -118,7 +118,8 @@ d3.tsv("classroom.tsv", function(error, data){
                           .map(function(d) { return d.name; });
 
     x.domain(sortedNames);
-      
+
+         
     var transition = svgRawChart.transition().duration(750);
     var delay = function(d, i) { return i * 50; };
       
@@ -127,7 +128,7 @@ d3.tsv("classroom.tsv", function(error, data){
       .attr("x", function(d) { return x(d.name); });
       
     transition.select(".x.axis")
-      .call(xAxis)
+      .call(xAxisRaw)
       .selectAll("g")
       .delay(delay);
 
@@ -211,11 +212,11 @@ function updateData() {
   ;
     
     transition.select(".y.axis") // change the y axis
-      .call(yAxis);
+      .call(yAxisRaw);
 
     transition.select(".yaxis_label")
        .text(scoreType);
 
     transition.select(".x.axis")
-      .call(xAxis);
+      .call(xAxisRaw);
 };

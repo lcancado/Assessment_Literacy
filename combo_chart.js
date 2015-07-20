@@ -7,6 +7,7 @@ var margin = {top: 20, right: 20, bottom: 60, left: 60},
 var colors10 = d3.scale.category10().domain(d3.range(0,10));
 var colors20 = d3.scale.category20().domain(d3.range(0,20));
 
+
 var decision;
 var scoreType;
 var normGroup;
@@ -43,10 +44,33 @@ var svgCombo = d3.select(".comboGraph").append("svg")
 
 svgCombo.call(tip);
 
+svgCombo.append("g")
+    .attr("class", "x axis combo")
+    .attr("transform", "translate(0," + height + ")")
+  .append("text")
+      .attr("class", "xaxiscombo_label")
+      .attr("y", 45)
+      .attr("x", width/2)
+      .style("text-anchor", "middle")
+      .text("Student Name");
+
+svgCombo.append("g")
+    .attr("class", "y axis combo")
+  .append("text")
+    .attr("class", "yaxiscombo_label")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x", 0 - (height / 2))
+    .attr("dy", "2em")
+    .style("text-anchor", "middle")
+    .text("Number Correct");
+
 
 var tsvCombo;
 
-d3.tsv("classroom.tsv", function(error, data){
+var dataFileCombo="classroom.tsv";
+
+d3.tsv(dataFileCombo, function(error, data){
 
   if (error) throw error;
 
@@ -63,33 +87,15 @@ d3.tsv("classroom.tsv", function(error, data){
   yCombo.domain ([0,50]);
   //yCombo.domain([d3.min(data, function(d) { return d.variable; }), d3.max(data, function(d) { return d.variable; })]);
 
-  svgCombo.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxisCombo)
-    .append("text")
-      .attr("class", "xaxiscombo_label")
-      .attr("y", 45)
-      .attr("x", width/2)
-      .style("text-anchor", "middle")
-      .text("Student Name");
-
-  svgCombo.append("g")
-      .attr("class", "y axis")
-      .call(yAxisCombo)
-    .append("text")
-      .attr("class", "yaxiscombo_label")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 0 - margin.left)
-      .attr("x", 0 - (height / 2))
-      .attr("dy", "2em")
-      .style("text-anchor", "middle")
-      .text("Number Correct");
   
   var barCrit = svgCombo.selectAll(".barCombo")
-      .data(data)      
-    .enter().append("rect")
-      .attr("class", "barCombo")
+      .data(data);
+
+  barCrit.enter().append("rect");
+
+  barCrit.exit().remove();
+
+  barCrit.attr("class", "barCombo")
       .attr("x", function(d) { return xCombo(d.name); })
       .attr("width", xCombo.rangeBand())
       .attr("y", function(d) { return yCombo(d.variable); })
@@ -106,29 +112,14 @@ d3.tsv("classroom.tsv", function(error, data){
       //.attr("fill",function(d,i){return colors(i)} ) 
       ;
 
-/*
-  critLnCombo = svgCombo.append("line")
-      .attr("class", "critLnCombo")
-      .attr("x1", 0)
-      .attr("x2", width)
-      .attr("y1", function(d) { return y(cutScore); })
-      .attr("y2", function(d) { return y(cutScore); })
-      .style("stroke", "rgb(0, 0, 0)")
-      .style("stroke-width","1")
-      .style("shape-rendering","crispEdges")
-      .style("stroke-dasharray","10,10")      
-      ;
+    d3.select('.x.axis.combo')
+        .call(xAxisCombo)
+      .selectAll("text")
+        .style("text-anchor", "middle") ;
+    
 
-  svgCombo.append("g")
-    .append("text")  
-      .attr("class", "critLineText")    
-      .attr("y", y(cutScore) - 10)
-      .attr("x", 5)
-      .attr("dy", ".35em")
-      .style("text-anchor", "start")   
-      .style("font", "12px sans-serif")         
-      .text("Cut Score");
-  */
+    d3.select('.y.axis.combo')
+        .call(yAxisCombo) ;
     
     
 });
@@ -147,23 +138,25 @@ function getRadioValue(myRadio) {
 
 function updateComboChart(decisionType) {
 
-  var transitionCombo = svgCombo.transition().duration(750);
-  var delay = function(d, i) { return i * 50; };
+var transitionCombo = svgCombo.transition().duration(750);
+var delay = function(d, i) { return i * 50; };
+
   
   if (decisionType == 'D1') {
 
-      var data = [];      
-      var scoreCombo = "Percentile Rank";
+      var yAxisLabel = "Percentile Rank";
+      cutScoreComboY = 80;
 
+  /*
+      var data = []; 
       tsvCombo.forEach(function(d){ 
-        data.push({variable: +d['pctRank'], name: d['name'], score: d['score']}); 
+        data.push({variable: +d['pctRank'], name: d['name'] }); 
       });
 
       var sortedNames = tsvCombo.sort(function (a,b) {return a.variable - b.variable; })
                                 .map(function(d) { return d.name; });
 
-      cutScoreCombo = 80;
-
+      
       xCombo.domain(sortedNames);
       yCombo.domain ([0,99]);
 
@@ -178,7 +171,7 @@ function updateComboChart(decisionType) {
         .attr("fill",function(d,i){
           if (d.name == 'Mary') { return 'purple'; } 
           else { 
-            if (+d.variable < cutScoreCombo) { return colors10(3); } //red
+            if (+d.variable < cutScoreComboY) { return colors10(3); } //red
             else {return colors10(0);} ;//blue  
             }
         })
@@ -189,23 +182,342 @@ function updateComboChart(decisionType) {
       transitionCombo.select(".y.axis") // change the y axis
         .call(yAxisCombo);
       
-      
-    
       transitionCombo.select(".yaxiscombo_label")
-         .text(scoreCombo);
+         .text(yAxisLabel);
 
       transitionCombo.select(".x.axis")
         .call(xAxisCombo);
+      */
+
+    dataFileCombo="classroom.tsv";
+
+    d3.tsv(dataFileCombo, function(error, data){
+
+        if (error) throw error;
+
+        tsvCombo = data;
+
+        data.forEach(function(d){ 
+          d.variable = +d.pctRank;
+          d.name= d.name;
+        });
+
+       var sortedNames = tsvCombo.sort(function (a,b) {return a.variable - b.variable; })
+                                .map(function(d) { return d.name; });
+
+      
+      xCombo.domain(sortedNames);
+      yCombo.domain ([0,99]);
+
+  
+      var barCrit = svgCombo.selectAll(".barCombo")
+        .data(data);
+
+      barCrit.enter().append("rect");
+
+      barCrit.exit().remove();
+
+      barCrit.attr("class", "barCombo")
+        .transition().duration(1000)
+        .attr("x", function(d) { return xCombo(d.name); })
+        .attr("width", xCombo.rangeBand())
+        .attr("y", function(d) { return yCombo(d.variable); })
+        .attr("height", function(d) { return height - yCombo(d.variable); })     
+        //.on('mouseover', tip.show)
+        //.on('mouseout', tip.hide)
+        .attr("fill",function(d,i){
+          if (d.name == 'Mary') { return 'purple'; } 
+          else { 
+            if (+d.variable < cutScoreComboY) { return colors10(3); } //red
+            else {return colors10(0);} ;//blue  
+            }
+        })
+      ;
+
+      tip.html(function(d) {
+          return "<span style='color:white; font-size:12px'>" + d.variable + "</span>"; });
+
+      yAxisCombo.tickValues([1,10, 20, 30, 40, 50, 60, 70, 80, 90, 99]);
+      
+      transitionCombo.select(".y.axis.combo") // change the y axis
+        .call(yAxisCombo);
+      
+      transitionCombo.select(".yaxiscombo_label")
+         .text(yAxisLabel);
+
+      transitionCombo.select(".x.axis.combo")
+        .call(xAxisCombo);
+
+      updateCritLine(cutScoreComboY);
+    
+    });
   }
 
-    if (typeof critLnCombo == "undefined") {
+  else if (decisionType == 'D2') {
+
+            
+      var yAxisLabel = "Number Correct";
+      cutScoreComboY = 45;
+
+/*
+      var data = [];
+      tsvCombo.forEach(function(d){ 
+        data.push({variable: +d['score'], name: d['name']}); 
+      });
+
+      var sortedNames = tsvCombo.sort(function (a,b) {return a.variable - b.variable; })
+                                .map(function(d) { return d.name; });
+      
+      xCombo.domain(sortedNames);
+      yCombo.domain ([0,50]);
+
+      // Make the changes
+    
+      svgCombo.selectAll(".barCombo")
+        .data(data)
+        .transition().duration(1000)
+        .attr("x", function(d) { return xCombo(d.name); })
+        .attr("y", function(d) { return yCombo(d.variable); })
+        .attr("height", function(d) { return height - yCombo(d.variable); })
+        .attr("fill",function(d,i){
+          if (d.name == 'Mary') { return 'purple'; } 
+          else { 
+            if (+d.variable < cutScoreComboY) { return colors10(3); } //red
+            else {return colors10(0);} ;//blue  
+            }
+        })
+      ;
+    
+      transitionCombo.select(".y.axis") // change the y axis
+        .call(yAxisCombo);
+      
+      transitionCombo.select(".yaxiscombo_label")
+         .text(yAxisLabel);
+
+      transitionCombo.select(".x.axis")
+        .call(xAxisCombo);
+
+  */
+
+  dataFileCombo="classroom.tsv";
+
+    d3.tsv(dataFileCombo, function(error, data){
+
+        if (error) throw error;
+
+        tsvCombo = data;
+
+        data.forEach(function(d){ 
+          d.variable = +d.score;
+          d.name= d.name;
+        });
+
+       var sortedNames = tsvCombo.sort(function (a,b) {return a.variable - b.variable; })
+                                .map(function(d) { return d.name; });
+
+      
+      xCombo.domain(sortedNames);
+      yCombo.domain ([0,50]);
+
+  
+      var barCrit = svgCombo.selectAll(".barCombo")
+        .data(data);
+
+      barCrit.enter().append("rect");
+
+      barCrit.exit().remove();
+
+      barCrit.attr("class", "barCombo")
+        .transition().duration(1000)
+        .attr("x", function(d) { return xCombo(d.name); })
+        .attr("width", xCombo.rangeBand())
+        .attr("y", function(d) { return yCombo(d.variable); })
+        .attr("height", function(d) { return height - yCombo(d.variable); })     
+        //.on('mouseover', tip.show)
+        //.on('mouseout', tip.hide)
+        .attr("fill",function(d,i){
+          if (d.name == 'Mary') { return 'purple'; } 
+          else { 
+            if (+d.variable < cutScoreComboY) { return colors10(3); } //red
+            else {return colors10(0);} ;//blue  
+            }
+        })
+      ;
+
+      tip.html(function(d) {
+          return "<span style='color:white; font-size:12px'>" + d.variable + "</span>"; });
+
+      yAxisCombo.tickValues([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
+      
+      transitionCombo.select(".y.axis.combo") // change the y axis
+        .call(yAxisCombo);
+      
+      transitionCombo.select(".yaxiscombo_label")
+         .text(yAxisLabel);
+
+      transitionCombo.select(".x.axis.combo")
+        .call(xAxisCombo);
+
+      updateCritLine(cutScoreComboY);
+    
+    });
+
+  }
+
+  else if (decisionType == 'D3') {
+
+      
+      var yAxisLabel = "Student Rank";
+      var xAxisLabel = "Number Correct Score";
+
+      cutScoreComboY = 20;
+      cutScoreComboX = 35;
+    /*
+      var data = []; 
+      tsvCombo.forEach(function(d){ 
+        data.push({variable: +d['rank'], score: d['score'], name: d['name']}); 
+      });
+
+
+      var sortedScores = tsvCombo.sort(function (a,b) {return a.variable - b.variable; });
+
+      xCombo = d3.scale.linear()
+        .domain([0, 50])
+        .range([0, width]);
+
+      xAxisCombo = d3.svg.axis()
+        .scale(xCombo)
+        .orient("bottom")
+        .tickValues([0, 10, 20, 30, 40, 50]);
+
+           
+      yCombo.domain ([0,20]);    
+    
+      svgCombo.selectAll(".barCombo")
+          .data(data)
+          .transition().duration(1000)
+          .attr("x", function(d) { return xCombo(d.score); })
+          .attr("y", function(d) { return yCombo(d.variable); })
+          .attr("height", function(d) { return height - yCombo(d.variable); })
+          .attr("fill",function(d,i){
+            if (d.name == 'Mary') { return 'purple'; } 
+            else { 
+              if (+d.variable < cutScoreComboY) { return colors10(3); } //red
+              else {return colors10(0);} ;//blue  
+              }
+          }) ;
+
+        tip.html(function(d) {
+          return "<span style='color:white; font-size:12px'>" + d.name + "</span>"; });
+
+        
+        transitionCombo.select(".y.axis") // change the y axis
+          .call(yAxisCombo);
+      
+        transitionCombo.select(".yaxiscombo_label")
+           .text(yAxisLabel);
+
+        transitionCombo.select(".x.axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxisCombo);
+
+        transitionCombo.select(".xaxiscombo_label")
+         .text(xAxisLabel);
+      */
+  dataFileCombo="school.tsv";
+
+    d3.tsv(dataFileCombo, function(error, data){
+
+        if (error) throw error;
+
+        tsvCombo = data;
+
+        data.forEach(function(d){ 
+          d.variable = +d.score;
+          d.rank = +d.rank;
+          d.name= d.name;
+        });
+
+       var sortedNames = tsvCombo.sort(function (a,b) {return a.variable - b.variable; })
+                                .map(function(d) { return d.name; });
+
+      
+      xCombo.domain(sortedNames);
+      yCombo.domain ([0,50]);
+
+  
+      var barCrit = svgCombo.selectAll(".barCombo")
+        .data(data);
+
+      barCrit.enter().append("rect");
+
+      barCrit.exit().remove();
+
+      barCrit.attr("class", "barCombo")
+        .transition().duration(1000)
+        .attr("x", function(d) { return xCombo(d.name); })
+        .attr("width", xCombo.rangeBand())
+        .attr("y", function(d) { return yCombo(d.variable); })
+        .attr("height", function(d) { return height - yCombo(d.variable); })     
+        //.on('mouseover', tip.show)
+        //.on('mouseout', tip.hide)
+        .attr("fill",function(d,i){
+          if (d.name == 'Mary') { return 'purple'; } 
+          else { 
+            if (+d.variable < cutScoreComboY) { return colors10(3); } //red
+            else {return colors10(0);} ;//blue  
+            }
+        })
+      ;
+
+      tip.html(function(d) {
+          return "<span style='color:white; font-size:12px'>" + d.variable + "</span>"; });
+
+      yAxisCombo.tickValues([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
+      
+      transitionCombo.select(".y.axis.combo") // change the y axis
+        .call(yAxisCombo);
+      
+      transitionCombo.select(".yaxiscombo_label")
+         .text(yAxisLabel);
+
+      transitionCombo.select(".x.axis.combo")
+        .call(xAxisCombo);
+
+      updateCritLine(cutScoreComboY);
+    
+    });
+
+
+  }
+    
+};
+
+function checkCombo (myform) {
+
+    decision=getRadioValue(myform.elements['decision']);
+    scoreType=getRadioValue(myform.elements['scoreType']);
+    normGroup=getRadioValue(myform.elements['normGroup']);
+
+    checkDecision (decision, scoreType, normGroup );
+    
+};
+
+function updateCritLine(cutScoreInput) {
+
+  var cutScoreY = +cutScoreInput;
+
+  var transitionCombo = svgCombo.transition().duration(750);
+  var delay = function(d, i) { return i * 50; };
+
+   if (typeof critLnCombo == "undefined") {
 
       critLnCombo = svgCombo.append("line")
           .attr("class", "critLnCombo")
           .attr("x1", 0)
           .attr("x2", width)
-          .attr("y1", function(d) { return yCombo(cutScoreCombo); })
-          .attr("y2", function(d) { return yCombo(cutScoreCombo); })
+          .attr("y1", function(d) { return yCombo(cutScoreY); })
+          .attr("y2", function(d) { return yCombo(cutScoreY); })
           .style("stroke", "rgb(0, 0, 0)")
           .style("stroke-width","1")
           .style("shape-rendering","crispEdges")
@@ -214,7 +526,7 @@ function updateComboChart(decisionType) {
       svgCombo.append("g")
         .append("text")  
           .attr("class", "critLnComboText")    
-          .attr("y", yCombo(cutScoreCombo) - 10)
+          .attr("y", yCombo(cutScoreY) - 10)
           .attr("x", 5)
           .attr("dy", ".35em")
           .style("text-anchor", "start")   
@@ -223,38 +535,13 @@ function updateComboChart(decisionType) {
 
     }
 
-    /*  
-    transitionCombo.selectAll(".barCombo")
-      .delay(delay)
-      .attr("fill",function(d,i){        
-        if (d.name == 'Mary') { return 'purple'; } 
-        else { 
-          if (+d.variable < cutScoreCombo) { return colors10(3); } //red
-          else {return colors10(0);} ;//blue  
-        }
-      });
-
-    */
-
     transitionCombo.selectAll(".critLnCombo")
       .delay(delay)
-      .attr("y1", function(d) { return yCombo(cutScoreCombo); })
-      .attr("y2", function(d) { return yCombo(cutScoreCombo); }) ;
+      .attr("y1", function(d) { return yCombo(cutScoreY); })
+      .attr("y2", function(d) { return yCombo(cutScoreY); }) ;
 
     transitionCombo.selectAll(".critLnComboText")
       .delay(delay)
-      .attr("y", yCombo(cutScoreCombo) - 10) ;
+      .attr("y", yCombo(cutScoreY) - 10) ;
 
-    
-};
-
-function checkCombo (myform) {
-
-      decision=getRadioValue(myform.elements['decision']);
-      scoreType=getRadioValue(myform.elements['scoreType']);
-      normGroup=getRadioValue(myform.elements['normGroup']);
-
-      checkDecision (decision, scoreType, normGroup );
-
-     
-};
+}

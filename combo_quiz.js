@@ -23,13 +23,43 @@ function checkDecision(decisionP, scoreP, groupP ) {
 
   else if (decisionP=='D2') {
 
-      document.getElementById("comboResults").innerHTML = decisionP;
+    document.getElementById("comboResults").innerHTML = decisionP;
+
+    if (scoreP=='numCorrect' ) {
+
+      if (groupP == 'none') {
+
+          updateComboChart(decisionP);
+      }
+      else {
+        document.getElementById("comboResults").innerHTML = "Double check the norm group";
+      };
+    }
+
+    else {
+        document.getElementById("comboResults").innerHTML = "Double check the score type";
+    };
 
   }
 
   else if (decisionP=='D3') {
 
-      document.getElementById("comboResults").innerHTML = decisionP;
+    document.getElementById("comboResults").innerHTML = decisionP;
+
+    if (scoreP=='rank' ) {
+
+      if (groupP == 'school') {
+
+          updateComboChart(decisionP);
+      }
+      else {
+        document.getElementById("comboResults").innerHTML = "Double check the norm group";
+      };
+    }
+
+    else {
+        document.getElementById("comboResults").innerHTML = "Double check the score type";
+    };
 
   };
 

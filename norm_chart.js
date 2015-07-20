@@ -135,7 +135,7 @@ var loadData = function() {
 
     rect.exit().remove();
     
-    rect.attr('class', 'barNorm')
+    rect.attr('class', 'barNorm')      
       .attr("x", function(d) { return xNorm(d.pctRank); })
       .attr("width", barWidth - 2)
       .attr("y", function(d) { return yNorm(d.pctCorrect); })

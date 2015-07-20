@@ -145,6 +145,7 @@ var delay = function(d, i) { return i * 50; };
   if (decisionType == 'D1') {
 
       var yAxisLabel = "Percentile Rank";
+      var xAxisLabel = "Student Name";
       cutScoreComboY = 80;
 
   /*
@@ -237,6 +238,8 @@ var delay = function(d, i) { return i * 50; };
       tip.html(function(d) {
           return "<span style='color:white; font-size:12px'>" + d.variable + "</span>"; });
 
+      svgCombo.call(tip);
+
       yAxisCombo.tickValues([1,10, 20, 30, 40, 50, 60, 70, 80, 90, 99]);
       
       transitionCombo.select(".y.axis.combo") // change the y axis
@@ -248,6 +251,9 @@ var delay = function(d, i) { return i * 50; };
       transitionCombo.select(".x.axis.combo")
         .call(xAxisCombo);
 
+      transitionCombo.select(".xaxiscombo_label")
+         .text(xAxisLabel);
+
       updateCritLine(cutScoreComboY);
     
     });
@@ -257,6 +263,7 @@ var delay = function(d, i) { return i * 50; };
 
             
       var yAxisLabel = "Number Correct";
+      var xAxisLabel = "Student Name";
       cutScoreComboY = 45;
 
 /*
@@ -346,6 +353,8 @@ var delay = function(d, i) { return i * 50; };
 
       tip.html(function(d) {
           return "<span style='color:white; font-size:12px'>" + d.variable + "</span>"; });
+      svgCombo.call(tip);
+
 
       yAxisCombo.tickValues([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
       
@@ -358,6 +367,9 @@ var delay = function(d, i) { return i * 50; };
       transitionCombo.select(".x.axis.combo")
         .call(xAxisCombo);
 
+      transitionCombo.select(".xaxiscombo_label")
+         .text(xAxisLabel);
+
       updateCritLine(cutScoreComboY);
     
     });
@@ -367,11 +379,12 @@ var delay = function(d, i) { return i * 50; };
   else if (decisionType == 'D3') {
 
       
-      var yAxisLabel = "Student Rank";
-      var xAxisLabel = "Number Correct Score";
+      var xAxisLabel = "Student Rank";
+      var yAxisLabel = "Number Correct";
 
-      cutScoreComboY = 20;
-      cutScoreComboX = 35;
+      
+      cutScoreComboX = 20;
+      cutScoreComboY = 35;
     /*
       var data = []; 
       tsvCombo.forEach(function(d){ 
@@ -428,21 +441,25 @@ var delay = function(d, i) { return i * 50; };
 
     d3.tsv(dataFileCombo, function(error, data){
 
-        if (error) throw error;
+      if (error) throw error;
 
         tsvCombo = data;
 
         data.forEach(function(d){ 
           d.variable = +d.score;
           d.rank = +d.rank;
+          d.rankName = d.rank;
           d.name= d.name;
         });
 
-       var sortedNames = tsvCombo.sort(function (a,b) {return a.variable - b.variable; })
+      var sortedNames = tsvCombo.sort(function (a,b) {return a.variable - b.variable; })
                                 .map(function(d) { return d.name; });
 
+      var rankNames = tsvCombo.map(function(d) { return d.rankName; });
+
       
-      xCombo.domain(sortedNames);
+      
+      xCombo.domain(rankNames);
       yCombo.domain ([0,50]);
 
   
@@ -454,8 +471,7 @@ var delay = function(d, i) { return i * 50; };
       barCrit.exit().remove();
 
       barCrit.attr("class", "barCombo")
-        .transition().duration(1000)
-        .attr("x", function(d) { return xCombo(d.name); })
+        .attr("x", function(d) { return xCombo(d.rankName); })
         .attr("width", xCombo.rangeBand())
         .attr("y", function(d) { return yCombo(d.variable); })
         .attr("height", function(d) { return height - yCombo(d.variable); })     
@@ -470,10 +486,18 @@ var delay = function(d, i) { return i * 50; };
         })
       ;
 
+
       tip.html(function(d) {
-          return "<span style='color:white; font-size:12px'>" + d.variable + "</span>"; });
+          return "<span style='color:white; font-size:12px'>" + d.name + "</span>"; });
+      svgCombo.call(tip);
+
+      barCrit
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
 
       yAxisCombo.tickValues([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
+
+      //xAxisCombo.tickValues(rankNames);
       
       transitionCombo.select(".y.axis.combo") // change the y axis
         .call(yAxisCombo);
@@ -483,6 +507,9 @@ var delay = function(d, i) { return i * 50; };
 
       transitionCombo.select(".x.axis.combo")
         .call(xAxisCombo);
+
+      transitionCombo.select(".xaxiscombo_label")
+         .text(xAxisLabel);
 
       updateCritLine(cutScoreComboY);
     

@@ -8,6 +8,7 @@ function checkDecision(decisionP, scoreP, groupP ) {
         if (groupP == 'classroom') {
 
             updateComboChart(decisionP);
+            document.getElementById("comboReactiveText").innerHTML = "Mary did not score at the 80th percentile in her class, therefore she is <b>not</b> eligible to enroll in Calculus. <br> Four students in her class had scores at or above 80% of the Math I scores in their class and are eligible to enroll in Calculus";
         }
         else {
           document.getElementById("comboResults").innerHTML = "Double check the norm group";

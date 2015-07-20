@@ -9,7 +9,7 @@ var colors20 = d3.scale.category20().domain(d3.range(0,20));
 
 var cutScore=getCutScore();
 
-var critLine;
+var critLineCrit;
 
 var xCrit = d3.scale.ordinal()
     .rangeRoundBands([0, width], 0.1);
@@ -148,10 +148,10 @@ function updateCriterion(myRadio) {
     cutScore = myRadio.value;
 
 
-    if (typeof critLine == "undefined") {
+    if (typeof critLineCrit == "undefined") {
 
-      critLine = svgCrit.append("line")
-          .attr("class", "critLine")
+      critLineCrit = svgCrit.append("line")
+          .attr("class", "critLineCrit")
           .attr("x1", 0)
           .attr("x2", width)
           .attr("y1", function(d) { return yCrit(cutScore); })
@@ -186,7 +186,7 @@ function updateCriterion(myRadio) {
         }
       });
 
-    transitionCrit.selectAll(".critLine")
+    transitionCrit.selectAll(".critLineCrit")
       .delay(delay)
       .attr("y1", function(d) { return yCrit(cutScore); })
       .attr("y2", function(d) { return yCrit(cutScore); }) ;

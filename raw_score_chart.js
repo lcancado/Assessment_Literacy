@@ -1,7 +1,7 @@
 
-var margin = {top: 20, right: 20, bottom: 60, left: 60},
+var margin = {top: 20, right: 20, bottom: 10, left: 60},
     width = 860 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    height = 400 - margin.top - margin.bottom;
 
 
 var colors10 = d3.scale.category10().domain(d3.range(0,10));

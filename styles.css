@@ -1,18 +1,27 @@
 html, body {
   margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:40px;
+  margin-top:20px;
   color: #333;
-  font-family: Verdana, Geneva, sans-serif;
-  font: 16px;  
-  line-height: 150%;     
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 150%;  
+
 }
 
 p { 
   line-height: 150%; 
 }
 
-p.question {
-  font-style: italic;
+p.question {  
   width: 80%; 
+  margin:0 auto;
+  text-align: justify;
+}
+
+#comboReactiveText {  
   margin:0 auto;
   text-align: justify;
 }
@@ -121,7 +130,7 @@ button {
 
 #decisionTbl {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse;  
 }
 
 #decisionTbl th{
@@ -132,3 +141,197 @@ button {
     padding-right: 2px;
 }
 
+#comboTableDiv {
+    font-size: 14px;  
+    line-height: 125%; 
+}
+
+
+
+/* #### bootstrap Form #### */
+.bootstrap-frm {
+    margin-left:auto;
+    margin-right:auto;
+
+    width: 100%;
+    background: #FFF;
+    padding: 10px 20px 10px 20px;
+    font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #666;
+    text-shadow: 1px 1px 1px #FFF;
+    border:1px solid #DDD;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+.bootstrap-frm h1 {
+    font: 25px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom: 1px solid #DADADA;
+    margin: -10px -30px 30px -30px;
+    color: #666;
+}
+.bootstrap-frm h1>span {
+    display: block;
+    font-size: 11px;
+}
+.bootstrap-frm label {
+    display: block;
+    margin: 0px 0px 5px;
+}
+.bootstrap-frm label>span {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: #333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+.bootstrap-frm input[type="text"], .bootstrap-frm input[type="email"], .bootstrap-frm textarea, .bootstrap-frm select{
+    border: 1px solid #CCC;
+    color: #666;
+    height: 20px;
+    line-height:15px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 5px 0px 5px 5px;
+    width: 70%;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;    
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.bootstrap-frm select {
+    background: #FFF url('down-arrow.png') no-repeat right;
+    background: #FFF url('down-arrow.png') no-repeat right;
+    appearance:none;
+    -webkit-appearance:none; 
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    width: 70%;
+    height: 35px;
+    line-height:15px;
+}
+.bootstrap-frm textarea{
+    height:100px;
+    padding: 5px 0px 0px 5px;
+    width: 70%;
+}
+.bootstrap-frm .button {
+    background: #FFF;
+    border: 1px solid #CCC;
+    padding: 10px 25px 10px 25px;
+    color: #333;
+    border-radius: 4px;
+}
+.bootstrap-frm .button:hover {
+    color: #333;
+    background-color: #EBEBEB;
+    border-color: #ADADAD;
+}
+
+
+
+/* - - - - Style sheet from http://worrydream.com/ExplorableExplanations/ - - - - - - - - */
+
+
+/* generic 
+
+* { margin:0; padding:0; }
+
+body {
+    background: #ffffff;
+    font: 14px "Optima", "Helvetica", "Arial", sans-serif;
+    font-weight: normal;
+    color: #666;
+    
+    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:40px;
+    text-align: left;
+    line-height: 1.5;
+    position:relative;
+}
+
+h1 {
+    font-size: 30px;
+    font-family: "CandalRegular", "Helvetica", "Arial", sans-serif;
+    margin-top:40px;
+    margin-bottom:-6px;
+  font-weight: normal;
+  color: #600;
+  text-align: center;
+}
+
+h2 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-size: 26px;
+    font-family: "CandalRegular", "Helvetica", "Arial", sans-serif;
+  font-weight: normal;
+  color: #600;
+  border:none;
+  text-align: center;
+}
+
+h3 {
+  color: #777;
+    margin-bottom: 40px;
+    font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+}
+
+h4 {
+    margin-top: 20px;
+    margin-bottom: -5px;
+    font-size: 16px;
+    font-family: "CandalRegular", "Helvetica", "Arial", sans-serif;
+  font-weight: normal;
+  color: #600;
+}
+
+ul {
+    margin-left:30px
+}
+
+li {
+    margin-top:5px;
+}
+
+p {
+    margin-top:12px;
+    margin-bottom:12px;
+}
+
+strong {
+    font-weight:bold;
+  color: #0a0;
+  color: #000;
+}
+
+img { border:none; }
+
+a { text-decoration:underline; color: #933; border:none; }
+a:hover   { text-decoration:underline; }
+
+.sidebar {
+  position:absolute;
+  left:650px;
+  width:160px;
+  font-size:11px;
+  color:#aaa;
+}
+
+
+
+*/

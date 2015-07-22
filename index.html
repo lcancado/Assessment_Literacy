@@ -49,13 +49,13 @@
 
 <br>
 
-<p>Results from tests or assessments can be used to make different types of decisions. The specific decision we want to make based on a test result will determine how we interpret these results.</p>
+<p>Results from tests or assessments can be used to make different types of decisions. The specific decision we want to make based on a test result will determine how we interpret the test results.</p>
 
-<p>Sometimes we want to compare students with their peers or rank-order them. When we use tests to make these types of decision we say we are making a <b>norm-referenced</b> or <b>normative</b> interpretation of test results. </p>
+<p>Sometimes we want to compare students with their peers or rank-order them. When we use tests to make this type of decision we say we are making a <b>norm-referenced</b> or <b>normative</b> interpretation of test results.</p>
 
-<p>Some tests are used to evaluate a person's mastery of a subject, usually by using cut scores to define proficiency or pass/fail decisions. When tests are used to decide if a student meets a certain pre-defined standard or criteria, we say we are making a <b>criterion-referenced</b> interpretation of test results.</p>
+<p>Some tests are used to evaluate a person's mastery of a subject, usually by using cut-scores to define proficiency or pass/fail decisions. When tests are used to decide if a student meets a certain pre-defined standard or criteria, we say we are making a <b>criterion-referenced</b> interpretation of test results.</p>
 
-<p>In this interactive module we will explore the <u>concepts</u>, <u>appropriate uses</u>, and <u>limitations</u> of both norm-referenced and criterion-referenced interpretations of test results.  </p>
+<p>In this interactive module we will use an explorable example to learn the basic <u>concepts</u>, <u>uses</u>, and <u>limitations</u> of both norm-referenced and criterion-referenced interpretations of test results.  </p>
 
 <br>
 <center><h3>Mary Masters Math</h3></center>
@@ -78,7 +78,8 @@
 <br>
 
 
-<p class="question">How can we use Mary's test score to decide if she can move on to Math II without remediation and if she will receive a prize for being a top performer in comparison to her schoolmates? <b>Let's find out! </b></p>
+<p class="question"><i>How can we use Mary's test score to decide if she can move on to Math II without remediation? How can we use that same score to decide if she will receive a prize for being a top performer in comparison to her schoolmates? </i></p>
+<p style="text-align: center;"><b>Let's find out!</b></p>
 
 
 <br>
@@ -94,15 +95,19 @@
 <br>
 <h3>Raw Score and Scaled Score</h3>
 
-<p id="scoring">Mr. Smith, the math teacher, computes the Math I test score by counting the <b>number of correct</b> answers, with no penalty for incorrect answers. We call the <u>number correct</u> a <b>raw score</b> because it is based solely on the number of correctly answered items on the test without any transformation.</p>
+<p id="scoring">Mr. Smith, Mary's math teacher, computes the Math I test score by counting the <b>number of correct</b> answers, with no penalty for incorrect responses. We call the <u>number correct</u> a <b>raw score</b> because it is based solely on the number of correctly answered items on the test without any transformation.</p>
 
 <p>A raw score might be difficult to interpret and compare since tests can have different number of questions and total number of points. A simple way to make sense of a raw score is to put it on a percent scale. When we transform the raw score into <u>percent correct</u> we produce a <b>scaled score</b>.</p>
 
 
-<p>For example, if a student got <span data-var="numCorrect" class="TKAdjustableNumber" data-min="0" data-max="50"> questions</span> right out of the total 50 questions on the test, he or she would score <b><span data-var="pctCorrectExample" data-format="%.0f"></span>%</b> correct on the test. </p> 
+<p>If a student got <span data-var="numCorrect" class="TKAdjustableNumber" data-min="0" data-max="50"> questions</span> right out of  50 on the test, the student would score <b><span data-var="pctCorrectExample" data-format="%.0f"></span>%</b> correct on the test. </p> 
 
 
-<p>In our example, let's assume Mary got <b><span data-var="numCorrectMary"> </span></b> correct questions (raw score) or <b><span data-var="pctCorrectMary"></span>%</b> correct (scaled score) on the test. </p>
+<p>In our example, let's assume Mary got <b><span data-var="numCorrectMary"> </span></b> correct questions (raw score) or <b><span data-var="pctCorrectMary"></span>%</b> correct (scaled score) on the test.</p>
+
+<p style="font-style: italics; text-align: center;"><i>Does this score tell you if she won any of the Math prizes?</i></p>
+
+
 
 <!--
 <p><font color=red>Activity 1:</font> Suppose Mary took two tests and her final score will be highest of the two. If she got 53 out of 60 total points on the first test and 45 out of 50 on the second, which test will be used to compute her final score?</p>
@@ -132,16 +137,9 @@
 <br>
 
 
-<p class="question">We now know that Mary scored <span data-var="pctCorrectMary"></span>% correct on her Math I test, but does this score tell you if she won any of the 9th grade Math prizes?</p>
-
-<center>
-
-<p><b>No!</b></p>
+<p class="question"><b>No!</b> We don't know if Mary won a prize because her raw and percent correct scores tells us nothing about how her score compares to her schoolmates.</p>
 
 
-<p>We need to know how Mary's score compares to her schoolmates' to know if she won a prize or not.</p>
-
-</center>
 
 <br>
 
@@ -168,22 +166,23 @@ Score type: <select id="rawscore" type='select' onchange='updateData();'>
 	<input class="sortRaw" id="sortRaw" type="checkbox" value="sort">Sort</input> 
 </center>
 
-<div class="rawScoreGraph"></div>
+<div class="rawScoreGraph" style="height:100%;"></div>
 <script src="raw_score_chart.js"></script>
 
 
 
-<p class="question">There are 20 students in Mary's class, so to place in the top 10% she would need to be one of the 2 top students in her class. Looking at the sorted chart above we can see that Mary did not place in the top 10% of her class. <b>Can Mary still win a Math prize?</b></p>
+<p>There are 20 students in Mary's class, so to place in the top 10% she would need to be one of the top 2 students in her class. Looking at the sorted chart above we can see that <u>Mary did not rank in the top 10% of her class</u>.</p>
 
+<p class="question" style="text-align: center; font-style: italic;">Can Mary still win a Math I prize?</p>
 
 
 <br>
 
 <p>To answer this question we first need to define Mary's <u>norm group</u>. A <b>norm group</b> is any group we wish to make comparisons against.</p>
 
-<p>In order to quickly understand how a particular score compares to other scores in a norm group we usually use a type of norm-referenced score called <b>percentile rank</b>. If a raw score of 15 correspond to a percentile of 30, it means that 30% of the norm group had raw scores lower than 15.</p>
+<p>In order to quickly understand how a particular score compares to other scores in a norm group we usually use a type of norm-referenced score called <b>percentile rank</b>. If a raw score of 15 correspond to a percentile of 30, it means that 30% of the norm group had raw scores lower than 15. Similarly, when we say that a student's score is at the 80th percentile we are saying that the student's performance on the test was equal to or better than 80% of the students in the norm group.</p>
 
-<p><u>Percentile ranks are different from percent correct scores!</u>The percentile rank shows a student's relative standing or rank in a group. The percent correct score indicates what percent of the total possible points a student got on a test. </p>
+<p><u>Percentile ranks are different from percent correct scores!</u>The percentile rank indicates a student's relative standing in a group. The percent correct score indicates what percent of the total possible points a student got on a test. </p>
 
 
 
@@ -194,16 +193,17 @@ Score type: <select id="rawscore" type='select' onchange='updateData();'>
 -->
 
 <br>
-<p><b>Quiz:</b> We know that the results of the Math I test will be used to give prizes to students who scored at the top 10 percent of 9th grade students in Math I at ABC High. What is the most appropriate norm group for this kind of decision?</p>
 
-<form name="norm_group_quiz">
+
+<form name="norm_group_quiz" class="bootstrap-frm">
+<p><b>Quiz:</b> We know that the results of the Math I test will be used to give prizes to students who scored at the top 10% of 9th grade students in Math I at ABC High. <i>What would be the most appropriate norm group for this kind of decision?</i></p>
  <ol type="a">
   <li><input type="radio" name="q1" value="Mary's 9th grade class">Mary's 9th grade class</li>
   <li><input type="radio" name="q1" value="All ABC High's 9th grade students in the current school year">All ABC High's 9th grade students in the current school year</li>
   <li><input type="radio" name="q1" value="All ABC High's students">All ABC High's students</li>
   <li><input type="radio" name="q1" value="All current and past ABC High's 9th grade students who have taken this test">All current and past ABC High's 9th grade students who have taken this test</li>
 </ol> 
-<input type="button" value="Check Answer" onClick="checkAnswer(this.form)">
+<center><input type="button" class="button" value="Check Answer" onClick="checkAnswer(this.form)"></center>
 <p id="quizResults"> </p>
 </form>
 
@@ -246,7 +246,7 @@ Score type: <select id="rawscore" type='select' onchange='updateData();'>
 -->
 
 <br>
-<p><font color=red>Activity 2:</font> See how Mary's percentile rank changes when you change the norm group and find out if she won a Math I prize.</p>
+<p><font color=red>Activity 2:</font> See how Mary's percentile rank changes when you change the norm group. <i>Did Mary win a Math I prize?</i></p>
 
 <!--
 <p>[<font color=blue>Graphic 3:</font> Select Norm Group (class or school) and show Mary's placement in comparison to the class and school norm groups.]</p>
@@ -273,17 +273,17 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 -->
 
 
-<center><p><i>Did Mary win a Math I prize?</i></p>
+<center>
 
-
-<p><b>Yes!</b></p>
+	<p> </p>
 </center>
+
 <br>
 
-<p class="question">We now know that Mary won a Math I prize since she placed in the top 10% of all 9th graders at ABC High even though she was not in the top 10% of her class. But can you tell if she will be able to move on to Math II or if she will need remediation?</p>
+<p class="question"><b>Yes!</b> Mary won a Math I prize since she placed in the top 10% of all 9th graders at ABC High even though she was not in the top 10% of her class.</p>
 
 <center>
-<p><b>No!</b></p>
+<p><i>Can you tell if she will be able to move on to Math II without remediation?</i></p>
 </center>
 
 <br>
@@ -292,43 +292,43 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 
 <p>Placement, mastery or pass/fail decisions are usually made by comparing the student's performance on a test against a fixed set of pre-determined criteria or learning standards. </p>
 
-<p>Test performance is summarized as the student's test score, and the pre-determined criteria is usually defined as a minimum <b>cut score</b> that the student must obtain to demonstrate proficiency in the subject matter.</p>
+<p>Test performance is summarized as the student's test score, and the pre-determined criteria is usually defined as a minimum <b>cut-score</b> that the student must obtain to demonstrate proficiency in the subject matter.</p>
 
-<p>When we compare test scores against a cut score to make placement, mastery or pass/fail decisions we are making a <b>criterion-referenced</b> interpretation of test scores.</p>
+<p>When we compare test scores against a cut-score to make placement, mastery or pass/fail decisions we are making a <b>criterion-referenced</b> interpretation of test scores.</p>
 
 
 <br>
 
 <!--
-<h3>Cut Scores</h3>
+<h3>cut-scores</h3>
 
-<p>A <b>cut score</b> is a point on the test score scale used for classifying the test takers into groups on the basis of their scores.</p>
-<p> In general, criterion-referenced tests involve a cut score where the examinee passes if his or her score exceeds the cut score and fails if it does not. However, <u>the criterion is not the cut score</u>, the criterion is the domain of subject matter that the test is designed to assess.</p> 
+<p>A <b>cut-score</b> is a point on the test score scale used for classifying the test takers into groups on the basis of their scores.</p>
+<p> In general, criterion-referenced tests involve a cut-score where the examinee passes if his or her score exceeds the cut-score and fails if it does not. However, <u>the criterion is not the cut-score</u>, the criterion is the domain of subject matter that the test is designed to assess.</p> 
 
-<p>In some cases, tests may have multiple cut scores representing tiered levels of proficiency such as <i>basic</i>, <i>proficient</i>, or <i>advanced</i>. Cut scores may also be applied in certification and licensing exams that are used to determine whether examinees are professionally <i>"qualified"</i>.</p>
+<p>In some cases, tests may have multiple cut-scores representing tiered levels of proficiency such as <i>basic</i>, <i>proficient</i>, or <i>advanced</i>. cut-scores may also be applied in certification and licensing exams that are used to determine whether examinees are professionally <i>"qualified"</i>.</p>
 
 
-<p>Most criterion-referenced assessments use a <b>cut score</b> which determines success or failure based on a pre-established percent correct. Criterion-referenced scores tell us how well the examinee performed against an objective or standard, as opposed to against other examinees. For example, a driver's test intends to determine whether a person is knowledgeable and capable enough to be allowed on the road, not whether one driver is more accomplished than another.</p>
+<p>Most criterion-referenced assessments use a <b>cut-score</b> which determines success or failure based on a pre-established percent correct. Criterion-referenced scores tell us how well the examinee performed against an objective or standard, as opposed to against other examinees. For example, a driver's test intends to determine whether a person is knowledgeable and capable enough to be allowed on the road, not whether one driver is more accomplished than another.</p>
 
 
 <br>
 <h3>Standard Setting</h3>
 
-<p>The process used to determine cut scores is formally known as <b>standard setting</b>.</p> 
+<p>The process used to determine cut-scores is formally known as <b>standard setting</b>.</p> 
 
-<p>Who defines the cut score?</p>
+<p>Who defines the cut-score?</p>
 
 <ul>
-	<li>For tests such as teacher designed classroom assessments, cut scores might be defined by the teacher.</li>
-	<li>For final exams, cut scores might be defined by the school.</li>
-	<li>For commercial and high-stakes tests, the test developer will form a standard-setting panel by recruiting a group of experts, such as psychometricians (specialists in the science of educational measurement) or teachers from a relevant content area. The panel will then use one or more research-based methods, developed by psychometricians and academics, for setting testing standards and determining cut scores.</li>
+	<li>For tests such as teacher designed classroom assessments, cut-scores might be defined by the teacher.</li>
+	<li>For final exams, cut-scores might be defined by the school.</li>
+	<li>For commercial and high-stakes tests, the test developer will form a standard-setting panel by recruiting a group of experts, such as psychometricians (specialists in the science of educational measurement) or teachers from a relevant content area. The panel will then use one or more research-based methods, developed by psychometricians and academics, for setting testing standards and determining cut-scores.</li>
 </ul>
 
 <br>
 
 
-<p><font color=red>Activity 4:</font> Defining a cut score. Choose a cut score for the Math I final test. Did Mary pass or fail the test based on this cut score? </p>
-<p>[<font color=blue>Graphic 4:</font> Selecting a cut score] </p>
+<p><font color=red>Activity 4:</font> Defining a cut-score. Choose a cut-score for the Math I final test. Did Mary pass or fail the test based on this cut-score? </p>
+<p>[<font color=blue>Graphic 4:</font> Selecting a cut-score] </p>
 
 <form id="cutScoreSelector">
 <input type="radio" name="cutScore" value="5">5
@@ -344,14 +344,14 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 </form>
 
 <p>
-{<u>Reactive text:</u> Mary scored XX points or YY% on the test. Since Mary scored above the cut score of [KK], she has demonstrated [sufficient/insufficient] knowledge of 9th grade math curriculum and [will/will not] be able to move on to Math II.}</p>
+{<u>Reactive text:</u> Mary scored XX points or YY% on the test. Since Mary scored above the cut-score of [KK], she has demonstrated [sufficient/insufficient] knowledge of 9th grade math curriculum and [will/will not] be able to move on to Math II.}</p>
 
 <div class="bubbleGraph"></div>
 <script src="bubble_chart.js"></script>
 
 -->
 
-<p><font color=red>Activity 3:</font> In our example, the minimum criteria for moving on to Math II without remediation is a cut score of 35. Use the chart below to define the cut score and find out if Mary met the criteria. You can also select different cut scores and see how it impacts Mary and her classmates.</p>
+<p><font color=red>Activity 3:</font> In our example, the minimum criteria for moving on to Math II without remediation is a cut-score of 35. Use the chart below to set this cut-score. <i>Will Mary be able move on to Math II without remediation? How many students in her class will need remediation before being eligible to move on to Math II?</i></p>
 
 
 <!--
@@ -360,7 +360,7 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 
 
 <form id="cutScoreSelector">
-Cut Score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="5">5</input> 
+Cut-score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="5">5</input> 
 <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="10">10</input> 
 <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="15">15</input> 
 <input type="radio" name="cutScore" class="cutScoreRadio" onclick="updateCriterion(this);" value="20">20</input> 
@@ -382,24 +382,22 @@ Cut Score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 <script type="text/javascript" src="criterion_chart.js"></script>
 
 
-<center>
-
-<p><i>Will Mary move on to Math II without remediation?</i></p>
-<p><b>Yes!</b></p>
-
-</center>
 <br>
 
-<p class="question">Mary scored 40 points or 80% on the Math I test. Since she scored above the cut score of 35, she has demonstrated sufficient mastery of Math I and can move on to Math II without the need for remediation.</p>
+<p class="question"><b>Yes!</b> Since Mary scored above the cut-score of 35, we assume she has demonstrated sufficient mastery of Math I and can move on to Math II without remediation. However, 11 students in Mary's class did not meet the predefined criteria and will need remediation before being eligible to enroll in Math II.</p>
 
 
 <br>
 <br>
 <h3>Combining Norm- and Criterion-referenced Interpretations</h3>
 
-<p>We can, and often do, interpret a single test score both in terms of norm- and criterion-referencing. However, these interpretations are distinct and should not be confused.</p>
+<p>Generally speaking, it is not the test but the interpretation of its results that is norm-referenced or criterion-referenced. A test might have been built to provide criterion-referenced interpretation of a student's mastery of a subject but after many administrations it could be used to make a norm-referenced interpretation, that is, to compare the student's performance to that of other test-takers.</p>
 
-<p><font color=red>Activity 4:</font> Now we will combine both types of interpretations of Mary's test score to apply your knowledge of criterion- and norm-referenced interpretations.</p>
+<p>Additionally, we can, and often do, interpret a single test score both in terms of norm- and criterion-referencing.</p>
+
+<br>
+
+<p><font color=red>Activity 4:</font> Now we will look at some sample questions that use both criterion-referenced and norm-referenced interpretation of test scores to apply the knowledge you have gained in this module.</p>
 
 <!--
 <p>Suppose now that the decision about advancing students to Math II depents on their percentile rank. Only students who scored at the top 70th percentile will advance to Math II. How many students in Mary's class and in the school were able to advance based on this criterion?
@@ -409,69 +407,64 @@ Cut Score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 
 <p>You might be starting to realize that norm and criterion-referenced interpretations are distinct from norm- and criterion referenced scores. You can use norm-referenced scores to make a criterion-referenced decision. We did that when we decided that students at the 70th percentile would advance to Math II.</p>
 
-<p>Now suppose that there are only 2 Math II classes with 20 spots each, so only 40 students will be able to avance to Math II. Students must still meet the defined cut score for proficiency but we will have to select the top 40 students who met this criteria. We now must use both the norm-referenced and the criterion-referenced scores to decide who will advance.</p>
+<p>Now suppose that there are only 2 Math II classes with 20 spots each, so only 40 students will be able to avance to Math II. Students must still meet the defined cut-score for proficiency but we will have to select the top 40 students who met this criteria. We now must use both the norm-referenced and the criterion-referenced scores to decide who will advance.</p>
 
 -->
 
 <ol type="1">
-	<li>Select a decision from the list under "Decision Type"</li>
-	<li>Select the score type(s) that would be most appropriate for this decision from the list of score types</li>
-	<li>Select the norm group (if needed) that would be most appropriate for this decision</li>
-	<li>Check the chart below to see how the score type, score value and norm group impacted Mary and her classmates in terms of the decision type you selected. 
+	<li>Select a <u>question</u> you want to answer from the list under "Decision Type".</li>
+	<li>Select the <u>score type</u> that would be most appropriate for this decision from the list under "Score Type".</li>
+	<li>Select the <u>norm group</u> (use none if not needed) that would be most appropriate for the chosen question.</li>	
+	<li>Click "Submit" to update the chart below and see how the score type and norm group selected impacted Mary and her classmates in terms of the decision you want to make and find the answer to the question you selected.
 </ol>
 
 <br>
 
-<form name="comboForm">
+<div id="comboTableDiv">
+
+<form name="comboForm" class="bootstrap-frm">
 <table id="decisionTbl">
 <tr>
 <th>Decision Type</th>
 <th>Score Type</th>
 </tr>
 <tr>
-<td style="width:70%; padding-left: 5px;">
- <input type="radio" name="decision" value="D1">Suppose that students who have scores at or above 80% of the Math I scores from other students in their class are eligible to enroll in Calculus. Would Mary be eligible for this advanced Math class? How many students in her class would be eligible to enroll in Calculus? 
+<td style="width:80%; padding-left: 5px; padding-top: 10px; ">
+ <input type="radio" name="decision" value="D1" onclick="clearComboRadios(this.form);">Suppose that students who have scores at or above 80% of the Math I scores from other students in their class are eligible to enroll in Calculus. <i>Would Mary be eligible for this advanced Math class? How many students in her class would be eligible to enroll in Calculus?</i> 
   <br><br>
-  <input type="radio" name="decision" value="D2">Suppose that the Math prizes will be given to 9th grade students who scored 45 or more points in the Math I test. Will Mary get a prize? </input>
+  <input type="radio" name="decision" value="D2" onclick="clearComboRadios(this.form);">Suppose that the Math prizes will be given to 9th grade students who scored 45 or more points in the Math I test. <i>Would Mary get a prize? How many students in her class would get a prize?</i> </input>
   <br><br>
- <input type="radio" name="decision" value="D3">Suppose that there is only one Math II classes with 20 spots, so only the top twenty 9th grade students in Math I at ABC High will be able to enroll in Math II. Students must still meet the cut score criteria of 35 points to enroll. Will Mary be able to enroll in Math II without remediation?
-  <br><br>
+ <input type="radio" name="decision" value="D3" onclick="clearComboRadios(this.form);">Suppose that there is only one Math II classes with 20 spots, so only the top twenty 9th grade students in Math I at ABC High will be able to enroll in Math II. (Students must still meet the cut-score criteria of 35 points to enroll.) <i>Would Mary be able to enroll in Math II without remediation?</i>
+  
   
 </td>
 
-<td style="width:30%; padding-left: 40px; ">
-	<input type="checkbox" name="scoreType" value="pctCorrect">Percent correct</input>
+<td style="width:20%; padding-top: 10px; padding-left: 3%; vertical-align: top;">
+	<input type="radio" id="scoreType" name="scoreType" value="pctCorrect">Percent correct</input>
   	<br><br>
-  	<input type="checkbox" name="scoreType" value="numCorrect">Number correct</input>
+  	<input type="radio" id="scoreType" name="scoreType" value="numCorrect">Number correct</input>
   	<br><br>
-  	<input type="checkbox" name="scoreType" value="percentile">Percentile rank</input>
+  	<input type="radio" id="scoreType" name="scoreType" value="percentile">Percentile rank</input>
   	<br><br>
-  	<input type="checkbox" name="scoreType" value="rank">Student rank (Top)</input>
+  	<input type="radio" id="scoreType" name="scoreType" value="rank">Student rank (Top)</input>
+
 </td>
 </tr>
 <tr>
-	<td colspan=2 style="padding-top: 20px; text-align: center;"><b>Norm Group:</b> <input type="radio" name="normGroup" value="classroom">Class</input> <input type="radio" name="normGroup" value="school">School</input> <input type="radio" name="normGroup" value="none">None</input> 
+	<td colspan=2 style="padding-top: 10px; text-align: center;"><b>Norm Group:</b> <input type="radio" id="normGroup" name="normGroup" value="classroom">Class</input> <input type="radio" id="normGroup" name="normGroup" value="school">School</input> <input type="radio" id="normGroup" name="normGroup" value="none">None</input> 
 	</td>
 </tr>
 
 <tr>
-	<td colspan=2 style="padding-left: 5px; padding-top: 20px; text-align: center;"> <input type="button" value="Submit" onClick="checkCombo(this.form);">
+	<td colspan=2 style="padding-left: 5px; padding-top: 10px; text-align: center;"> <input type="button" class="button" value="Submit" onClick="checkCombo(this.form);">
 		<br>
 		<p id="comboResults"> </p>
-
-
 	</td>
 </tr>
-
 </table>
 </form>
-
 <br>
-<p>Norm and Criterion-referenced interpretations - Graphic and reactive text will change based on the input from the form above</p>
-<br>
-
 <div class="comboGraph"></div>
-
 <script src="combo_chart.js"></script>
 
 <p id="comboReactiveText"> </p>
@@ -482,11 +475,12 @@ Reactive text:</u> Mary scored XX points or YY% on the test. She scored at the [
 <br><br>
 Mary [did/did not] achieve [Math prize criteria], therefore she [did/did not] win the Math prize. 
 <br><br>
-Additionally, since Mary scored [above/below] the cut score of [KK], she has demonstrated [basic/proficient/advanced] knowledge of 9th grade math curriculum and [passed/failed] the test.
+Additionally, since Mary scored [above/below] the cut-score of [KK], she has demonstrated [basic/proficient/advanced] knowledge of 9th grade math curriculum and [passed/failed] the test.
 </p>
 
 -->
 
+</div>
 
 <br>
 <br>
@@ -514,7 +508,7 @@ Additionally, since Mary scored [above/below] the cut score of [KK], she has dem
 <p>We made a <u>combined</u> norm- and criterion-referenced interpretation of Mary's test results when:</p>
 
 <ul>
- 	<li>we used her percentile rank (norm) and the pre-defined cut score (criterion) to decide if she would move on to Math II when there were only a limited number of spots available.</li>
+ 	<li>we used her percentile rank (norm) and the pre-defined cut-score (criterion) to decide if she would move on to Math II when there were only a limited number of spots available.</li>
 </ul>
 
 <!--
@@ -539,9 +533,6 @@ Additionally, since Mary scored [above/below] the cut score of [KK], she has dem
 <p>"Although loads of educators refer to "criterion-referenced tests" and "norm-referenced tests," there are, technically, no such creatures. Rather, there are criterion- and norm-referenced interpretations of students' test performances. For example, educators in a school district might have built a test to yield criterion-referenced interpretations, used the test for several years and, in the process, gathered substantial data regarding the performances of district students. As a consequence, the district's educators could build normative tables permitting norm-referenced interpretations of the test which, although born to provide criterion-referenced inferences, can still permit meaningful norm-referenced interpretations." Popham, W. James. 2011. <i>Classroom Assessment: What Teachers Need to Know (Sixth Edition)</i>. Boston: Pearson Education, Inc. pp. 46-8.</p>
 -->
 
-<br>
-<br>
-<br>
 
 </div> <!--closing CritNormModule div tag-->
 </body>

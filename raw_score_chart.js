@@ -62,7 +62,7 @@ d3.tsv("classroom.tsv", function(error, data){
       .attr("transform", "translate(0," + height + ")")
       .call(xAxisRaw)
     .append("text")
-      .attr("class", "xaxis_label")
+      .attr("class", "xaxisraw axislabel")
       .attr("y", 45)
       .attr("x", width/2)
       .style("text-anchor", "middle")
@@ -72,7 +72,7 @@ d3.tsv("classroom.tsv", function(error, data){
       .attr("class", "y axis")
       .call(yAxisRaw)
     .append("text")
-      .attr("class", "yaxis_label")
+      .attr("class", "yaxisraw axislabel")
       .attr("transform", "rotate(-90)")
       .attr("y", 0 - margin.left)
       .attr("x", 0 - (height / 2))
@@ -93,20 +93,8 @@ d3.tsv("classroom.tsv", function(error, data){
       .attr("fill",function(d,i){
         if (d.name == 'Mary') { return 'purple'; }
         else {return colors10(0);}  
-      }) 
-      //.attr("fill",function(d,i){return colors10(i)} ) 
-      ;
+      }) ;
 
-
-  // The following code doesn't work :-( )
-  //bar.append("text")
-  //    .text(function(d) { return d.variable; })
-  //    .attr("text-anchor", "middle")
-  //    .attr("x", x.rangeBand()/2 )
-  //    .attr("y", 1)
-  //    .attr("font-family", "sans-serif")
-  //    .attr("font-size", "10px")
-  //    .attr("fill", "white")   ;
 
  //  Sort funtion
 
@@ -132,39 +120,7 @@ d3.tsv("classroom.tsv", function(error, data){
       .selectAll("g")
       .delay(delay);
 
-  /*    
-    if (this.checked ) {
-
-      var cutPercent = 90;
-
-      var critLine = svgRawChart.append("line")
-        .attr("class", "normLine")
-        .attr("x1", function(d) { return x(cutPercent); })
-        .attr("x2", function(d) { return x(cutPercent); })
-        .attr("y1", 0)
-        .attr("y2", height)
-        .style("stroke", "rgb(0, 0, 0)")
-        .style("stroke-width","1")
-        .style("shape-rendering","crispEdges")
-        .style("stroke-dasharray","10,10")      
-        ;
-
-      svgRawChart.append("g")
-        .append("text")  
-          .attr("class", "normLineText")    
-          .attr("y", -10)
-          .attr("x", x(cutPercent) + 5)
-          .attr("dy", ".35em")
-          .style("text-anchor", "middle")   
-          .style("font", "12px sans-serif")         
-          .text("Top 10%");
-    } 
-     else {
-      if (typeof yourvar != 'undefined') { }
-     }; 
-
-    */
-
+ 
   });
     
 
@@ -214,7 +170,7 @@ function updateData() {
     transition.select(".y.axis") // change the y axis
       .call(yAxisRaw);
 
-    transition.select(".yaxis_label")
+    transition.select(".yaxisraw.axislabel")
        .text(scoreType);
 
     transition.select(".x.axis")

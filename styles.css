@@ -15,6 +15,23 @@ p {
   line-height: 150%; 
 }
 
+select {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: inherit;
+}
+
+label {
+    float: left;
+    text-align: right;
+    padding-right: 10px;
+    color: #333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 p.question {  
   width: 80%; 
   margin:0 auto;
@@ -31,32 +48,43 @@ p.question {
   margin:0 auto;
 }
 
-.bar:hover {
+.question {
+  color: #800080;
+  font-style: italic;
+}
+
+.keyTerm {
+  color: #800080;
+  
+}
+
+.barNorm:hover,
+.barRaw:hover,
+.barCombo:hover,
+.barCrit:hover {
     fill: brown;
 }
 
-.barRaw:hover {
-    fill: brown;
-}
-
-.bar rect {
+.barNorm rect {
   fill: steelblue;
   shape-rendering: crispEdges;
 }
 
-.barRaw rect {
+.barRaw rect,
+.barCrit rect,
+.barCombo rect {
   shape-rendering: crispEdges;
 }
 
-.bar text {
+.barRaw text,
+.barNorm text,
+.barCrit text,
+.barCombo text {
   fill: #fff;
-  font: 10px sans-serif;
+  font-size: 10px; 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.barRaw text {
-  fill: #fff;
-  font: 10px sans-serif;
-}
 
 .axis path, 
 .axis line {
@@ -72,22 +100,24 @@ stroke-width: 2;
 fill: none;
 }
 
+.xaxisraw.axislabel,
+.yaxisraw.axislabel,
+.xaxisnorm.axislabel,
+.yaxisnorm.axislabel,
+.xaxiscrit.axislabel,
+.yaxiscrit.axislabel,
+.xaxiscombo.axislabel,
+.yaxiscombo.axislabel {
+    font-size: 12px; 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
 .axis text {
-    font: 12px sans-serif;
+    font-size: 11px; 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 
 
-
-label {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-button {
-  font-family: Verdana, Geneva, sans-serif;
-  font: 12px;  
-}
 
 
 .d3-tip {
@@ -155,7 +185,7 @@ button {
 
     width: 100%;
     background: #FFF;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 10px 10px 10px;
     font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #666;
     text-shadow: 1px 1px 1px #FFF;
@@ -190,7 +220,11 @@ button {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: bold;
 }
-.bootstrap-frm input[type="text"], .bootstrap-frm input[type="email"], .bootstrap-frm textarea, .bootstrap-frm select{
+
+.bootstrap-frm input[type="text"], 
+.bootstrap-frm input[type="email"], 
+.bootstrap-frm textarea, 
+.bootstrap-frm select{
     border: 1px solid #CCC;
     color: #666;
     height: 20px;
@@ -199,8 +233,7 @@ button {
     margin-right: 6px;
     margin-top: 2px;
     outline: 0 none;
-    padding: 5px 0px 5px 5px;
-    width: 70%;
+    padding: 5px 0px 5px 5px;    
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;    
@@ -225,14 +258,16 @@ button {
     padding: 5px 0px 0px 5px;
     width: 70%;
 }
-.bootstrap-frm .button {
+.bootstrap-frm 
+.button {
     background: #FFF;
     border: 1px solid #CCC;
-    padding: 10px 25px 10px 25px;
+    padding: 10px 20px 10px 20px;
     color: #333;
     border-radius: 4px;
 }
-.bootstrap-frm .button:hover {
+.bootstrap-frm 
+.button:hover {
     color: #333;
     background-color: #EBEBEB;
     border-color: #ADADAD;

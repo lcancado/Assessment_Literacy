@@ -51,7 +51,7 @@ svgCombo.append("g")
     .attr("class", "x axis combo")
     .attr("transform", "translate(0," + heightCombo + ")")
   .append("text")
-      .attr("class", "xaxiscombo_label")
+      .attr("class", "xaxiscombo axislabel")
       .attr("y", 35)
       .attr("x", widthCombo/2)
       .style("text-anchor", "middle")
@@ -60,7 +60,7 @@ svgCombo.append("g")
 svgCombo.append("g")
     .attr("class", "y axis combo")
   .append("text")
-    .attr("class", "yaxiscombo_label")
+    .attr("class", "yaxiscombo axislabel")
     .attr("transform", "rotate(-90)")
     .attr("y", 0 - marginCombo.left)
     .attr("x", 0 - (heightCombo / 2))
@@ -249,13 +249,13 @@ var delay = function(d, i) { return i * 50; };
       transitionCombo.select(".y.axis.combo") // change the y axis
         .call(yAxisCombo);
       
-      transitionCombo.select(".yaxiscombo_label")
+      transitionCombo.select(".yaxiscombo.axislabel")
          .text(yAxisLabel);
 
       transitionCombo.select(".x.axis.combo")
         .call(xAxisCombo);
 
-      transitionCombo.select(".xaxiscombo_label")
+      transitionCombo.select(".xaxiscombo.axislabel")
          .text(xAxisLabel);
 
       updateYCritLine(cutScoreComboY);
@@ -370,13 +370,13 @@ var delay = function(d, i) { return i * 50; };
       transitionCombo.select(".y.axis.combo") // change the y axis
         .call(yAxisCombo);
       
-      transitionCombo.select(".yaxiscombo_label")
+      transitionCombo.select(".yaxiscombo.axislabel")
          .text(yAxisLabel);
 
       transitionCombo.select(".x.axis.combo")
         .call(xAxisCombo);
 
-      transitionCombo.select(".xaxiscombo_label")
+      transitionCombo.select(".xaxiscombo.axislabel")
          .text(xAxisLabel);
 
       updateYCritLine(cutScoreComboY);
@@ -513,13 +513,13 @@ var delay = function(d, i) { return i * 50; };
       transitionCombo.select(".y.axis.combo") // change the y axis
         .call(yAxisCombo);
       
-      transitionCombo.select(".yaxiscombo_label")
+      transitionCombo.select(".yaxiscombo.axislabel")
          .text(yAxisLabel);
 
       transitionCombo.select(".x.axis.combo")
         .call(xAxisCombo);
 
-      transitionCombo.select(".xaxiscombo_label")
+      transitionCombo.select(".xaxiscombo.axislabel")
          .text(xAxisLabel);
 
       updateYCritLine(cutScoreComboY);

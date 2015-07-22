@@ -27,11 +27,11 @@ function checkAnswer(form) {
       if (currSelection.checked) {
         if (currSelection.value == answers[i]) {
           score++;
- 	        document.getElementById("quizResults").innerHTML = "<font color=blue><b>Correct! :-)</b></font> <br>Since we want to compare Mary's score to her 9th grade schoolmates in order to find out if she was among the top ranked students, the norm group is all ABC High's 9th grade students in the current school year.";		
+ 	        document.getElementById("quizResults").innerHTML = "<font color=blue><b>Correct!</b></font> Since we want to compare Mary's score to her 9th grade schoolmates in order to find out if she was among the top ranked students, the norm group is all ABC High's 9th grade students in the current school year.";		
           break;
         } 
 	      else {
-	        document.getElementById("quizResults").innerHTML = "<font color=red><b>Incorrect :-( </b></font><br>Remember that prizes will be given to 9th grade students who scored at the top 10% in Math I at ABC High. <br><b>Try again!</b>";		
+	        document.getElementById("quizResults").innerHTML = "<font color=red><b>Incorrect :-( </b></font> Remember that prizes will be given to 9th grade students who scored at the top 10% in Math I at ABC High. <br><b>Try again!</b>";		
           break;	
 	      }
 	    }

@@ -62,21 +62,21 @@ d3.tsv("classroom.tsv", function(error, data){
   //yCrit.domain([d3.min(data, function(d) { return d.variable; }), d3.max(data, function(d) { return d.variable; })]);
 
   svgCrit.append("g")
-      .attr("class", "x axis")
+      .attr("class", "xCrit axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxisCrit)
     .append("text")
-      .attr("class", "xaxis_label")
+      .attr("class", "xaxiscrit axislabel")
       .attr("y", 45)
       .attr("x", width/2)
       .style("text-anchor", "middle")
       .text("Student Name");
 
   svgCrit.append("g")
-      .attr("class", "y axis")
+      .attr("class", "yCrit axis")
       .call(yAxisCrit)
     .append("text")
-      .attr("class", "yaxis_label")
+      .attr("class", "yaxiscrit axislabel")
       .attr("transform", "rotate(-90)")
       .attr("y", 0 - margin.left)
       .attr("x", 0 - (height / 2))

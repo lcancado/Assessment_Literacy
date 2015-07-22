@@ -33,14 +33,14 @@ var tip = d3.tip()
   });
 
 var svgCrit = d3.select(".criterionGraph").append("svg")
+    .attr("preserveAspectRatio", "none")    
+    .attr("viewBox", "0 0 " + 920 + " " + 440)
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
 svgCrit.call(tip);
-
 
 var tsvCrit;
 
@@ -59,8 +59,7 @@ d3.tsv("classroom.tsv", function(error, data){
 
   xCrit.domain(data.map(function(d) { return d.name; }));
   yCrit.domain ([0,50]);
-  //yCrit.domain([d3.min(data, function(d) { return d.variable; }), d3.max(data, function(d) { return d.variable; })]);
-
+  
   svgCrit.append("g")
       .attr("class", "xCrit axis")
       .attr("transform", "translate(0," + height + ")")
@@ -100,10 +99,7 @@ d3.tsv("classroom.tsv", function(error, data){
           if (+d.variable < cutScore) { return colors10(3); } //red
           else {return colors10(0);} ;//blue  
         }        
-      }) 
-      //.attr("fill",function(d,i){return colors(i)} ) 
-      ;
-
+      }) ;
     
     d3.select(".sortCrit").on("change", function() {
     
@@ -114,7 +110,6 @@ d3.tsv("classroom.tsv", function(error, data){
                           .map(function(d) { return d.name; });
       
       xCrit.domain(sortedNames);
-
           
       var transitionCrit = svgCrit.transition().duration(750);
       var delay = function(d, i) { return i * 50; };
@@ -149,7 +144,6 @@ function updateCriterion(myRadio) {
 
     $('html, body').animate({
     scrollTop: $("#Activity3").offset().top}, 500);
-
 
     if (typeof critLineCrit == "undefined") {
 

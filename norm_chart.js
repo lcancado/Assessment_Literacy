@@ -16,6 +16,8 @@ var tipn = d3.tip()
   });
 
 var svgNormChart = d3.select(".normGroupGraph").append("svg")
+    .attr("preserveAspectRatio", "none")    
+    .attr("viewBox", "0 0 " + 920 + " " + 440)
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
 
@@ -105,12 +107,10 @@ function parseRow (d) {
 
 
 var loadData = function() {
- 
+
   
   var group = document.getElementById('normgrp').selectedOptions[0].value;
   var index = document.getElementById('normgrp').selectedIndex;
-
-  //window.alert("index:"+index)
 
   var dataFile = group + '.tsv';
 
@@ -124,11 +124,7 @@ var loadData = function() {
     var pctCorrect = data.map(function(d) { return d.pctCorrect });
 
     var barWidth = Math.max( (width / data.length)- 7, 7) ;
-    
-
-    //window.alert(data.length);
-
-
+ 
     var rect = gNormChart.selectAll('.barNorm')
       .data(data);
 
@@ -158,12 +154,10 @@ var loadData = function() {
 
     d3.select('.y.axis.norm')
         .call(yNormAxis)
-    ;
-   
+    ;  
 
+  }) // end of d3.tsv
 
-    
-  })
-};
+}; // end of loadData function
 
-loadData()
+loadData();

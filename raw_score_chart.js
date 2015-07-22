@@ -3,7 +3,6 @@ var margin = {top: 20, right: 20, bottom: 10, left: 60},
     width = 860 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-
 var colors10 = d3.scale.category10().domain(d3.range(0,10));
 var colors20 = d3.scale.category20().domain(d3.range(0,20));
 
@@ -29,14 +28,14 @@ var tip = d3.tip()
   });
 
 var svgRawChart = d3.select(".rawScoreGraph").append("svg")
+    .attr("preserveAspectRatio", "none")    
+    .attr("viewBox", "0 0 " + 920 + " " + 440)
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
 svgRawChart.call(tip);
-
 
 var tsv;
 
@@ -55,8 +54,7 @@ d3.tsv("classroom.tsv", function(error, data){
 
   x.domain(data.map(function(d) { return d.name; }));
   y.domain ([0,50]);
-  //y.domain([d3.min(data, function(d) { return d.variable; }), d3.max(data, function(d) { return d.variable; })]);
-
+  
   svgRawChart.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
@@ -96,8 +94,7 @@ d3.tsv("classroom.tsv", function(error, data){
       }) ;
 
 
- //  Sort funtion
-
+  //  Sort function
   d3.select(".sortRaw").on("change", function() {
     
     var sortByScore = function(a, b) { return a.variable - b.variable; };
@@ -106,7 +103,6 @@ d3.tsv("classroom.tsv", function(error, data){
                           .map(function(d) { return d.name; });
 
     x.domain(sortedNames);
-
          
     var transition = svgRawChart.transition().duration(750);
     var delay = function(d, i) { return i * 50; };
@@ -119,10 +115,8 @@ d3.tsv("classroom.tsv", function(error, data){
       .call(xAxisRaw)
       .selectAll("g")
       .delay(delay);
-
  
   });
-    
 
 });
 
@@ -145,10 +139,7 @@ function updateData() {
   data.sort(function (a,b) {return d3.ascending(a.name, b.name);});
 
   x.domain(data.map(function(d) { return d.name; }));
-
   y.domain ([0,scale]);
-  //y.domain([d3.min(data, function(d) { return d.variable; }), d3.max(data, function(d) { return d.variable; })]);
-  
 
   // Make the changes
   var transition = svgRawChart.transition().duration(1000),
@@ -167,12 +158,12 @@ function updateData() {
       })
   ;
     
-    transition.select(".y.axis") // change the y axis
-      .call(yAxisRaw);
+  transition.select(".y.axis") // update the y axis
+    .call(yAxisRaw);
 
-    transition.select(".yaxisraw.axislabel")
-       .text(scoreType);
+  transition.select(".yaxisraw.axislabel") // update the y axis label
+     .text(scoreType);
 
-    transition.select(".x.axis")
-      .call(xAxisRaw);
+  transition.select(".x.axis") // change the x axis
+    .call(xAxisRaw);
 };

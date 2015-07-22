@@ -25,8 +25,7 @@ function checkDecision(decisionP, scoreP, groupP ) {
         document.getElementById("comboReactiveText").innerHTML = "";
     };
 
-
-  }
+  } // end if decisionP==D1
 
   else if (decisionP=='D2') {
 
@@ -52,7 +51,7 @@ function checkDecision(decisionP, scoreP, groupP ) {
         document.getElementById("comboReactiveText").innerHTML = "";
     };
 
-  }
+  } // end else if decisionP==D2
 
   else if (decisionP=='D3') {    
 
@@ -78,12 +77,9 @@ function checkDecision(decisionP, scoreP, groupP ) {
         document.getElementById("comboReactiveText").innerHTML = "";
     };
 
-  };
+  } // end else if decisionP==D3
 
-  //document.getElementById("comboResults").innerHTML = "<font color=blue><b>Correct! :-)</b></font> <br>Since we want to compare Mary's score to her 9th grade schoolmates in order to find out if she was among the top ranked students, the norm group is all ABC High's 9th grade students in the current school year.";		
-  
-  
 };
-//  End -->
+
 
 

@@ -106,24 +106,6 @@
 <p style="font-style: italics; text-align: center;"><span class="question">Does this score tell you if she won any of the Math prizes?</span></p>
 
 
-
-<!--
-<p><font color=red>Activity 1:</font> Suppose Mary took two tests and her final score will be highest of the two. If she got 53 out of 60 total points on the first test and 45 out of 50 on the second, which test will be used to compute her final score?</p>
-<p>Use the calculator below to check your answer.</p>
-
-<form name="pctCorrectForm">
-<input class="slider-width" type=range min=0 max=100 value=50 id="pctCorrectMary" step=1 oninput="outputUpdate(value)">
-<output for="pctCorrectMary" id="pctCorrectMaryInput">50</output>%
-<input type="button" value="Submit" onClick="checkPct(this.form)">
-<p id="pctCorrectResult"> </p>
-</form>
-
-
-
-<p>[<font color=blue>Graphic 1:</font> Mary's score in terms of Number Correct (Points) and Percent Correct (%)]</p>
--->
-
-
 <p>Mary's score:</p>
 <div class="gallery with-transitions" id="chartNumCorrect"></div>
 <div class="gallery with-transitions" id="chartPctCorrect"></div>
@@ -133,7 +115,6 @@
 
 <br>
 <br>
-
 
 <p><b>No!</b> <span class="answer">We don't know if Mary won a prize because her raw and percent correct scores tell us nothing about how her score compares to her schoolmates.</span></p>
 
@@ -149,9 +130,6 @@
 
 <p>A basic ranking in terms of raw or scaled scores can start to give us a better picture of how Mary's performance compares to that of her classmates.</p>
 
-<!--
-<p>[<font color=blue>Graphic 2:</font> Mary's raw score compared to her classmates]</p>
--->
 
 <div id="Activity1">
 <p><font color=red>Activity 1:</font> You may sort the values in the graph below to see how Mary ranked in her class in terms of both raw and percent correct scores. <span class="question">Is Mary in the top 10% of her class?</span></p>
@@ -185,16 +163,7 @@
 
 <p><span class="keyTerm">Percentile ranks are different from percent correct scores!</span> The percentile rank indicates a student's relative standing in a group. The percent correct score indicates what percent of the total possible points a student got on a test. </p>
 
-
-
-<!--
-<p>In high-stakes national or state standardized tests, the norm group must be <span class="keyTerm">representative</span> of the national or state population of students taking the same test.</p>
-<p>To be valid, group comparisons should be made between similar students (e.g., the percent of children learning English should be the same in the norm and comparison groups). </p>
-
--->
-
 <br>
-
 
 <form name="norm_group_quiz" class="bootstrap-frm">
 <p><b>Quiz:</b> We know that the results of the Math I test will be used to give prizes to students who scored at the top 10% of 9th grade students in Math I at ABC High. <span class="question">What would be the most appropriate norm group for this kind of decision?</span></p>
@@ -208,53 +177,13 @@
 <p id="quizResults"> </p>
 </form>
 
-
-<!--
-<section id="normText">
-
-<br>
-<h3>Types of Norm-referenced Scores</h3>
-
-<p>There are different types of norm-referenced scores. The most common are:</p>
-
-<ul>
-	<li><b>Percentile rank:</b> 
-		<ul>
-			<li>Is a simple way of ranking a raw score to the performance of a particular norm group.</li>
-			<li>Always run from 1 to 99.</li>
-			<li>Define the percent of the norm group which achieved lower scores.</li>
-			<li>Each percentile table only refers to one specific norm group at the specific time it was tested.</li>
-			<li>If a raw score of 15 correspond to a percentile of 30, it means that 30% of the norm group had raw scores lower than 15.</li>  
-		</ul>
-	</li>
-	<br><br>
-	
-
-	Since percentile ranks indicate various percentages of individuals above and below scores that are normally distributed, they do not represent equal units. Percentile ranks are much more compactly arranged in the middle of the normal distribution since that is where the majority of individuals fall.
-	
-	
-	<li><b>Standard score:</b> 
-		<ul>
-			<li>Is a transformation of the raw score whose score distribution in a specified population has convenient, known values for the mean and standard deviation.</li>
-			<li>Often this term is used to specifically denote scores transformed to have a mean of zero and a standard deviation of 1 (also known as z-scores).</li>
-			<li>Allows the direct comparison of examinees by placement of the scores on a common scale and, for this reason, are useful for comparisons over time.</li>
-		</ul>
-	</li>
-</ul>
-
- </section>
-
--->
-
 <br>
 
 
 <div id="Activity2">
 <p><font color=red>Activity 2:</font> See how Mary's percentile rank changes when you change the norm group. <span class="question">Did Mary win a Math I prize?</span></p>
 
-<!--
-<p>[<font color=blue>Graphic 3:</font> Select Norm Group (class or school) and show Mary's placement in comparison to the class and school norm groups.]</p>
--->
+
 Norm group:
 <select id="normgrp" onchange="loadData(); $('html, body').animate({scrollTop: $('#Activity2').offset().top}, 500);">
   <option value="classroom" selected>classroom</option>
@@ -264,17 +193,6 @@ Norm group:
 <div class="normGroupGraph"></div>
 <script type="text/javascript" src="norm_chart.js"></script>
 </div>
-
-<!--
-<p>Mary scored <span data-var="numCorrectMary" data-format="%.0f"></span> points or <span data-var="pctCorrectMary" data-format="%.0f"></span>% on the test. </p>
-
-<p>Based on the selected norm group [norm_group], she scored at the top KK percent or at the [ZZ] percentile. 
-
-This means that based on her raw score Mary scored higher than [ZZ]% of the other students in her [class/school] (norm group) who took the test. In other words, [ZZ]% of the students who made up the norm group answered fewer than XX items correctly.}</p>
-
-<p> If norm group selected is school, say if she won a math prize or not</p>
-
--->
 
 
 <p><b>Yes!</b> <span class="answer">Mary won a Math I prize since she placed in the top 10% of all 9th graders at ABC High even though she was not in the top 10% of her class.</span></p>
@@ -298,57 +216,6 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 
 <br>
 
-<!--
-<h3>cut-scores</h3>
-
-<p>A <b>cut-score</b> is a point on the test score scale used for classifying the test takers into groups on the basis of their scores.</p>
-<p> In general, criterion-referenced tests involve a cut-score where the examinee passes if his or her score exceeds the cut-score and fails if it does not. However, <span class="keyTerm">the criterion is not the cut-score</span>, the criterion is the domain of subject matter that the test is designed to assess.</p> 
-
-<p>In some cases, tests may have multiple cut-scores representing tiered levels of proficiency such as <span class="question">basic</span>, <span class="question">proficient</span>, or <span class="question">advanced</span>. cut-scores may also be applied in certification and licensing exams that are used to determine whether examinees are professionally <span class="question">"qualified"</span>.</p>
-
-
-<p>Most criterion-referenced assessments use a <b>cut-score</b> which determines success or failure based on a pre-established percent correct. Criterion-referenced scores tell us how well the examinee performed against an objective or standard, as opposed to against other examinees. For example, a driver's test intends to determine whether a person is knowledgeable and capable enough to be allowed on the road, not whether one driver is more accomplished than another.</p>
-
-
-<br>
-<h3>Standard Setting</h3>
-
-<p>The process used to determine cut-scores is formally known as <b>standard setting</b>.</p> 
-
-<p>Who defines the cut-score?</p>
-
-<ul>
-	<li>For tests such as teacher designed classroom assessments, cut-scores might be defined by the teacher.</li>
-	<li>For final exams, cut-scores might be defined by the school.</li>
-	<li>For commercial and high-stakes tests, the test developer will form a standard-setting panel by recruiting a group of experts, such as psychometricians (specialists in the science of educational measurement) or teachers from a relevant content area. The panel will then use one or more research-based methods, developed by psychometricians and academics, for setting testing standards and determining cut-scores.</li>
-</ul>
-
-<br>
-
-
-<p><font color=red>Activity 4:</font> Defining a cut-score. Choose a cut-score for the Math I final test. Did Mary pass or fail the test based on this cut-score? </p>
-<p>[<font color=blue>Graphic 4:</font> Selecting a cut-score] </p>
-
-<form id="cutScoreSelector">
-<input type="radio" name="cutScore" value="5">5
-<input type="radio" name="cutScore" value="10">10
-<input type="radio" name="cutScore" value="15">15
-<input type="radio" name="cutScore" value="20">20
-<input type="radio" name="cutScore" value="25">25
-<input type="radio" name="cutScore" value="30" checked>30
-<input type="radio" name="cutScore" value="35">35
-<input type="radio" name="cutScore" value="40">40
-<input type="radio" name="cutScore" value="45">45
-<input type="radio" name="cutScore" value="50">50
-</form>
-
-<p>
-{<span class="keyTerm">Reactive text:</span> Mary scored XX points or YY% on the test. Since Mary scored above the cut-score of [KK], she has demonstrated [sufficient/insufficient] knowledge of 9th grade math curriculum and [will/will not] be able to move on to Math II.}</p>
-
-<div class="bubbleGraph"></div>
-<script src="bubble_chart.js"></script>
-
--->
 <div id="Activity3"> 
 <p><font color=red>Activity 3:</font> In our example, the minimum criteria for moving on to Math II without remediation is a cut-score of 35. Use the chart below to set this cut-score. <span class="question">Will Mary be able move on to Math II without remediation? How many students in her class will need remediation before being eligible to move on to Math II?</span></p>
 
@@ -390,17 +257,7 @@ Cut-score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 
 <p><font color=red>Activity 4:</font> Now we will look at some sample questions that use both criterion-referenced and norm-referenced interpretation of test scores to apply the knowledge you have gained in this module.</p>
 
-<!--
-<p>Suppose now that the decision about advancing students to Math II depents on their percentile rank. Only students who scored at the top 70th percentile will advance to Math II. How many students in Mary's class and in the school were able to advance based on this criterion?
-	The 70th percentile was chosen arbitrarily. Select another cut percentile and see how it impacts who advances to the next Math level.
-</p>
-<p>Now suppose that the prizes will be given to all students who had a score of 95% or better in the Math I test. How many students got the prize based on this criteria? Did Mary win a prize? </p>
 
-<p>You might be starting to realize that norm and criterion-referenced interpretations are distinct from norm- and criterion referenced scores. You can use norm-referenced scores to make a criterion-referenced decision. We did that when we decided that students at the 70th percentile would advance to Math II.</p>
-
-<p>Now suppose that there are only 2 Math II classes with 20 spots each, so only 40 students will be able to avance to Math II. Students must still meet the defined cut-score for proficiency but we will have to select the top 40 students who met this criteria. We now must use both the norm-referenced and the criterion-referenced scores to decide who will advance.</p>
-
--->
 
 <ol type="1">
 	<li>Select a <span class="keyTerm">question</span> you want to answer from the list under "Decision Type".</li>
@@ -462,16 +319,6 @@ Cut-score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 
 <p id="comboReactiveText" class="answer"> </p>
 
-<!--	
-
-Reactive text:</span> Mary scored XX points or YY% on the test. She scored at the [ZZ] percentile in her [norm group]. This means that based on her raw score Mary scored higher than [ZZ]% of the other students in her [class/school/historical] (norm group) who took the test. In other words, [ZZ]% of the students who made up the norm group answered fewer than XX items correctly. 
-<br><br>
-Mary [did/did not] achieve [Math prize criteria], therefore she [did/did not] win the Math prize. 
-<br><br>
-Additionally, since Mary scored [above/below] the cut-score of [KK], she has demonstrated [basic/proficient/advanced] knowledge of 9th grade math curriculum and [passed/failed] the test.
-</p>
-
--->
 
 </div>
 
@@ -494,39 +341,23 @@ Additionally, since Mary scored [above/below] the cut-score of [KK], she has dem
 <p>We made a <span class="keyTerm">criterion-referenced interpretation</span> of Mary's test results when:</p>
 
 <ul>
- 	<li>we decided that she would move on to Math II if she obtained at least 30 points or 60% correct on her Math I test.</li>
- 	<li>we changed the rules for the Math prize and defined that all students who scored 95% correct on the test would receive the prize.</li>
+ 	<li>we decided that she would move on to Math II if she obtained at least 35 points or 70% correct on her Math I test.</li>
+ 	<li>we changed the rules for the Math prize and defined that all students who scored 45 points on the test would receive the prize.</li>
 </ul>
 
 <p>We made a <span class="keyTerm">combined</span> norm- and criterion-referenced interpretation of Mary's test results when:</p>
 
 <ul>
- 	<li>we used her percentile rank (norm) and the pre-defined cut-score (criterion) to decide if she would move on to Math II when there were only a limited number of spots available.</li>
+ 	<li>we used her percentile rank (norm) and the predefined cut-score (criterion) to decide if she would be able to enroll in Math II when there were only a limited number of spots available.</li>
 </ul>
-
-<!--
-<br>	
-<p>Uses and limitations of <b>norm-referenced</b> scores:</p>
-<ul>
-	<li>In order to make norm-referenced interpretations, the norm group must be representative of the population of examinees we want to compare to.</li>
-	<li>Norm-referenced scores are usually used to identify specific learning disabilities, such as autism, dyslexia, or nonverbal learning disability, or to determine eligibility for special-education services.</li>
-	<li>Reporting results in terms of percentiles or standard scores does not provide information on whether or not the students were proficient.</li>
-	<li>It is possible that all students performed poorly and that none are proficient or that all are proficient.</li>
-	<li>Rank ordering the student scores does not necessarily reflect an amount of knowledge and skills measured by the test.</li>
-</ul>
-
-<p>Uses and limitations of <b>criterion-referenced</b> scores:</p>
-<ul>
-	<li>Every student taking the test could theoretically fail if they don't meet the expected standard; alternatively, every student could earn the highest possible score.</li>
-	<li>It is not only possible, but usually desirable, for every student to pass the test or earn a perfect score.</li>
-	<li>These scores are used to report how well students are doing relative to a pre-determined performance level on a specified set of educational goals or outcomes included in the school, district, or state curriculum.</li>
-	<li>Scores may be used as one piece of information to determine how well the student is learning the desired curriculum and how well the school is teaching that curriculum.</li>
-</ul>
-
-<p>"Although loads of educators refer to "criterion-referenced tests" and "norm-referenced tests," there are, technically, no such creatures. Rather, there are criterion- and norm-referenced interpretations of students' test performances. For example, educators in a school district might have built a test to yield criterion-referenced interpretations, used the test for several years and, in the process, gathered substantial data regarding the performances of district students. As a consequence, the district's educators could build normative tables permitting norm-referenced interpretations of the test which, although born to provide criterion-referenced inferences, can still permit meaningful norm-referenced interpretations." Popham, W. James. 2011. <span class="question">Classroom Assessment: What Teachers Need to Know (Sixth Edition)</span>. Boston: Pearson Education, Inc. pp. 46-8.</p>
--->
-
 
 </div> <!--closing CritNormModule div tag-->
+
+<br>
+<br>
+<p style="font-size:12px; text-align:center;">
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> <br>This work by is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+
+
 </body>
 </html>

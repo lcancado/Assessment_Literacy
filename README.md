@@ -2,7 +2,7 @@
 
 This interactive module was designed to help clarify some of the concepts related to educational assessment. This module is part of a larger effort sponsored by the [Center for Assessment](http://www.nciea.org/) to use high-fidelity and interactive Web technologies to help improve assessment literacy. 
 
-The use of explorable explanations was inspired by [Bret Victor](http://worrydream.com/ExplorableExplanations/). For the visualizations, we use the [D3.js](http://d3js.org/) library created by [Mike Bostock](http://bost.ocks.org/mike/).
+The use of explorable explanations was inspired by [Bret Victor](http://worrydream.com/ExplorableExplanations/). For the visualizations, we use the [D3.js](http://d3js.org/) library created by [Mike Bostock](http://bost.ocks.org/mike/) and the [NVD3](http://nvd3.org/) library.
 
 -> This is a work in progress - ETA is end of July, 2015 <-
 
@@ -18,9 +18,9 @@ The use of explorable explanations was inspired by [Bret Victor](http://worrydre
 ###Learning Objectives
 After completing the module, the reader should:
 
-  * understand the difference between norm- and criterion-referenced tests and score interpretation
-  * know the appropriate interpretations of norm-referenced scores
+  * understand the basic differences between norm- and criterion-referenced tests and score interpretation
+  * know how and when to make a norm-referenced interpretation of test results
   * know the definition of norm group
-  * know the appropriate interpretations of criterion-referenced scores
-  * know how cut scores are established
-  * know some of the advantages and limitations of each type of interpretation
+  * know the definition of percentile rank  
+  * know how and when to make a criterion-referenced interpretation of test results
+  

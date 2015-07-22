@@ -1,7 +1,7 @@
 
 function drawBulletCharts() {
 
-    var width = 960,
+    var width = 900,
         height = 80,
         margin = {top: 5, right: 40, bottom: 20, left: 120};
     
@@ -37,6 +37,8 @@ function drawBulletCharts() {
     ];
     
     var visNumCorrect = d3.select("#chartNumCorrect").selectAll("svg")
+        .attr("preserveAspectRatio", "none")    
+        .attr("viewBox", "0 0 " + 920 + " " + 100)
         .data(dataNumCorrect)
         .enter().append("svg")
         .attr("class", "bullet nvd3")
@@ -47,6 +49,8 @@ function drawBulletCharts() {
 
    
     var visPctCorrect = d3.select("#chartPctCorrect").selectAll("svg")
+        .attr("preserveAspectRatio", "none")    
+        .attr("viewBox", "0 0 " + 920 + " " + 100)
         .data(dataPctCorrect)
         .enter().append("svg")
         .attr("class", "bullet nvd3")

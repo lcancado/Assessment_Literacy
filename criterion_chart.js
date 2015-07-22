@@ -147,6 +147,9 @@ function updateCriterion(myRadio) {
 
     cutScore = myRadio.value;
 
+    $('html, body').animate({
+    scrollTop: $("#Activity3").offset().top}, 500);
+
 
     if (typeof critLineCrit == "undefined") {
 

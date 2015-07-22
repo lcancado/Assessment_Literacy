@@ -539,7 +539,7 @@ function checkCombo (myform) {
     normGroup=getRadioValue(myform.elements['normGroup']);
 
     $('html, body').animate({
-    scrollTop: $("#comboTableDiv").offset().top}, 1000);
+    scrollTop: $("#Activity4").offset().top}, 500);
 
     checkDecision (decision, scoreType, normGroup );
     

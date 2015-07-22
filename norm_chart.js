@@ -105,6 +105,7 @@ function parseRow (d) {
 
 
 var loadData = function() {
+ 
   
   var group = document.getElementById('normgrp').selectedOptions[0].value;
   var index = document.getElementById('normgrp').selectedIndex;

@@ -23,19 +23,62 @@ select {
 }
 
 label {
-    float: left;
-    text-align: right;
-    padding-right: 10px;
-    color: #333;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
+  float: left;
+  text-align: right;
+  padding-right: 10px;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
 }
 
+h1 {
+  font-size: 30px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-top:40px;
+  margin-bottom:-6px;
+  font-weight: normal;
+  color: #525252;
+  text-align: center;
+}
+
+h2 {
+  font-size: 26px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color: #525252;
+  border:none;
+  text-align: center;
+}
+
+h3 {
+  color: #525252;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+h4 {
+    margin-top: 20px;
+    margin-bottom: -5px;
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    color: #525252;
+}
+
+b {    
+    font-weight: bold;
+    color: purple ;
+} 
+
 p.question {  
-  width: 80%; 
+  width: 90%; 
   margin:0 auto;
-  text-align: justify;
+  text-align: center;
+  font-size: 15px;
 }
 
 #comboReactiveText {  
@@ -49,12 +92,22 @@ p.question {
 }
 
 .question {
-  color: #800080;
+  color: #4D4D4D;
   font-style: italic;
+  font-weight: 600;
 }
 
+.answer {
+  color: #838383;
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+
 .keyTerm {
-  color: #800080;
+  color: #4D4D4D;
+  font-weight: 700;
   
 }
 
@@ -185,8 +238,8 @@ fill: none;
 
     width: 100%;
     background: #FFF;
-    padding: 10px 10px 10px 10px;
-    font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 10px 10px 5px 10px;
+    font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #666;
     text-shadow: 1px 1px 1px #FFF;
     border:1px solid #DDD;
@@ -262,7 +315,7 @@ fill: none;
 .button {
     background: #FFF;
     border: 1px solid #CCC;
-    padding: 10px 20px 10px 20px;
+    padding: 5px 20px 5px 20px;
     color: #333;
     border-radius: 4px;
 }

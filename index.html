@@ -45,7 +45,7 @@
   
 <div id="CritNormModule">
 
-  <center><h2>Norm-referenced and Criterion-referenced <br>Interpretation of Test Results</h2></center>
+ <h2>Norm-referenced and Criterion-referenced <br>Interpretation of Test Results</h2>
 
 <br>
 
@@ -58,10 +58,10 @@
 <p>In this interactive module we will use an explorable example to learn the basic <span class="keyTerm">concepts</span>, <span class="keyTerm">uses</span>, and <span class="keyTerm">limitations</span> of both norm-referenced and criterion-referenced interpretations of test results.  </p>
 
 <br>
-<center><h3>Mary Masters Math</h3></center>
+<center><h3><b>Mary</b> Masters Math</h3></center>
 
 <br>
-<p>Mary is a 9th grade student at ABC High School and she just took the final Math I test.</p> 
+<p><b>Mary</b> is a 9th grade student at ABC High School and she just took the final Math I test.</p> 
 
 <p>The results from this test will be used to:</p>
 
@@ -78,9 +78,7 @@
 <br>
 
 
-<p class="question"><span class="question">How can we use Mary's test score to decide if she can move on to Math II without remediation? How can we use that same score to decide if she will receive a prize for being a top performer in comparison to her schoolmates? </span></p>
-<p style="text-align: center;"><b>Let's find out!</b></p>
-
+<p class="question"><span class="question">How can we use Mary's test score to decide if she can move on to Math II without remediation? How can we use that same score to decide if she will receive a prize for being a top performer in comparison to her schoolmates? </span> <b>Let's find out!</b></p>
 
 <br>
 
@@ -126,7 +124,7 @@
 -->
 
 
-<p><b>Mary's score:</b></p>
+<p>Mary's score:</p>
 <div class="gallery with-transitions" id="chartNumCorrect"></div>
 <div class="gallery with-transitions" id="chartPctCorrect"></div>
 
@@ -137,7 +135,7 @@
 <br>
 
 
-<p class="question"><b>No!</b> We don't know if Mary won a prize because her raw and percent correct scores tell us nothing about how her score compares to her schoolmates.</p>
+<p><b>No!</b> <span class="answer">We don't know if Mary won a prize because her raw and percent correct scores tell us nothing about how her score compares to her schoolmates.</span></p>
 
 
 
@@ -155,27 +153,28 @@
 <p>[<font color=blue>Graphic 2:</font> Mary's raw score compared to her classmates]</p>
 -->
 
+<div id="Activity1">
 <p><font color=red>Activity 1:</font> You may sort the values in the graph below to see how Mary ranked in her class in terms of both raw and percent correct scores. <span class="question">Is Mary in the top 10% of her class?</span></p>
 
 
-<label>Score type:</label> <select id="rawscore" type='select' onchange='updateData();'>
+<label>Score type:</label> <select id="rawscore" type="select" onchange="updateData();">
    <option value='50' id='score' selected='true'>Number Correct</option>
    <option value='100' id='pctCorrect'>Percent Correct</option>   
 </select>
 
 
 <center>
-	<input class="sortRaw" id="sortRaw" type="checkbox" value="sort">Sort</input> 
+	<input class="sortRaw" id="sortRaw" type="checkbox" value="sort" onchange="$('html, body').animate({scrollTop: $('#Activity1').offset().top}, 500);">Sort</input> 
 </center>
 
 <div class="rawScoreGraph" style="height:100%;"></div>
 <script src="raw_score_chart.js"></script>
 
+</div>
 
+<p><span class="answer">There are 20 students in Mary's class, so to place in the top 10% she would need to be one of the top 2 students in her class. Looking at the sorted chart above we can see that <b>Mary did not rank in the top 10%</b> of her class.</span></p>
 
-<p>There are 20 students in Mary's class, so to place in the top 10% she would need to be one of the top 2 students in her class. Looking at the sorted chart above we can see that <span class="keyTerm">Mary did not rank in the top 10% of her class</span>.</p>
-
-<p class="question" style="text-align: center; font-style: italic;">Can Mary still win a Math I prize?</p>
+<p class="question" style="text-align: center">Can Mary still win a Math I prize?</p>
 
 
 <br>
@@ -248,20 +247,23 @@
 -->
 
 <br>
+
+
+<div id="Activity2">
 <p><font color=red>Activity 2:</font> See how Mary's percentile rank changes when you change the norm group. <span class="question">Did Mary win a Math I prize?</span></p>
 
 <!--
 <p>[<font color=blue>Graphic 3:</font> Select Norm Group (class or school) and show Mary's placement in comparison to the class and school norm groups.]</p>
 -->
 Norm group:
-<select id="normgrp" onchange="loadData()">
+<select id="normgrp" onchange="loadData(); $('html, body').animate({scrollTop: $('#Activity2').offset().top}, 500);">
   <option value="classroom" selected>classroom</option>
   <option value="school" >school</option>  
 </select>
 
 <div class="normGroupGraph"></div>
 <script type="text/javascript" src="norm_chart.js"></script>
-
+</div>
 
 <!--
 <p>Mary scored <span data-var="numCorrectMary" data-format="%.0f"></span> points or <span data-var="pctCorrectMary" data-format="%.0f"></span>% on the test. </p>
@@ -275,16 +277,8 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 -->
 
 
-<center>
+<p><b>Yes!</b> <span class="answer">Mary won a Math I prize since she placed in the top 10% of all 9th graders at ABC High even though she was not in the top 10% of her class.</span></p>
 
-	<p> </p>
-</center>
-
-<br>
-
-<p class="question"><b>Yes!</b> Mary won a Math I prize since she placed in the top 10% of all 9th graders at ABC High even though she was not in the top 10% of her class.</p>
-
-<br>
 <br>
 
 <center>
@@ -355,13 +349,8 @@ This means that based on her raw score Mary scored higher than [ZZ]% of the othe
 <script src="bubble_chart.js"></script>
 
 -->
-
+<div id="Activity3"> 
 <p><font color=red>Activity 3:</font> In our example, the minimum criteria for moving on to Math II without remediation is a cut-score of 35. Use the chart below to set this cut-score. <span class="question">Will Mary be able move on to Math II without remediation? How many students in her class will need remediation before being eligible to move on to Math II?</span></p>
-
-
-<!--
-<p>[<font color=blue>Graphic 5:</font> </p>
--->
 
 
 <form id="cutScoreSelector">
@@ -382,15 +371,12 @@ Cut-score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 	<input class="sortCrit" type="checkbox" value="sort">Sort</input> 	
 </center>
 
-
 <div class="criterionGraph"></div>
 <script type="text/javascript" src="criterion_chart.js"></script>
 
+<p><b>Yes!</b> <span class="answer">Since Mary scored above the cut-score of 35, we assume she has demonstrated sufficient mastery of Math I and can move on to Math II without remediation. However, 11 students in Mary's class did not meet the predefined criteria and will need remediation before being eligible to enroll in Math II.</span></p>
 
-<br>
-
-<p class="question"><b>Yes!</b> Since Mary scored above the cut-score of 35, we assume she has demonstrated sufficient mastery of Math I and can move on to Math II without remediation. However, 11 students in Mary's class did not meet the predefined criteria and will need remediation before being eligible to enroll in Math II.</p>
-
+</div> <!-- End of Activity3 div-->
 
 <br>
 <br>
@@ -419,13 +405,15 @@ Cut-score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 <ol type="1">
 	<li>Select a <span class="keyTerm">question</span> you want to answer from the list under "Decision Type".</li>
 	<li>Select the <span class="keyTerm">score type</span> that would be most appropriate for this decision from the list under "Score Type".</li>
-	<li>Select the <span class="keyTerm">norm group</span> (use none if not needed) that would be most appropriate for the chosen question.</li>	
+	<li>Select the <span class="keyTerm">norm group</span> (use none if not needed) that would be most appropriate for the chosen question.</li>		
 	<li>Click "Submit" to update the chart below and see how the score type and norm group selected impacted Mary and her classmates in terms of the decision you want to make and find the answer to the question you selected.
 </ol>
 
+<p class="question">Does the question selected require a norm-referenced, criterion-referenced or combined interpretation of the test results?</p>
+
 <br>
 
-<div id="comboTableDiv">
+<div id="Activity4">
 
 <form name="comboForm" class="bootstrap-frm">
 <table id="decisionTbl">
@@ -437,7 +425,7 @@ Cut-score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 <td style="width:80%; padding-left: 5px; padding-top: 10px; ">
  <input type="radio" name="decision" value="D1" onclick="clearComboRadios(this.form);">Suppose that students who have scores at or above 80% of the Math I scores from other students in their class are eligible to enroll in Calculus. <span class="question">Would Mary be eligible for this advanced Math class? How many students in her class would be eligible to enroll in Calculus?</span> 
   <br><br>
-  <input type="radio" name="decision" value="D2" onclick="clearComboRadios(this.form);">Suppose that the Math prizes will be given to 9th grade students who scored 45 or more points in the Math I test. <span class="question">Would Mary get a prize? How many students in her class would get a prize?</span> </input>
+  <input type="radio" name="decision" value="D2" onclick="clearComboRadios(this.form);">Suppose that the Math prizes will be given to all students who scored 45 or more points in the Math I test. <span class="question">Would Mary get a prize?</span> </input>
   <br><br>
  <input type="radio" name="decision" value="D3" onclick="clearComboRadios(this.form);">Suppose that there is only one Math II class with 20 spots, so only the top twenty 9th grade students in Math I at ABC High will be able to enroll in Math II. (Students must still meet the cut-score criteria of 35 points to enroll.) <span class="question">Would Mary be able to enroll in Math II without remediation?</span>
   
@@ -456,7 +444,7 @@ Cut-score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 </td>
 </tr>
 <tr>
-	<td colspan=2 style="padding-top: 10px; text-align: center;"><b>Norm Group:</b> <input type="radio" id="normGroup" name="normGroup" value="classroom">Class</input> <input type="radio" id="normGroup" name="normGroup" value="school">School</input> <input type="radio" id="normGroup" name="normGroup" value="none">None</input> 
+	<td colspan=2 style="padding-top: 10px; text-align: center;"><b style="color: #666;">Norm Group:</b> <input type="radio" id="normGroup" name="normGroup" value="classroom">Class</input> <input type="radio" id="normGroup" name="normGroup" value="school">School</input> <input type="radio" id="normGroup" name="normGroup" value="none">None</input> 
 	</td>
 </tr>
 
@@ -468,11 +456,11 @@ Cut-score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 </tr>
 </table>
 </form>
-<br>
+
 <div class="comboGraph"></div>
 <script src="combo_chart.js"></script>
 
-<p id="comboReactiveText"> </p>
+<p id="comboReactiveText" class="answer"> </p>
 
 <!--	
 

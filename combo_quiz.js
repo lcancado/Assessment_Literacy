@@ -36,7 +36,7 @@ function checkDecision(decisionP, scoreP, groupP ) {
           updateComboChart(decisionP);
           document.getElementById("comboResults").innerHTML = "";
           document.getElementById("comboReactiveText").innerHTML = 
-          "Mary scored 45 points in the test, therefore she would <b>not</b> get a prize based on this criterion. "+
+          "Mary scored 40 points in the test, since she scored below the cut-score of 45 she would <b>not</b> get a prize based on this criterion. "+
           "Since you had to compare Mary's score against a predefined cut-score, you made a criterion-referenced interpretation of the test results and therefore no norm group was needed."
           ;
       }

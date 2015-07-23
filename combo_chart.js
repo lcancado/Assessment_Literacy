@@ -29,8 +29,10 @@ var yAxisCombo = d3.svg.axis()
     .scale(yCombo)
     .orient("left");
 
-var tip = d3.tip()
+
+var tipCombo = d3.tip()
   .attr('class', 'd3-tip')
+  .parent(document.getElementById('comboGraph')) //must use the attached d3.tip.v0.6.3.js for this to work 
   .offset([-10, 0])
   .html(function(d) {
     return "<span style='color:white; font-size:12px'>" + d.variable + "</span>";
@@ -44,7 +46,7 @@ var svgCombo = d3.select(".comboGraph").append("svg")
   .append("g")
     .attr("transform", "translate(" + marginCombo.left + "," + marginCombo.top + ")");
 
-svgCombo.call(tip);
+svgCombo.call(tipCombo);
 
 svgCombo.append("g")
     .attr("class", "x axis combo")
@@ -100,8 +102,8 @@ d3.tsv(dataFileCombo, function(error, data){
       .attr("width", xCombo.rangeBand())
       .attr("y", function(d) { return yCombo(d.variable); })
       .attr("height", function(d) { return heightCombo - yCombo(d.variable); })     
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
+      .on('mouseover', tipCombo.show)
+      .on('mouseout', tipCombo.hide)
       .attr("fill",function(d,i){
         if (d.name == 'Mary') { return 'purple'; } 
         else { return colors10(7);}  ;//grey                
@@ -184,10 +186,10 @@ var delay = function(d, i) { return i * 50; };
 
       clearXCritLine();
 
-      tip.html(function(d) {
+      tipCombo.html(function(d) {
           return "<span style='color:white; font-size:12px'>" + d.variable + "</span>"; });
 
-      svgCombo.call(tip);
+      svgCombo.call(tipCombo);
 
       yAxisCombo.tickValues([1,10, 20, 30, 40, 50, 60, 70, 80, 90, 99]);
       xAxisCombo.tickValues(sortedNames);
@@ -248,8 +250,8 @@ var delay = function(d, i) { return i * 50; };
         .attr("width", xCombo.rangeBand())
         .attr("y", function(d) { return yCombo(d.variable); })
         .attr("height", function(d) { return heightCombo - yCombo(d.variable); })     
-        //.on('mouseover', tip.show)
-        //.on('mouseout', tip.hide)
+        //.on('mouseover', tipCombo.show)
+        //.on('mouseout', tipCombo.hide)
         .attr("fill",function(d,i){
           if (d.name == 'Mary') { return 'purple'; } 
           else { 
@@ -261,9 +263,9 @@ var delay = function(d, i) { return i * 50; };
 
       clearXCritLine();
 
-      tip.html(function(d) {
+      tipCombo.html(function(d) {
           return "<span style='color:white; font-size:12px'>" + d.variable + "</span>"; });
-      svgCombo.call(tip);
+      svgCombo.call(tipCombo);
 
 
       yAxisCombo.tickValues([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
@@ -329,8 +331,8 @@ var delay = function(d, i) { return i * 50; };
         .attr("width", xCombo.rangeBand())
         .attr("y", function(d) { return yCombo(d.variable); })
         .attr("height", function(d) { return heightCombo - yCombo(d.variable); })     
-        //.on('mouseover', tip.show)
-        //.on('mouseout', tip.hide)
+        //.on('mouseover', tipCombo.show)
+        //.on('mouseout', tipCombo.hide)
         .attr("fill",function(d,i){
           if (d.name == 'Mary') { return 'purple'; } 
           else { 
@@ -341,13 +343,13 @@ var delay = function(d, i) { return i * 50; };
       ;
 
 
-      tip.html(function(d) {
+      tipCombo.html(function(d) {
           return "<span style='color:white; font-size:12px'>" + d.name + "</span>"; });
-      svgCombo.call(tip);
+      svgCombo.call(tipCombo);
 
       barCrit
-        .on('mouseover', tip.show)
-        .on('mouseout', tip.hide);
+        .on('mouseover', tipCombo.show)
+        .on('mouseout', tipCombo.hide);
 
       yAxisCombo.tickValues([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
 

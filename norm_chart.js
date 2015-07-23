@@ -10,6 +10,7 @@ var colors20 = d3.scale.category20().domain(d3.range(0,20));
 
 var tipn = d3.tip()
   .attr('class', 'd3-tip')
+  .parent(document.getElementById('normGroupGraph'))
   .offset([-10, 0])
   .html(function(d) {
     return "<span style='color:white; font-size:10px'>" + d.name + "</span>";

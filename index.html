@@ -145,7 +145,7 @@
 	<input class="sortRaw" id="sortRaw" type="checkbox" value="sort" onchange="$('html, body').animate({scrollTop: $('#Activity1').offset().top}, 500);">Sort</input> 
 </center>
 
-<div class="rawScoreGraph" style="height:100%;"></div>
+<div id="rawScoreGraph" class="rawScoreGraph" style="height:100%;"></div>
 <script src="raw_score_chart.js"></script>
 
 </div>
@@ -190,7 +190,7 @@ Norm group:
   <option value="school" >school</option>  
 </select>
 
-<div class="normGroupGraph"></div>
+<div id="normGroupGraph" class="normGroupGraph"></div>
 <script type="text/javascript" src="norm_chart.js"></script>
 </div>
 
@@ -238,7 +238,7 @@ Cut-score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 	<input class="sortCrit" type="checkbox" value="sort">Sort</input> 	
 </center>
 
-<div class="criterionGraph"></div>
+<div id="criterionGraph" class="criterionGraph"></div>
 <script type="text/javascript" src="criterion_chart.js"></script>
 
 <p><b>Yes!</b> <span class="answer">Since Mary scored above the cut-score of 35, we assume she has demonstrated sufficient mastery of Math I and can move on to Math II without remediation. However, 11 students in Mary's class did not meet the predefined criteria and will need remediation before being eligible to enroll in Math II.</span></p>
@@ -314,7 +314,7 @@ Cut-score: <input type="radio" name="cutScore" class="cutScoreRadio" onclick="up
 </table>
 </form>
 
-<div class="comboGraph"></div>
+<div id="comboGraph" class="comboGraph"></div>
 <script src="combo_chart.js"></script>
 
 <p id="comboReactiveText" class="answer"> </p>

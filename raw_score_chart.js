@@ -22,6 +22,7 @@ var yAxisRaw = d3.svg.axis()
 
 var tip = d3.tip()
   .attr('class', 'd3-tip')
+   .parent(document.getElementById('rawScoreGraph'))
   .offset([-10, 0])
   .html(function(d) {
     return "<span style='color:white; font-size:12px'>" + d.variable + "</span>";

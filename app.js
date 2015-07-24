@@ -1,5 +1,5 @@
 /*
-Created by Luciana Cancado as an internship project at the Center for Assessment (http://www.nciea.org/) during Summer 2015.
+Developed by Luciana Cancado as an internship project at the Center for Assessment (http://www.nciea.org/) during Summer 2015.
 
 This script:
   - sets the tangle element used for the percent example

@@ -1,5 +1,5 @@
 /*
-Created by Luciana Cancado as an internship project at the Center for Assessment (http://www.nciea.org/) during Summer 2015.
+Developed by Luciana Cancado as an internship project at the Center for Assessment (http://www.nciea.org/) during Summer 2015.
 
 This script creates the bullet charts for number correct and percent correct for a given score. 
 Currently the scores are hard-coded but one could change it to pass score values as parameters.

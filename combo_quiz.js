@@ -1,4 +1,6 @@
 /*
+Created by Luciana Cancado as an internship project at the Center for Assessment (http://www.nciea.org/) during Summer 2015.
+
 This script:
   - parses the decisionP, scoreP, groupP parameters
   - displays an error when the incorrect scoreP and groupP options are selected depending on the decisionP

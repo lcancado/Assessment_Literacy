@@ -1,4 +1,6 @@
 /*
+Created by Luciana Cancado as an internship project at the Center for Assessment (http://www.nciea.org/) during Summer 2015.
+
 This script:
   - creates a bar chart using the classroom.tsv dataset
   - changes the color of the bars depending on a given value of a dataset variable

@@ -1,3 +1,12 @@
+/*
+This script:
+  - creates a bar chart that pulls from different datasets depending on a combobox selection.
+  - adds a line element to indicate a predefined cut point on the x axis.
+  - adds a tooltip using D3-tip (source: https://github.com/caged/d3-tip, example: http://bl.ocks.org/Caged/6476579)
+  
+For a detailed example on how to create a bar chart and explanation of the various elements of this script, check:
+http://bost.ocks.org/mike/bar/
+*/
 
 var margin = {top: 20, right: 20, bottom: 10, left: 60},
     width = 860 - margin.left - margin.right,
@@ -7,7 +16,7 @@ var margin = {top: 20, right: 20, bottom: 10, left: 60},
 var colors10 = d3.scale.category10().domain(d3.range(0,10));
 var colors20 = d3.scale.category20().domain(d3.range(0,20));
 
-
+/* Initialize tooltip */
 var tipn = d3.tip()
   .attr('class', 'd3-tip')
   .parent(document.getElementById('normGroupGraph'))
@@ -45,7 +54,7 @@ var yNormAxis = d3.svg.axis()
       .orient('left')
       .tickFormat(d3.format('.0'));  
 
-gNormChart.call(tipn);
+gNormChart.call(tipn); // Invoke the tip in the context of your visualization 
 
 gNormChart.append('g')
     .attr('class', 'x axis norm')
@@ -138,6 +147,7 @@ var loadData = function() {
       .attr("width", barWidth - 2)
       .attr("y", function(d) { return yNorm(d.pctCorrect); })
       .attr("height", function(d) { return height - yNorm(d.pctCorrect); })
+      /* Show and hide tip on mouse events */
       .on('mouseover', tipn.show)
       .on('mouseout', tipn.hide)
       .attr("fill",function(d){

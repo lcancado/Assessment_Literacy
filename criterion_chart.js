@@ -1,3 +1,14 @@
+/*
+This script:
+  - creates a bar chart using the classroom.tsv dataset
+  - changes the color of the bars depending on a given value of a dataset variable
+  - adds a line element to indicate a predefined cut point on the y axis when a radio button is selected
+  - sorts the chart  
+  - adds a tooltip using D3-tip (source: https://github.com/caged/d3-tip, example: http://bl.ocks.org/Caged/6476579)
+  
+For a detailed example on how to create a bar chart and explanation of the various elements of this script, check:
+http://bost.ocks.org/mike/bar/
+*/
 
 var margin = {top: 20, right: 20, bottom: 10, left: 60},
     width = 860 - margin.left - margin.right,
@@ -25,6 +36,7 @@ var yAxisCrit = d3.svg.axis()
     .scale(yCrit)
     .orient("left");
 
+/* Initialize tooltip */
 var tip = d3.tip()
   .attr('class', 'd3-tip')
   .parent(document.getElementById('criterionGraph'))
@@ -41,7 +53,7 @@ var svgCrit = d3.select(".criterionGraph").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svgCrit.call(tip);
+svgCrit.call(tip); // Invoke the tip in the context of your visualization
 
 var tsvCrit;
 
@@ -92,9 +104,11 @@ d3.tsv("classroom.tsv", function(error, data){
       .attr("width", xCrit.rangeBand())
       .attr("y", function(d) { return yCrit(d.variable); })
       .attr("height", function(d) { return height - yCrit(d.variable); })     
+      /* Show and hide tip on mouse events */
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
-      .attr("fill",function(d,i){
+      /* set bar colors depending on the value of the d.variable */
+      .attr("fill",function(d,i){ 
         if (d.name == 'Mary') { return 'purple'; } 
         else { 
           if (+d.variable < cutScore) { return colors10(3); } //red
@@ -128,6 +142,7 @@ d3.tsv("classroom.tsv", function(error, data){
 });
 
 
+// function to get the value of the selected cutScore radio 
 function getCutScore() { 
 
   var cutScores = document.getElementsByName('cutScore');
@@ -139,10 +154,13 @@ function getCutScore() {
     }
 };
 
+
+// function to update the chart depending on the cutscore radio button selected
 function updateCriterion(myRadio) {
 
     cutScore = myRadio.value;
 
+    /* jQuery to scroll to a given element id*/
     $('html, body').animate({
     scrollTop: $("#Activity3").offset().top}, 500);
 

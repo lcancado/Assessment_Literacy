@@ -1,3 +1,16 @@
+/*
+This script:
+  - creates a bar chart using the classroom.tsv dataset
+  - changes the color of the bars depending on a given value of a dataset variable
+  - adds a line element to indicate a predefined cut point on the y axis when a radio button is selected
+  - sorts the chart  
+  - adds a tooltip using D3-tip (source: https://github.com/caged/d3-tip, example: http://bl.ocks.org/Caged/6476579)
+  
+For a detailed example on how to create a bar chart and explanation of the various elements of this script, check:
+http://bost.ocks.org/mike/bar/
+*/
+
+
 
 var marginCombo = {top: 10, right: 10, bottom: 10, left: 40},
     widthCombo = 860 - marginCombo.left - marginCombo.right,
@@ -118,7 +131,7 @@ d3.tsv(dataFileCombo, function(error, data){
         .call(yAxisCombo) ;
 });
 
-
+// Returns the value of the selected myradio 
 function getRadioValue(myRadio) { 
   
   for(var i = 0; i < myRadio.length; i++){
@@ -130,6 +143,8 @@ function getRadioValue(myRadio) {
 };
 
 
+
+// Updates the svg depending on the decisionType from the comboForm form
 function updateComboChart(decisionType) {
 
 var transitionCombo = svgCombo.transition().duration(750);
@@ -347,6 +362,7 @@ var delay = function(d, i) { return i * 50; };
           return "<span style='color:white; font-size:12px'>" + d.name + "</span>"; });
       svgCombo.call(tipCombo);
 
+      /* Show and hide tip on mouse events. Need to call it again since we changed the html attribute */
       barCrit
         .on('mouseover', tipCombo.show)
         .on('mouseout', tipCombo.hide);
@@ -376,12 +392,17 @@ var delay = function(d, i) { return i * 50; };
     
 }; // end of updateComboChart function
 
+
+// executed by the onclick event of the combined chart submit button
+// gets the values of the selected radio buttons and calls the checkDecision function in file combo_quiz.js
 function checkCombo (myform) {
 
     decision=getRadioValue(myform.elements['decision']);
     scoreType=getRadioValue(myform.elements['scoreType']);
     normGroup=getRadioValue(myform.elements['normGroup']);
 
+
+    /* jQuery to scroll to a given element id*/
     $('html, body').animate({
     scrollTop: $("#Activity4").offset().top}, 500);
 
@@ -389,6 +410,8 @@ function checkCombo (myform) {
     
 };
 
+
+// updates the horizontal criterion line element according to cutScoreInput
 function updateYCritLine(cutScoreInput) {
 
   var cutScoreY = +cutScoreInput;
@@ -430,7 +453,7 @@ function updateYCritLine(cutScoreInput) {
     .attr("y", yCombo(cutScoreY) - 10) ;
 };
 
-
+// makes the vertical criterion line transparent 
 function clearXCritLine() {
 
   var transitionCombo = svgCombo.transition().duration(750);
@@ -442,7 +465,7 @@ function clearXCritLine() {
       .text("") ;
 };
 
-
+// updates the vertical criterion line element according to cutScoreInput
 function updateXCritLine(cutScoreInput) {
 
   var cutScoreX = +cutScoreInput;
@@ -486,7 +509,7 @@ function updateXCritLine(cutScoreInput) {
 
 };
 
-
+// uncheck the radio buttons for scoreType and normGroup
 function clearComboRadios(myform) {
 
   var allRadios = myform.elements['scoreType'];

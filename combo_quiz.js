@@ -1,3 +1,10 @@
+/*
+This script:
+  - parses the decisionP, scoreP, groupP parameters
+  - displays an error when the incorrect scoreP and groupP options are selected depending on the decisionP
+  - calls the updateComboChart function in combo_chart.js to update the graph when all the correct options are selected
+  - populates the comboReactiveText with correct answer and explanation of the decision/question
+*/
 
 function checkDecision(decisionP, scoreP, groupP ) {
 

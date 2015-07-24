@@ -1,3 +1,14 @@
+/*
+This script:
+  - creates a bar chart for number correct and percent correct using the classroom.tsv fictitious dataset. 
+  - updates chart contents depending on the variable selected. 
+  - sorts data 
+  - adds a tooltip using D3-tip (source: https://github.com/caged/d3-tip, example: http://bl.ocks.org/Caged/6476579)
+
+For a detailed example on how to create a bar chart and explanation of the various elements of this script, check:
+http://bost.ocks.org/mike/bar/
+*/
+
 
 var margin = {top: 20, right: 20, bottom: 10, left: 60},
     width = 860 - margin.left - margin.right,
@@ -20,6 +31,7 @@ var yAxisRaw = d3.svg.axis()
     .scale(y)
     .orient("left");
 
+/* Initialize tooltip */
 var tip = d3.tip()
   .attr('class', 'd3-tip')
    .parent(document.getElementById('rawScoreGraph'))
@@ -36,7 +48,7 @@ var svgRawChart = d3.select(".rawScoreGraph").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svgRawChart.call(tip);
+svgRawChart.call(tip); /* Invoke the tip in the context of your visualization */
 
 var tsv;
 
@@ -86,7 +98,8 @@ d3.tsv("classroom.tsv", function(error, data){
       .attr("x", function(d) { return x(d.name); })
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.variable); })
-      .attr("height", function(d) { return height - y(d.variable); })     
+      .attr("height", function(d) { return height - y(d.variable); })   
+      /* Show and hide tip on mouse events */  
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
       .attr("fill",function(d,i){
@@ -95,7 +108,7 @@ d3.tsv("classroom.tsv", function(error, data){
       }) ;
 
 
-  //  Sort function
+  //  Sort function triggerend by the onchange method of the checkbox with class=sortRaw
   d3.select(".sortRaw").on("change", function() {
     
     var sortByScore = function(a, b) { return a.variable - b.variable; };
@@ -122,7 +135,7 @@ d3.tsv("classroom.tsv", function(error, data){
 });
 
 
-//update data from combobox onChange
+//update data from combobox onChange 
 function updateData() {
   
   document.getElementById('sortRaw').checked = false;

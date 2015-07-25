@@ -4,8 +4,6 @@ This interactive module was designed to help clarify some of the concepts relate
 
 The use of explorable explanations was inspired by [Bret Victor](http://worrydream.com/ExplorableExplanations/). For the visualizations, we use the [D3.js](http://d3js.org/) library created by [Mike Bostock](http://bost.ocks.org/mike/) and the [NVD3](http://nvd3.org/) library.
 
--> This is a work in progress - ETA is end of July, 2015 <-
-
 ###Audience
   * Students (high-school level)
   * Parents
